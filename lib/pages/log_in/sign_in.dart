@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/view/log_in/signing_controller.dart';
-import 'package:nutrifit/view/sign_up/register.dart';
-import 'package:nutrifit/view/widgets/widgets.dart';
+import 'package:nutrifit/pages/log_in/signing_controller.dart';
+import 'package:nutrifit/pages/sign_up/register.dart';
+import 'package:nutrifit/pages/widgets/widgets.dart';
 
 class Sign_In extends StatelessWidget {
   var controller = Get.put(SigningController());

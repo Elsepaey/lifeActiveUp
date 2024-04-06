@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/view/sign_up/register.dart';
-import 'package:nutrifit/view/log_in/sign_in.dart';
+import 'package:nutrifit/pages/sign_up/register.dart';
+import 'package:nutrifit/pages/log_in/sign_in.dart';
 
 class Splash extends StatelessWidget {
   Splash({super.key});

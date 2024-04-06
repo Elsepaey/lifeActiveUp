@@ -2,10 +2,10 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/view/homescreen/homeview.dart';
 
 import '../main.dart';
 import '../model/user controller.dart';
+import '../pages/mainscreen/mainscreen.dart';
 
 
 class Intro extends StatefulWidget {
@@ -42,6 +42,8 @@ getUserDate();
     userController.allergiesList = doc?['allergiesList'];
     userController.dateOfBirth = doc?['dateOfBirth'];
     userController.gender = doc?['gender'];
+    userController.height=doc?['height'];
+    userController.weight=doc?['weight'];
     userController.fitnessLevel = doc?['fitnessLevel'];
     userController.fitnessGoal = doc?['fitnessGoal'];
     userController.sleepIntake = doc?['sleepIntake'];
@@ -63,7 +65,7 @@ getUserDate();
           height: Height,
           width: Width,
         ),
-        nextScreen:   Home()
+        nextScreen:   MainScreen()
 
         ,
         splashTransition: SplashTransition.fadeTransition,

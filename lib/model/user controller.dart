@@ -7,6 +7,8 @@ class AppUserController extends GetxController {
   String email = '';
   String password = '';
   String gender = '';
+  String height='';
+  String weight='';
   String dateOfBirth = '';
   List<dynamic> diseasesList = [];
   List<dynamic> allergiesList = [];
@@ -14,6 +16,8 @@ class AppUserController extends GetxController {
   String fitnessGoal='';
   String sleepIntake='';
   String waterIntake='';
+
+
   @override
   void onInit() {
     // TODO: implement onInit

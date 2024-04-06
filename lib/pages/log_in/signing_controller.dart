@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/view/homescreen/homeview.dart';
 import '../../core/progress_dialog_utils.dart';
 import '../../main.dart';
 import '../../model/user controller.dart';
+import '../mainscreen/mainscreen.dart';
 import '../sign_up/user_model.dart';
 
 class SigningController extends GetxController {
@@ -53,12 +53,14 @@ class SigningController extends GetxController {
               userController.allergiesList = doc['allergiesList'],
               userController.dateOfBirth = doc['dateOfBirth'],
               userController.gender = doc['gender'],
+      userController.height=doc['height'],
+      userController.weight=doc['weight'],
               userController.fitnessLevel = doc['fitnessLevel'],
               userController.fitnessGoal = doc['fitnessGoal'],
               userController.sleepIntake = doc['sleepIntake'],
               userController.waterIntake = doc['waterIntake'],
               ProgressDialogUtils.hideLoading(context),
-              Get.off(() => Home())
+              Get.off(() => MainScreen())
             })
         .onError((error, stackTrace) => {
               ProgressDialogUtils.hideLoading(context),

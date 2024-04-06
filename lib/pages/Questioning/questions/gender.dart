@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/view/Questioning/QuestioningController.dart';
+import 'package:nutrifit/pages/Questioning/QuestioningController.dart';
 
 import '../../widgets/widgets.dart';
 

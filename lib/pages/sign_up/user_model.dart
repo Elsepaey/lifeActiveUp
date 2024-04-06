@@ -4,6 +4,9 @@ class FirebaseUser {
   String? email;
   String? password;
   String? gender;
+  String? height;
+  String? weight;
+
   String? dateOfBirth;
   List<dynamic>? diseasesList;
   List<dynamic>? allergiesList;
@@ -18,6 +21,7 @@ class FirebaseUser {
       this.email,
       this.password,
       this.gender,
+        this.height,this.weight,
       this.dateOfBirth,
       this.diseasesList,
       this.allergiesList,
@@ -33,6 +37,8 @@ class FirebaseUser {
           email: snapshot["email"],
           password: snapshot["password"],
           gender: snapshot["gender"],
+          height: snapshot["height"],
+          weight: snapshot["weight"],
           dateOfBirth: snapshot["dateOfBirth"],
           diseasesList: List.from(snapshot["diseasesList"]),
           allergiesList: List.from(snapshot["allergiesList"]),
@@ -51,6 +57,8 @@ class FirebaseUser {
       "email": email,
       "password": password,
       "gender": gender,
+      "height":height,
+      "weight":weight,
       "dateOfBirth": dateOfBirth,
       "diseasesList": diseasesList,
       "allergiesList": allergiesList,

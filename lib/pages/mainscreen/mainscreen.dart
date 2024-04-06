@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:nutrifit/core/themes.dart';
-import 'package:nutrifit/view/homescreen/appbar/appbar.dart';
-import 'package:nutrifit/view/hompage/mainscreencontroller.dart';
+import 'package:nutrifit/pages/hompage/mainscreencontroller.dart';
+
+import 'appbar/appbar.dart';
 
 
 
-class Home extends StatelessWidget {
+class MainScreen extends StatelessWidget {
   MainScreenController controller = Get.put(MainScreenController());
 
-  Home({
+  MainScreen({
     super.key,
   });
 
@@ -23,7 +23,7 @@ class Home extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      drawer: Drawer(),
+      drawer: const Drawer(),
       appBar: CustomAppBar(),
       body:  NavbarRouter(
         type: NavbarType.floating,

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/view/homescreen/homeview.dart';
 import '../../core/progress_dialog_utils.dart';
-import '../../data/database.dart';
+import '../../databases/database.dart';
 import '../../model/user controller.dart';
+import '../mainscreen/mainscreen.dart';
 import '../sign_up/user_model.dart';
 
 class QuestioningController extends GetxController {
@@ -112,6 +112,8 @@ class QuestioningController extends GetxController {
         email: userController.email,
         fullName: userController.fullName,
         gender: gender.value,
+        height: height.value,
+        weight: weight.value,
         password: userController.password,
         dateOfBirth: birth.value,
         allergiesList: selectedAllergies,
@@ -124,6 +126,8 @@ class QuestioningController extends GetxController {
     var insertedUser = await DB.addUser(newUser!);
     if (insertedUser != null) {
       userController.gender = gender.value;
+      userController.height=height.value;
+    userController.weight=weight.value;
       userController.dateOfBirth = birth.value;
       userController.diseasesList = selectedDiseases;
       userController.allergiesList = selectedAllergies;
@@ -132,7 +136,7 @@ class QuestioningController extends GetxController {
       userController.sleepIntake=sleepIntake.value;
       userController.waterIntake=waterIntake.value;
 
-      Get.off(() => Home());
+      Get.off(() => MainScreen());
     } else {
       ProgressDialogUtils.showMessage(
           context: context,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/view/Questioning/QuestioningController.dart';
-import 'package:nutrifit/view/widgets/widgets.dart';
+import 'package:nutrifit/pages/Questioning/QuestioningController.dart';
+import 'package:nutrifit/pages/widgets/widgets.dart';
 
 class WeightAndHeight extends StatelessWidget {
    WeightAndHeight({super.key});

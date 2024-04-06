@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/view/sign_up/registring_controller.dart';
-import 'package:nutrifit/view/log_in/sign_in.dart';
-import 'package:nutrifit/view/widgets/widgets.dart';
+import 'package:nutrifit/pages/sign_up/registring_controller.dart';
+import 'package:nutrifit/pages/log_in/sign_in.dart';
+import 'package:nutrifit/pages/widgets/widgets.dart';
 
 class Register extends StatelessWidget {
   final formKey = GlobalKey<FormState>();

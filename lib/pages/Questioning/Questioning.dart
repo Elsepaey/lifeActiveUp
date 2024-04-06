@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/view/Questioning/QuestioningController.dart';
-import 'package:nutrifit/view/Questioning/questions/age.dart';
-import 'package:nutrifit/view/Questioning/questions/allergies.dart';
-import 'package:nutrifit/view/Questioning/questions/diseases.dart';
-import 'package:nutrifit/view/Questioning/questions/fitness.dart';
-import 'package:nutrifit/view/Questioning/questions/gender.dart';
-import 'package:nutrifit/view/Questioning/questions/height&weight.dart';
+import 'package:nutrifit/pages/Questioning/QuestioningController.dart';
+import 'package:nutrifit/pages/Questioning/questions/age.dart';
+import 'package:nutrifit/pages/Questioning/questions/allergies.dart';
+import 'package:nutrifit/pages/Questioning/questions/diseases.dart';
+import 'package:nutrifit/pages/Questioning/questions/fitness.dart';
+import 'package:nutrifit/pages/Questioning/questions/gender.dart';
+import 'package:nutrifit/pages/Questioning/questions/height&weight.dart';
 
 class Questioning extends StatelessWidget {
   final QuestioningController controller = Get.put(QuestioningController());

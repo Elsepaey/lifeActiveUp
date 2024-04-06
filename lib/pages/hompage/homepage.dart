@@ -5,6 +5,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.white,);
+    return Padding(padding: EdgeInsets.all(16));
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/view/widgets/widgets.dart';
+import 'package:nutrifit/pages/widgets/widgets.dart';
 import '../QuestioningController.dart';
 
 class Fitness extends StatelessWidget {

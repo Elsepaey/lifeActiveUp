@@ -1,4 +1,4 @@
-import 'package:nutrifit/view/sign_up/user_model.dart';
+import 'package:nutrifit/pages/sign_up/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DB {

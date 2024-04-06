@@ -32,7 +32,7 @@ class MainScreenController extends GetxController {
         )),
   ];
 
-  final Map<int, Map<String, Widget>> routes = const {
+  final Map<int, Map<String, Widget>> routes = {
     0: {
       '/': HomePage(),
     },

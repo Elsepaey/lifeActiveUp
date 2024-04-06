@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:nutrifit/core/progress_dialog_utils.dart';
 import 'package:nutrifit/main.dart';
 import 'package:nutrifit/model/user%20controller.dart';
-import 'package:nutrifit/view/Questioning/Questioning.dart';
+import 'package:nutrifit/pages/Questioning/Questioning.dart';
 
 class RegisterController extends GetxController {
   var authService = FirebaseAuth.instance;
