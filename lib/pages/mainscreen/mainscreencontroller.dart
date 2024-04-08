@@ -3,7 +3,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:navbar_router/navbar_router.dart';
 
 import '../profile/profile.dart';
-import 'homepage.dart';
+import '../hompage/homepage.dart';
 
 class MainScreenController extends GetxController {
   int currentIndex = 0;
@@ -12,10 +12,7 @@ class MainScreenController extends GetxController {
     HomePage(),
     Profile(),
   ];
-  // List<BottomNavigationBarItem> items = [
-  //   BottomNavigationBarItem(icon: Icon(Icons.add), label: "kk"),
-  //   BottomNavigationBarItem(icon: Icon(Icons.add), label: "cc")
-  // ];
+
 
   List<NavbarItem> navitems = [
     NavbarItem(Icons.home_outlined, 'Home',

@@ -15,6 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return GetX<AppBarController>(
         builder: (controller) => AppBar(
+          forceMaterialTransparency: true,
               iconTheme: IconThemeData(color: Colors.black),
               //backgroundColor: Colors.white,
               elevation: 0,
@@ -35,7 +36,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           width: 5,
                         ),
                         Text(
-                          'NutriFit',
+                          'LifeActiveUp',
                           style: TextStyle(
                               color: MyTheme.primary_color, fontWeight: FontWeight.bold),
                         ),
