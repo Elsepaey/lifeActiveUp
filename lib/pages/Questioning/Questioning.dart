@@ -44,7 +44,7 @@ class Questioning extends StatelessWidget {
                           if (index == 5) {
                             controller.buttonText.value = 'Submit';
                           } else {
-                            controller.buttonText.value = 'Next';
+                            controller.buttonText.value = 'Continue';
                           }
                         },
                         children: [
@@ -64,40 +64,22 @@ class Questioning extends StatelessWidget {
             ),
             Center(
               child: SizedBox(
-                width: screenWidth / 1.2,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ElevatedButton(
+                width: screenWidth / 2,
+                child: Center(
+                  child: GetX<QuestioningController>(
+                      builder: (controller) => ElevatedButton(
+                        style: ElevatedButton.styleFrom(
 
-                      style: ElevatedButton.styleFrom(
-
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(9.0),
-                          side: BorderSide(color: Colors.black),
-
-                        ),
-                      ),
-                      onPressed: () {
-                        controller.toPrevious();
-                      },
-                      child: const Text('Back'),
-                    ),
-                    GetX<QuestioningController>(
-                        builder: (controller) => ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(9.0),
-                              side: BorderSide(color: Colors.black),
-                            ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            //side: const BorderSide(color: Colors.black),
                           ),
-                              onPressed: () {
-                                controller.toNext(context);
-                              },
-                              child: Text(controller.buttonText.value),
-                            ))
-                  ],
+                        ),
+                            onPressed: () {
+                              controller.toNext(context);
+                            },
+                            child: Text(controller.buttonText.value,style: TextStyle(color: Colors.blueAccent),),
+                          )),
                 ),
               ),
             ),

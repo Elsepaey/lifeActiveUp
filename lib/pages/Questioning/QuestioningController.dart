@@ -11,7 +11,7 @@ class QuestioningController extends GetxController {
   FirebaseUser? newUser;
   AppUserController userController = Get.find();
 
-  RxString buttonText='Next'.obs;
+  RxString buttonText='Continue'.obs;
   RxDouble progressValue=0.0.obs;
 //Gender
   RxString gender = ''.obs;
@@ -97,16 +97,17 @@ class QuestioningController extends GetxController {
     }
   }
 
-  void toPrevious() {
-    if (currentPageIndex > 0) {
-      pageController.animateToPage(currentPageIndex - 1,
-          duration: const Duration(milliseconds: 500), curve: Curves.ease);
-    } else {
-      // Handle if first page
-      // For example, navigate to previous screen or perform any action
-    }
-  }
+  // void toPrevious() {
+  //   if (currentPageIndex > 0) {
+  //     pageController.animateToPage(currentPageIndex - 1,
+  //         duration: const Duration(milliseconds: 500), curve: Curves.ease);
+  //   } else {
+  //     // Handle if first page
+  //     // For example, navigate to previous screen or perform any action
+  //   }
+  // }
   Future<void> submit(BuildContext context) async {
+    ProgressDialogUtils.showLoading(context, "Loading...");
     newUser = FirebaseUser(
         id: userController.id,
         email: userController.email,
@@ -135,7 +136,7 @@ class QuestioningController extends GetxController {
       userController.fitnessGoal=fitnessGoal.value;
       userController.sleepIntake=sleepIntake.value;
       userController.waterIntake=waterIntake.value;
-
+ProgressDialogUtils.hideLoading(context);
       Get.off(() => MainScreen());
     } else {
       ProgressDialogUtils.showMessage(

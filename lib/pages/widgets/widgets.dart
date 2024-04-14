@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:nutrifit/pages/Questioning/QuestioningController.dart';
+import 'package:nutrifit/pages/profile/profilecontroller.dart';
 
 class CustomWidgets {
   static Widget customTextFormField(
@@ -11,16 +15,15 @@ class CustomWidgets {
       Widget? suffix,
       FormFieldValidator<String>? validator,
       FormFieldSetter<String>? onChanged,
-      bool? enabled=true,
-        String? initial
-      }) {
+      bool? enabled = true,
+      String? initial}) {
     return Container(
       decoration: BoxDecoration(
           color: const Color(0xFFD9D9D9),
           borderRadius: BorderRadius.circular(13)),
       child: TextFormField(
         initialValue: initial,
-        enabled:enabled ,
+        enabled: enabled,
         onChanged: onChanged,
         obscureText: obscure,
         validator: validator,
@@ -93,8 +96,7 @@ class CustomWidgets {
               onChanged: (String? newValue) {
                 value = newValue!;
               },
-              items: values
-                  .map<DropdownMenuItem<String>>((String value) {
+              items: values.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -106,64 +108,190 @@ class CustomWidgets {
       ),
     );
   }
-  static Widget profileRow({
-    required double screenWidth,
-    required double screenHeight,required String fullName,required nameEnabled,required nameEditing}){
-    return         Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+  static Widget profileRow(
+      {required double screenWidth,
+      required double screenHeight,
+      required String initialValue,
+      required RxBool Enabled,
+      required RxBool Editing,
+      required BuildContext context,
+      required String fieldName,
+      required String newValue,
+      required String title}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-            width: screenWidth / 1.5,
-            height: screenHeight / 30,
-            decoration: BoxDecoration(
-              //color: const Color(0xFFD2CFCF),
-                borderRadius: BorderRadius.circular(3)),
-            child: TextFormField(
-              initialValue: fullName,
-              enabled: nameEnabled,
-              //onChanged: onChanged,
-              //validator: validator,
-              decoration: InputDecoration(
-                  enabledBorder: InputBorder.none,
-                  contentPadding:
-                  const EdgeInsets.symmetric(vertical: 8.0),
-                  disabledBorder: InputBorder.none),
-            )),
-        nameEditing?
+        Text(title),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            InkWell(
-              child: Text(
-                "Save",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-            ,
-            SizedBox(width: 8,),
-            InkWell(
-              onTap: (){nameEditing=false;
-              nameEnabled=false;
-              },
-              child: Text(
-                "cancel",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
+            Container(
+                width: screenWidth / 1.5,
+                height: screenHeight / 30,
+                decoration: BoxDecoration(
+                    //color: const Color(0xFFD2CFCF),
+                    borderRadius: BorderRadius.circular(3)),
+                child: TextFormField(
+                  onChanged: (value) {
+                    newValue = value;
+                  },
+                  initialValue: initialValue,
+                  enabled: Enabled.value,
+                  //onChanged: onChanged,
+                  //validator: validator,
+                  decoration: InputDecoration(
+                      enabledBorder: InputBorder.none,
+                      contentPadding: const EdgeInsets.symmetric(vertical: 8.0),
+                      disabledBorder: InputBorder.none),
+                )),
+            Editing.value
+                ? Row(
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          var controller = Get.put(ProfileController());
+
+                          await controller.updateField(
+                              context, fieldName, newValue);
+                          initialValue = newValue;
+                          Enabled.value = false;
+                          Editing.value = false;
+                          Get.showSnackbar(
+                            GetSnackBar(
+                              message: "modified successfully",
+                              duration: Duration(milliseconds: 1600),
+                              snackPosition: SnackPosition.TOP,
+                              backgroundColor: Colors.black87,
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Save",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Editing.value = false;
+                          Enabled.value = false;
+                        },
+                        child: Text(
+                          "cancel",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      )
+                    ],
+                  )
+                : InkWell(
+                    onTap: () {
+                      Editing.value = true;
+                      Enabled.value = true;
+                    },
+                    child: Text(
+                      "Edit",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  )
           ],
-        )
-            :
-        InkWell(
-          onTap: (){
-            nameEditing=true;
-            nameEnabled=true;
-          },
-          child: Text(
-            "Edit",
-            style: TextStyle(color: Colors.blue),
+        ),
+        Divider(),
+        SizedBox(
+          height: screenHeight / 80,
+        ),
+      ],
+    );
+  }
+  static recipeWidget(String name,String calories,String protein,String fat){
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child:
+        Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(calories),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const Icon(Icons.more_vert_outlined)
+      
+              ],
+            ),
+            SizedBox(height: 8,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                calMeasure(25, "Protein", 75, Colors.green),
+                calMeasure(21, "Fat", 75, Colors.yellow),
+                calMeasure(14, "Carbs", 75, Color.fromARGB(255, 191, 116, 204)),
+              ],
+            ),
+      
+          ],
+        ),
+      ),
+    );
+
+  }
+  static Row calMeasure(
+      int gram,
+      String type,
+      int perc,
+      Color color,
+      ) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        SizedBox(
+          height: 30,
+          child: RotatedBox(
+            quarterTurns: -1,
+            child: LinearProgressIndicator(
+
+              minHeight: 7,
+              value: 40 / 100,
+              backgroundColor: Colors.lightBlueAccent,
+              color: color,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                gram.toString(),
+                style:
+                const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+              ),
+              Text(type),
+            ],
           ),
         )
       ],
     );
-
   }
 }

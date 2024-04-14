@@ -46,38 +46,11 @@ class ProgressDialogUtils {
         ),
         actions: [
           TextButton(onPressed: (){
-            posAction();
+            posAction(context);
           }, child: Text(posActionText,style: const TextStyle(color: Colors.black),)),
         ],
       );
     });
   }
-  // static void hideProgressDialog() {
-  //   if (isProgressVisible)
-  //     Navigator.pop(
-  //         NavigatorService.navigatorKey.currentState!.overlay!.context);
-  //   isProgressVisible = false;
-  // }
-  //
-  // static void showProgressDialog(
-  //     {BuildContext? context, isCancellable = false}) async {
-  //   if (!isProgressVisible &&
-  //       NavigatorService.navigatorKey.currentState?.overlay?.context != null)
-  //   {
-  //     showDialog(
-  //         barrierDismissible: isCancellable,
-  //         context: NavigatorService.navigatorKey.currentState!.overlay!.context,
-  //         builder: (BuildContext context) {
-  //           return Center(
-  //             child: CircularProgressIndicator.adaptive(
-  //               strokeWidth: 4,
-  //               valueColor: AlwaysStoppedAnimation<Color>(
-  //                 Colors.white,
-  //               ),
-  //             ),
-  //           );
-  //         });
-  //     isProgressVisible = true;
-  //   }
-  // }
+
 }

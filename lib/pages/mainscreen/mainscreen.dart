@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:nutrifit/core/themes.dart';
-import 'package:nutrifit/pages/hompage/mainscreencontroller.dart';
+import 'package:nutrifit/pages/mainscreen/mainscreencontroller.dart';
 
 import 'appbar/appbar.dart';
 
@@ -14,8 +14,6 @@ class MainScreen extends StatelessWidget {
   MainScreen({
     super.key,
   });
-
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +33,7 @@ class MainScreen extends StatelessWidget {
     return isExiting;
     },
     destinationAnimationCurve: Curves.fastOutSlowIn,
-    destinationAnimationDuration: 600,
+    destinationAnimationDuration: 400,
     decoration:
     NavbarDecoration(navbarType: BottomNavigationBarType.shifting,backgroundColor: MyTheme.primary_color,height: screenHeight/15),
     destinations: [

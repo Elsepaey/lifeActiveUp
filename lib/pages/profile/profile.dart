@@ -1,19 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/profile/profilecontroller.dart';
-
-import '../../core/progress_dialog_utils.dart';
+import 'package:nutrifit/pages/widgets/widgets.dart';
 import '../../model/user controller.dart';
 
 class Profile extends StatelessWidget {
   AppUserController userController = Get.find();
-ProfileController controller=Get.put(ProfileController());
+  ProfileController controller = Get.put(ProfileController());
   Profile({super.key});
 
-  String  newValue ="";
+  String newValue = "";
 
   @override
   Widget build(BuildContext context) {
@@ -43,373 +40,108 @@ ProfileController controller=Get.put(ProfileController());
           SizedBox(
             height: 30,
           ),
-GetX<ProfileController>(builder: (controller)=>          Expanded(
-  child: SingleChildScrollView(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text("Name :"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                width: screenWidth / 1.5,
-                height: screenHeight / 30,
-                decoration: BoxDecoration(
-                  //color: const Color(0xFFD2CFCF),
-                    borderRadius: BorderRadius.circular(3)),
-                child: TextFormField(
-                  onChanged: (value){
-                    newValue=value;
-                  },
-                  initialValue: userController.fullName,
-                  enabled: controller.nameEnabled,
-                  //onChanged: onChanged,
-                  //validator: validator,
-                  decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      contentPadding:
-                      const EdgeInsets.symmetric(vertical: 8.0),
-                      disabledBorder: InputBorder.none),
-                )),
-            controller.nameEditing.value?
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () async {
-
-                        await controller.updateField(context, "fullname", newValue);
-
-
-
-                      },
-                    child: Text(
-                      "Save",
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  )
-                  ,
-                    SizedBox(width: 8,),
-                    InkWell(
-                      onTap: (){controller.nameEditing.value=false;
-                      controller.nameEnabled=false;
-                      },
-                      child: Text(
-                        "cancel",
-                        style: TextStyle(color: Colors.blue),
+          GetX<ProfileController>(
+              builder: (controller) => Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomWidgets.profileRow(
+                              screenWidth: screenWidth,
+                              screenHeight: screenHeight,
+                              initialValue: userController.fullName,
+                              Enabled: controller.nameEnabled,
+                              Editing: controller.nameEditing,
+                              context: context,
+                              fieldName: "fullname",
+                              newValue: newValue,
+                              title: "Name :"),
+                          CustomWidgets.profileRow(
+                              title: "email :",
+                              screenWidth: screenWidth,
+                              screenHeight: screenHeight,
+                              Enabled: controller.emailEnabled,
+                              Editing: controller.emailEditing,
+                              initialValue: userController.email,
+                              context: context,
+                              newValue: newValue,
+                              fieldName: 'email'),
+                          CustomWidgets.profileRow(
+                              title: "Birth Date :",
+                              screenWidth: screenWidth,
+                              screenHeight: screenHeight,
+                              Enabled: controller.birthEnabled,
+                              Editing: controller.birthEditing,
+                              initialValue: userController.dateOfBirth,
+                              context: context,
+                              newValue: newValue,
+                              fieldName: 'dateOfBirth'),
+                          CustomWidgets.profileRow(
+                              title: "Weight :",
+                              screenWidth: screenWidth,
+                              screenHeight: screenHeight,
+                              Enabled: controller.weightEnabled,
+                              Editing: controller.weightEditing,
+                              initialValue: userController.weight,
+                              context: context,
+                              newValue: newValue,
+                              fieldName: 'weight'),
+                          CustomWidgets.profileRow(
+                              title: "Height :",
+                              screenWidth: screenWidth,
+                              screenHeight: screenHeight,
+                              Enabled: controller.heightEnabled,
+                              Editing: controller.heightEditing,
+                              initialValue: userController.height,
+                              context: context,
+                              newValue: newValue,
+                              fieldName: 'height'),
+                          CustomWidgets.profileRow(
+                              title: "Fitness Goal :",
+                              screenWidth: screenWidth,
+                              screenHeight: screenHeight,
+                              Enabled: controller.goalEnabled,
+                              Editing: controller.goalEditing,
+                              initialValue: userController.fitnessGoal,
+                              context: context,
+                              newValue: newValue,
+                              fieldName: 'fitnessGoal'),
+                          CustomWidgets.profileRow(
+                              title: "Fitness Level :",
+                              screenWidth: screenWidth,
+                              screenHeight: screenHeight,
+                              Enabled: controller.levelEnabled,
+                              Editing: controller.levelEditing,
+                              initialValue: userController.fitnessLevel,
+                              context: context,
+                              newValue: newValue,
+                              fieldName: 'fitnessLevel'),
+                          CustomWidgets.profileRow(
+                              title: "Water Intake :",
+                              screenWidth: screenWidth,
+                              screenHeight: screenHeight,
+                              Enabled: controller.waterEnabled,
+                              Editing: controller.waterEditing,
+                              initialValue: userController.waterIntake,
+                              context: context,
+                              newValue: newValue,
+                              fieldName: 'waterIntake'),
+                          CustomWidgets.profileRow(
+                              title: "Sleep Intake :",
+                              screenWidth: screenWidth,
+                              screenHeight: screenHeight,
+                              Enabled: controller.sleepEnabled,
+                              Editing: controller.sleepEditing,
+                              initialValue: userController.sleepIntake,
+                              context: context,
+                              newValue: newValue,
+                              fieldName: 'sleepIntake'),
+                          
+                        ],
                       ),
-                    )
-                  ],
-                )
-                :
-            InkWell(
-              onTap: (){
-                controller.nameEditing.value=true;
-                controller.nameEnabled=true;
-              },
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
-        Divider(),
-        SizedBox(
-          height: screenHeight / 80,
-        ),
-        Text("email :"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                width: screenWidth / 1.5,
-                height: screenHeight / 30,
-                decoration: BoxDecoration(
-                  //color: const Color(0xFFD2CFCF),
-                    borderRadius: BorderRadius.circular(3)),
-                child: TextFormField(
-                  initialValue: userController.email,
-                  enabled: controller.emailEnabled,
-                  //onChanged: onChanged,
-                  //validator: validator,
-                  decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      contentPadding:
-                      const EdgeInsets.symmetric(vertical: 8.0),
-                      disabledBorder: InputBorder.none),
-                )),
-            controller.emailEditing.value ?
-            Row(
-              children: [
-                InkWell(
-                  child: Text(
-                    "Save",
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                )
-                ,
-                SizedBox(width: 8,),
-                InkWell(
-                  onTap: (){controller.emailEditing.value=false;
-                  controller.emailEnabled=false;
-                  },
-                  child: Text(
-                    "cancel",
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                )
-              ],
-            )
-                :
-            InkWell(
-              onTap: (){
-                controller.emailEditing.value=true;
-                controller.emailEnabled=true;
-              },
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
-        Divider(),
-        SizedBox(
-          height: screenHeight / 80,
-        ),
-        Text("Birth Date :"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                width: screenWidth / 1.5,
-                height: screenHeight / 30,
-                decoration: BoxDecoration(
-                  //color: const Color(0xFFD2CFCF),
-                    borderRadius: BorderRadius.circular(3)),
-                child: TextFormField(
-                  initialValue: userController.dateOfBirth,
-                  enabled: controller.birthEnabled,
-                  //onChanged: onChanged,
-                  //validator: validator,
-                  decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      contentPadding:
-                      const EdgeInsets.symmetric(vertical: 8.0),
-                      disabledBorder: InputBorder.none),
-                )),
-            InkWell(
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
-        Divider(),
-        SizedBox(
-          height: screenHeight / 80,
-        ),
-        Text("Height :"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                width: screenWidth / 1.5,
-                height: screenHeight / 30,
-                decoration: BoxDecoration(
-                  //color: const Color(0xFFD2CFCF),
-                    borderRadius: BorderRadius.circular(3)),
-                child: TextFormField(
-                  initialValue: userController.height,
-                  enabled: controller.heightEnabled,
-                  //onChanged: onChanged,
-                  //validator: validator,
-                  decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      contentPadding:
-                      const EdgeInsets.symmetric(vertical: 8.0),
-                      disabledBorder: InputBorder.none),
-                )),
-            InkWell(
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
-        Divider(),
-        SizedBox(
-          height: screenHeight / 80,
-        ),
-        Text("Weight :"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                width: screenWidth / 1.5,
-                height: screenHeight / 30,
-                decoration: BoxDecoration(
-                  //color: const Color(0xFFD2CFCF),
-                    borderRadius: BorderRadius.circular(3)),
-                child: TextFormField(
-                  initialValue: userController.weight,
-                  enabled: controller.weightEnabled,
-                  //onChanged: onChanged,
-                  //validator: validator,
-                  decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      contentPadding:
-                      const EdgeInsets.symmetric(vertical: 8.0),
-                      disabledBorder: InputBorder.none),
-                )),
-            InkWell(
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
-        Divider(),
-        SizedBox(
-          height: screenHeight / 80,
-        ),
-        Text("Fitness Goal :"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                width: screenWidth / 1.5,
-                height: screenHeight / 30,
-                decoration: BoxDecoration(
-                  //color: const Color(0xFFD2CFCF),
-                    borderRadius: BorderRadius.circular(3)),
-                child: TextFormField(
-                  initialValue: userController.fitnessGoal,
-                  enabled: controller.goalEnabled,
-                  //onChanged: onChanged,
-                  //validator: validator,
-                  decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      contentPadding:
-                      const EdgeInsets.symmetric(vertical: 8.0),
-                      disabledBorder: InputBorder.none),
-                )),
-            InkWell(
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
-        Divider(),
-        SizedBox(
-          height: screenHeight / 80,
-        ),
-        Text("Fitness Level :"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                width: screenWidth / 1.5,
-                height: screenHeight / 30,
-                decoration: BoxDecoration(
-                  //color: const Color(0xFFD2CFCF),
-                    borderRadius: BorderRadius.circular(3)),
-                child: TextFormField(
-                  initialValue: userController.fitnessLevel,
-                  enabled: controller.levelEnabled,
-                  //onChanged: onChanged,
-                  //validator: validator,
-                  decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      contentPadding:
-                      const EdgeInsets.symmetric(vertical: 8.0),
-                      disabledBorder: InputBorder.none),
-                )),
-            InkWell(
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
-        Divider(),
-        SizedBox(
-          height: screenHeight / 80,
-        ),
-        Text("Water Intake :"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                width: screenWidth / 1.5,
-                height: screenHeight / 30,
-                decoration: BoxDecoration(
-                  //color: const Color(0xFFD2CFCF),
-                    borderRadius: BorderRadius.circular(3)),
-                child: TextFormField(
-                  initialValue: userController.waterIntake,
-                  enabled: controller.waterEnabled,
-                  //onChanged: onChanged,
-                  //validator: validator,
-                  decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      contentPadding:
-                      const EdgeInsets.symmetric(vertical: 8.0),
-                      disabledBorder: InputBorder.none),
-                )),
-            InkWell(
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
-        Divider(),
-        SizedBox(
-          height: screenHeight / 80,
-        ),
-        Text("Sleep Intake :"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                width: screenWidth / 1.5,
-                height: screenHeight / 30,
-                decoration: BoxDecoration(
-                  //color: const Color(0xFFD2CFCF),
-                    borderRadius: BorderRadius.circular(3)),
-                child: TextFormField(
-                  initialValue: userController.sleepIntake,
-                  enabled: controller.sleepEnabled,
-                  //onChanged: onChanged,
-                  //validator: validator,
-                  decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                      contentPadding:
-                      const EdgeInsets.symmetric(vertical: 8.0),
-                      disabledBorder: InputBorder.none),
-                )),
-            InkWell(
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.blue),
-              ),
-            )
-          ],
-        ),
-      ],
-    ),
-  ),
-)
-)        ],
+                    ),
+                  ))
+        ],
       ),
     );
   }
