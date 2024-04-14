@@ -116,17 +116,14 @@ class CustomWidgets {
       required RxBool Enabled,
       required RxBool Editing,
       required BuildContext context,
-        required String fieldName,
+      required String fieldName,
       required String newValue,
-       required String title}) {
-    return
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-
-        children: [
-          Text(title),
-
-          Row(
+      required String title}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title),
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
@@ -155,11 +152,19 @@ class CustomWidgets {
                         onTap: () async {
                           var controller = Get.put(ProfileController());
 
-                          await controller.updateField(context, fieldName, newValue);
+                          await controller.updateField(
+                              context, fieldName, newValue);
                           initialValue = newValue;
                           Enabled.value = false;
                           Editing.value = false;
-                          Get.showSnackbar(GetSnackBar(message: "modified successfully",duration: Duration(milliseconds:1600 ),snackPosition: SnackPosition.TOP,backgroundColor: Colors.black87,),);
+                          Get.showSnackbar(
+                            GetSnackBar(
+                              message: "modified successfully",
+                              duration: Duration(milliseconds: 1600),
+                              snackPosition: SnackPosition.TOP,
+                              backgroundColor: Colors.black87,
+                            ),
+                          );
                         },
                         child: Text(
                           "Save",
@@ -183,7 +188,6 @@ class CustomWidgets {
                   )
                 : InkWell(
                     onTap: () {
-
                       Editing.value = true;
                       Enabled.value = true;
                     },
@@ -193,12 +197,101 @@ class CustomWidgets {
                     ),
                   )
           ],
-              ),
-          Divider(),
-          SizedBox(
-            height: screenHeight / 80,
+        ),
+        Divider(),
+        SizedBox(
+          height: screenHeight / 80,
+        ),
+      ],
+    );
+  }
+  static recipeWidget(String name,String calories,String protein,String fat){
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child:
+        Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(calories),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const Icon(Icons.more_vert_outlined)
+      
+              ],
+            ),
+            SizedBox(height: 8,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                calMeasure(25, "Protein", 75, Colors.green),
+                calMeasure(21, "Fat", 75, Colors.yellow),
+                calMeasure(14, "Carbs", 75, Color.fromARGB(255, 191, 116, 204)),
+              ],
+            ),
+      
+          ],
+        ),
+      ),
+    );
+
+  }
+  static Row calMeasure(
+      int gram,
+      String type,
+      int perc,
+      Color color,
+      ) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        SizedBox(
+          height: 30,
+          child: RotatedBox(
+            quarterTurns: -1,
+            child: LinearProgressIndicator(
+
+              minHeight: 7,
+              value: 40 / 100,
+              backgroundColor: Colors.lightBlueAccent,
+              color: color,
+            ),
           ),
-        ],
-      );
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                gram.toString(),
+                style:
+                const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+              ),
+              Text(type),
+            ],
+          ),
+        )
+      ],
+    );
   }
 }

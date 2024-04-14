@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController{
   List<dynamic> sliderImages=[
     AssetImage("assets/sliderImages/download.jpg"),
-    AssetImage("assets/sliderImages/images.jpg"),
+    AssetImage("assets/sliderImages/images (1).jpg"),
 
 
   ];

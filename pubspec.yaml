@@ -44,6 +44,7 @@ dependencies:
   animated_splash_screen: ^1.3.0
   navbar_router: ^0.7.3
   carousel_slider: ^4.2.1
+  csv: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -72,7 +73,8 @@ flutter:
     [
     assets/images/,
     assets/icons/,
-    assets/sliderImages/
+    assets/sliderImages/,
+    assets/meals/
     ]
 
 

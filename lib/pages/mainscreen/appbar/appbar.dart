@@ -17,10 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         builder: (controller) => AppBar(
           forceMaterialTransparency: true,
               iconTheme: IconThemeData(color: Colors.black),
-              //backgroundColor: Colors.white,
-              elevation: 0,
 
-              //shadowColor: Colors.black,
               title: controller.isSearching.value
                   ? _buildSearchField()
                   : Row(
