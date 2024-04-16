@@ -45,6 +45,8 @@ dependencies:
   navbar_router: ^0.7.3
   carousel_slider: ^4.2.1
   csv: ^6.0.0
+  flutter_timeline_calendar: ^1.0.9
+  calendar_timeline: ^1.0.5
 
 dev_dependencies:
   flutter_test:

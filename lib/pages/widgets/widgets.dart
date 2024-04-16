@@ -205,12 +205,13 @@ class CustomWidgets {
       ],
     );
   }
-  static recipeWidget(String name,String calories,String protein,String fat){
+
+  static recipeWidget(String name, String calories, String protein, String fat,
+      String carbs, String sugars) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(15),
-        child:
-        Column(
+        child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -222,56 +223,70 @@ class CustomWidgets {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            name,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                          Container(
+                            width: 250,
+                            child:  Text(
+                              name,
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
+                              //softWrap: true,
+                              //overflow: TextOverflow.fade,
                             ),
-                          ),
-                          Text(calories),
+                          )                          // Container(
+                          //   height: 40,
+                          //   child: Text(
+                          //     name,
+                          //     style: TextStyle(
+                          //       fontWeight: FontWeight.bold,
+                          //       fontSize: 11,
+                          //     ),
+                          //   ),
+                          // ),
+
+                          ,Text(calories),
                         ],
                       ),
                     ),
                   ],
                 ),
                 const Icon(Icons.more_vert_outlined)
-      
               ],
             ),
-            SizedBox(height: 8,),
+            SizedBox(
+              height: 8,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                calMeasure(25, "Protein", 75, Colors.green),
-                calMeasure(21, "Fat", 75, Colors.yellow),
-                calMeasure(14, "Carbs", 75, Color.fromARGB(255, 191, 116, 204)),
+                calMeasure(25, "Protein", protein, Colors.green),
+                calMeasure(21, "Fat", fat, Colors.green),
+                calMeasure(14, "Carbs", carbs, Colors.green),
+                calMeasure(14, "Sugars", sugars, Colors.green),
               ],
             ),
-      
           ],
         ),
       ),
     );
-
   }
+
   static Row calMeasure(
-      int gram,
-      String type,
-      int perc,
-      Color color,
-      ) {
+    int gram,
+    String type,
+    String perc,
+    Color color,
+  ) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         SizedBox(
-          height: 30,
+          height: 40,
           child: RotatedBox(
             quarterTurns: -1,
             child: LinearProgressIndicator(
-
               minHeight: 7,
-              value: 40 / 100,
+              value: getNumbers(perc) / 100,
               backgroundColor: Colors.lightBlueAccent,
               color: color,
             ),
@@ -283,9 +298,9 @@ class CustomWidgets {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                gram.toString(),
+                perc,
                 style:
-                const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
               ),
               Text(type),
             ],
@@ -293,5 +308,18 @@ class CustomWidgets {
         )
       ],
     );
+  }
+
+  static double getNumbers(String measure) {
+    // Extracting only numbers using regular expression
+    RegExp regex = RegExp(r'\d+(\.\d+)?');
+    Iterable<Match> matches = regex.allMatches(measure);
+
+    // Getting the first match (assuming there is only one)
+    Match match = matches.first;
+    String matched = match.group(0)!;
+    // Converting the matched numbers to a double
+    double numbersOnly = double.parse(matched);
+    return numbersOnly;
   }
 }

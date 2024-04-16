@@ -13,14 +13,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    return GetX<AppBarController>(
-        builder: (controller) => AppBar(
+    return
+      AppBar(
           forceMaterialTransparency: true,
               iconTheme: IconThemeData(color: Colors.black),
 
-              title: controller.isSearching.value
-                  ? _buildSearchField()
-                  : Row(
+              title:
+                   Row(
                       children: [
                         ImageIcon(
                           const AssetImage(
@@ -40,7 +39,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ],
                     ),
               actions: _buildAppBarActions(),
-            ));
+            );
   }
 
   Widget _buildSearchField() {
@@ -61,15 +60,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   List<Widget> _buildAppBarActions() {
     return [
-      IconButton(
-        icon: Icon(
-          Icons.search,
-          color: Colors.black,
-        ),
-        onPressed: () {
-          controller.isSearching.value = true;
-        },
-      ),
+
       IconButton(
         icon: Icon(
           Icons.notifications,
