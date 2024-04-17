@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/pages/widgets/widgets.dart';
 import '../QuestioningController.dart';
@@ -36,35 +35,42 @@ class Fitness extends StatelessWidget {
           ),
           GetX<QuestioningController>(
               builder: (controller) => CustomWidgets.customDropdownButton(
-                  screenWidth,
-                  controller,
-                  "Select Fitness Level",
-                  controller.level.value,
-                  controller.levels)),
+                  screenWidth: screenWidth,
+                  controller: controller,
+                  question: "Select Fitness Level",
+                  value: controller.level.value,
+                  values: controller.levels, select: 0,
+              )),
           Divider(),
           GetX<QuestioningController>(
               builder: (controller) => CustomWidgets.customDropdownButton(
-                  screenWidth,
-                  controller,
-                  "Select Fitness Goal",
-                  controller.fitnessGoal.value,
-                  controller.fitnessGoals)),
+                  select: 1,
+                  screenWidth: screenWidth,
+                  controller: controller,
+                  question: "Select Fitness Goal",
+                  value: controller.fitnessGoal.value,
+                  values: controller.fitnessGoals,
+              )),
           Divider(),
           GetX<QuestioningController>(
               builder: (controller) => CustomWidgets.customDropdownButton(
-                  screenWidth,
-                  controller,
-                  "Select Water Intake",
-                  controller.waterIntake.value,
-                  controller.waterIntakes)),
+                  select: 2,
+                  screenWidth: screenWidth,
+                  controller: controller,
+                  question: "Select Water Intake",
+                  value: controller.waterIntake.value,
+                  values: controller.waterIntakes,
+              )),
           Divider(),
           GetX<QuestioningController>(
               builder: (controller) => CustomWidgets.customDropdownButton(
-                  screenWidth,
-                  controller,
-                  "Select Sleep Intake",
-                  controller.sleepIntake.value,
-                  controller.sleepIntakes))
+                  select: 3,
+                  screenWidth: screenWidth,
+                  controller: controller,
+                  question: "Select Sleep Intake",
+                  value: controller.sleepIntake.value,
+                  values: controller.sleepIntakes,
+             ))
         ],
       ),
     );

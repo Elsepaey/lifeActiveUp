@@ -70,7 +70,7 @@ class Sign_In extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: screenHeight / 12,
+              height: screenHeight / 7,
             ),
             Form(
               key: formKey,
@@ -124,10 +124,10 @@ class Sign_In extends StatelessWidget {
               }),
             ])),
             SizedBox(
-              height: screenHeight / 10,
+              height: screenHeight / 15,
             ),
             Container(
-                height: screenHeight / 20,
+                height: screenHeight / 18,
                 decoration: BoxDecoration(
                     color: Colors.transparent,
                     borderRadius: BorderRadius.circular(12),
@@ -145,7 +145,7 @@ class Sign_In extends StatelessWidget {
                           fontSize: screenWidth / 20, color: Colors.white),
                     ))),
             SizedBox(
-              height: screenHeight / 3.5,
+              height: screenHeight / 8,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../main.dart';
 import '../model/user controller.dart';
-import '../pages/mainscreen/mainscreen.dart';
+import '../pages/mainscreen/main_screen.dart';
 
 
 class Intro extends StatefulWidget {

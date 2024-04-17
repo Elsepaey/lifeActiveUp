@@ -4,14 +4,15 @@ import 'package:get/get.dart';
 import 'package:nutrifit/middleware/AuthMiddleware.dart';
 import 'package:nutrifit/middleware/intro.dart';
 import 'package:nutrifit/pages/Questioning/Questioning.dart';
-import 'package:nutrifit/pages/mainscreen/mainscreen.dart';
+import 'package:nutrifit/pages/mainscreen/main_screen.dart';
 import 'package:nutrifit/pages/sign_up/register.dart';
 import 'package:nutrifit/pages/log_in/sign_in.dart';
 import 'package:nutrifit/pages/splash/splash-view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'model/user controller.dart';
+
 SharedPreferences? sharedPref;
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -28,8 +29,6 @@ class DefaultFirebaseOptions {}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -46,11 +45,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/home", page: ()=> MainScreen()),
         GetPage(name: "/intro", page: ()=>const Intro())
       ],
-
-
       title: 'Flutter Demo',
       theme: ThemeData(),
-
       //home: const Splash(),
     );
   }

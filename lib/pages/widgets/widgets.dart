@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:nutrifit/pages/Questioning/QuestioningController.dart';
 import 'package:nutrifit/pages/profile/profilecontroller.dart';
 
 class CustomWidgets {
+  final QuestioningController controller = Get.find();
+
   static Widget customTextFormField(
       {required Icon icon,
       required String label,
@@ -64,11 +67,15 @@ class CustomWidgets {
   }
 
   static Widget customDropdownButton(
-      double screenWidth,
-      QuestioningController controller,
-      String question,
-      String value,
-      List<String> values) {
+
+  {
+    required double screenWidth,
+      required QuestioningController controller,
+      required String question,
+      required String value,
+      required List<String> values,
+    required int select
+  }) {
     return Container(
       decoration: BoxDecoration(
           // color: Colors.grey,
@@ -93,8 +100,11 @@ class CustomWidgets {
               borderRadius: BorderRadius.circular(12),
               dropdownColor: Colors.grey.shade100,
               value: value,
+
               onChanged: (String? newValue) {
                 value = newValue!;
+                controller.onValueChange(value: newValue, select: select);
+
               },
               items: values.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
@@ -322,4 +332,10 @@ class CustomWidgets {
     double numbersOnly = double.parse(matched);
     return numbersOnly;
   }
+  static Widget mealTypeBox ({required String title,required String startTime,required String endTime,required bool checked}) {
+    return Column(children: [
+      Text(title,style: TextStyle(fontWeight: FontWeight.bold,color: checked ? Colors.white:Colors.black)),
+    Text("""($startTime - $endTime)""",style: TextStyle(color: checked ? Colors.white:Colors.black))
+    ]);
+}
 }

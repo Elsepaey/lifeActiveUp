@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../core/progress_dialog_utils.dart';
 import '../../main.dart';
 import '../../model/user controller.dart';
-import '../mainscreen/mainscreen.dart';
+import '../mainscreen/main_screen.dart';
 import '../sign_up/user_model.dart';
 
 class SigningController extends GetxController {
@@ -53,8 +53,8 @@ class SigningController extends GetxController {
               userController.allergiesList = doc['allergiesList'],
               userController.dateOfBirth = doc['dateOfBirth'],
               userController.gender = doc['gender'],
-      userController.height=doc['height'],
-      userController.weight=doc['weight'],
+              userController.height=doc['height'],
+              userController.weight=doc['weight'],
               userController.fitnessLevel = doc['fitnessLevel'],
               userController.fitnessGoal = doc['fitnessGoal'],
               userController.sleepIntake = doc['sleepIntake'],
