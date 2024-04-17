@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:nutrifit/pages/Questioning/QuestioningController.dart';
 import 'package:nutrifit/pages/profile/profilecontroller.dart';
 
@@ -81,20 +78,20 @@ class CustomWidgets {
           // color: Colors.grey,
 
           borderRadius: BorderRadius.circular(12)),
-      padding: EdgeInsets.all(4),
+      padding: const EdgeInsets.all(4),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             question,
-            style: TextStyle(fontSize: 12.0),
+            style: const TextStyle(fontSize: 12.0),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             width: screenWidth / 3.1,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: Color(0xff52D1C6).withOpacity(0.3)),
+                color: const Color(0xff52D1C6).withOpacity(0.3)),
             child: DropdownButton<String>(
               isExpanded: true,
               borderRadius: BorderRadius.circular(12),
@@ -150,9 +147,9 @@ class CustomWidgets {
                   enabled: Enabled.value,
                   //onChanged: onChanged,
                   //validator: validator,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       enabledBorder: InputBorder.none,
-                      contentPadding: const EdgeInsets.symmetric(vertical: 8.0),
+                      contentPadding: EdgeInsets.symmetric(vertical: 8.0),
                       disabledBorder: InputBorder.none),
                 )),
             Editing.value
@@ -168,7 +165,7 @@ class CustomWidgets {
                           Enabled.value = false;
                           Editing.value = false;
                           Get.showSnackbar(
-                            GetSnackBar(
+                            const GetSnackBar(
                               message: "modified successfully",
                               duration: Duration(milliseconds: 1600),
                               snackPosition: SnackPosition.TOP,
@@ -176,12 +173,12 @@ class CustomWidgets {
                             ),
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           "Save",
                           style: TextStyle(color: Colors.blue),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
                       InkWell(
@@ -189,7 +186,7 @@ class CustomWidgets {
                           Editing.value = false;
                           Enabled.value = false;
                         },
-                        child: Text(
+                        child: const Text(
                           "cancel",
                           style: TextStyle(color: Colors.blue),
                         ),
@@ -201,14 +198,14 @@ class CustomWidgets {
                       Editing.value = true;
                       Enabled.value = true;
                     },
-                    child: Text(
+                    child: const Text(
                       "Edit",
                       style: TextStyle(color: Colors.blue),
                     ),
                   )
           ],
         ),
-        Divider(),
+        const Divider(),
         SizedBox(
           height: screenHeight / 80,
         ),
@@ -237,7 +234,7 @@ class CustomWidgets {
                             width: 250,
                             child:  Text(
                               name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 14,
                               ),
                               //softWrap: true,
@@ -263,7 +260,7 @@ class CustomWidgets {
                 const Icon(Icons.more_vert_outlined)
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Row(
