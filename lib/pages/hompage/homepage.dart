@@ -88,7 +88,8 @@ class HomePage extends StatelessWidget {
                         offset: Offset(0, 1), // changes position of shadow
                       ),
                     ]),
-                child: Column(
+                child:
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Row(

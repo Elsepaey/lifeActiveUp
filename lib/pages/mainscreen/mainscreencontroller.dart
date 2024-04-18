@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:nutrifit/pages/foodcalender/mealscalender.dart';
+import 'package:nutrifit/pages/foodcalender/foodlog.dart';
 import 'package:nutrifit/pages/meals/mealsview.dart';
 
 import '../profile/profile.dart';
@@ -12,7 +12,7 @@ class MainScreenController extends GetxController {
 
   final List<Widget> pages = [
     HomePage(),
-    MealsCalender(),
+    Foodlog(),
     Meals(),
     Profile(),
 
@@ -52,7 +52,7 @@ class MainScreenController extends GetxController {
       '/': HomePage(),
     },
     1: {
-      '/': MealsCalender(),
+      '/': Foodlog(),
     },
     3: {
       '/': Profile(),

@@ -36,7 +36,8 @@ class Questioning extends StatelessWidget {
                   child: GetBuilder<QuestioningController>(
                     builder: (controller) {
                       print("pageView rebuilt");
-                      return PageView(
+                      return
+                        PageView(
                         controller: controller.pageController,
                         onPageChanged: (index) {
                           controller.currentPageIndex = index;
