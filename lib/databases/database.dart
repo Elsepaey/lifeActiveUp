@@ -9,30 +9,29 @@ class DB {
   static AppUserController userController = Get.find();
 
   static Future<Object?> addUser(FirebaseUser user) async {
-    // Call the user's CollectionReference to add a new user
-    CollectionReference collection = FirebaseFirestore.instance
-        .collection(FirebaseUser.collectionName)
-        .withConverter<FirebaseUser>(
-            fromFirestore: (doc, _) {
-              return FirebaseUser.fromFirestore(doc.data()!);
-            },
-            toFirestore: (user, options) => user.toFirestore());
-    var res = await (await collection.add(user)).get();
-    return res.data();
+
+    var res=await user.saveToFirestore();
+    return res;
   }
-  static addMeal(Meal meal)
+  static addMeal(Meal meal, DateTime date)
   async {
-     await meal.saveToFirestore();
-    // FirebaseFirestore.instance
-    //     .collection("users")
-    //     .doc(userController.id)
-    //     .collection("Records")
-    //     .doc(DateFormat('dd MMMM yyyy')
-    //     .format(DateTime.now()))
-    //     .set({
-    //   "meal-name":
-    //   DateFormat('hh:mm:ss a').format(DateTime.now()),
-    //   "date": Timestamp.now()
-    // });
+     var res=await meal.saveToFirestore(date);
+     return res;
+
   }
+  static getLoggedMeals(String mealType,DateTime date) {
+    int year = date.year;
+    int month = date.month;
+    int day = date.day;
+    String formattedDate = '$year-$month-$day';
+    var items = FirebaseFirestore.instance
+        .collection("users")
+        .doc(userController.id) // replace with the actual user ID
+        .collection('meals')
+        .doc(formattedDate)
+        .collection(mealType)
+        .get();
+    return items;
+  }
+
 }

@@ -4,16 +4,16 @@ import 'package:get/get.dart';
 import '../../model/user controller.dart';
 
 class Meal {
-   AppUserController userController = Get.find();
+  AppUserController userController = Get.find();
 
   String mealName;
   String mealType;
   int quantity;
-  int calories;
-  int protein;
-  int fat;
-  int carbs;
-  int sugar;
+  double calories;
+  double protein;
+  double fat;
+  double carbs;
+  double sugar;
   Timestamp date;
 
   Meal({
@@ -42,18 +42,35 @@ class Meal {
     );
   }
 
-  Future<void> saveToFirestore() async {
-    await FirebaseFirestore.instance..collection("users")
-         .doc("QnQlriNhK0Mpk3P3DiAz").collection('meals').doc(mealName).set({
-      'mealName': mealName,
-      'mealType': mealType,
-      'quantity': quantity,
-      'calories': calories,
-      'protein': protein,
-      'fat': fat,
-      'carbs': carbs,
-      'sugar': sugar,
-      'date': date,
-    });
+  Future<Future<DocumentSnapshot<Map<String, dynamic>>>> saveToFirestore(
+      DateTime date) async {
+    int year = date.year;
+    int month = date.month;
+    int day = date.day;
+
+    String formattedDate = '$year-$month-$day';
+    FirebaseFirestore.instance
+      ..collection("users")
+          .doc(userController.id)
+          .collection('meals')
+          .doc(formattedDate)
+          .collection(mealType)
+          .doc(mealName)
+          .set({
+        'mealName': mealName,
+        'mealType': mealType,
+        'quantity': quantity,
+        'calories': calories,
+        'protein': protein,
+        'fat': fat,
+        'carbs': carbs,
+        'sugar': sugar,
+        'date': date,
+      });
+    var res = FirebaseFirestore.instance
+        .collection("users")
+        .doc(userController.id)
+        .get();
+    return res;
   }
 }

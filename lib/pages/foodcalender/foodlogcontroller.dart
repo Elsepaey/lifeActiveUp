@@ -1,30 +1,50 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nutrifit/databases/database.dart';
+import 'package:nutrifit/model/user%20controller.dart';
 import 'package:nutrifit/pages/foodcalender/loggedview.dart';
 
+class FoodLogController extends GetxController {
+  DateTime date = DateTime.now();
 
-class FoodLogController extends GetxController{
   RxInt checked = 0.obs;
-  PageController pageViewController = PageController();
   int currentPageIndex = 0;
-  void changeViewIndex()
-  {
-    currentPageIndex=checked.value;
+AppUserController userController=Get.find();
+  void changeViewIndex() {
+    currentPageIndex = checked.value;
     update();
   }
-  Widget buildMealsContainer()
-  {
-    switch (currentPageIndex){
+
+  Widget buildMealsContainer() {
+    switch (currentPageIndex) {
       case 0:
-        return ShowLoggedMeals(title: "Breakfast");
+        return ShowLoggedMeals(
+          mealType: "Breakfast",
+          checkedTime: date,
+        );
       case 1:
-        return ShowLoggedMeals(title: "Launch");
+        return ShowLoggedMeals(
+          mealType: "Launch",
+          checkedTime: date,
+        );
       case 2:
-        return ShowLoggedMeals(title: "Dinner");
+        return ShowLoggedMeals(
+          mealType: "Dinner",
+          checkedTime: date,
+        );
       case 3:
-        return ShowLoggedMeals(title: "Snack");
+        return ShowLoggedMeals(
+          mealType: "Snack",
+          checkedTime: date,
+        );
     }
+    update();
     return Container();
   }
 
+  getLoggedMeals(String mealType,) {
+
+    return DB.getLoggedMeals(mealType, date);
+  }
 }

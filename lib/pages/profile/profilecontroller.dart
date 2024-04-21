@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../core/progress_dialog_utils.dart';
 import '../../model/user controller.dart';
 
 class ProfileController extends GetxController {

@@ -41,7 +41,7 @@ class Fitness extends StatelessWidget {
                   value: controller.level.value,
                   values: controller.levels, select: 0,
               )),
-          Divider(),
+          const Divider(),
           GetX<QuestioningController>(
               builder: (controller) => CustomWidgets.customDropdownButton(
                   select: 1,
@@ -51,7 +51,7 @@ class Fitness extends StatelessWidget {
                   value: controller.fitnessGoal.value,
                   values: controller.fitnessGoals,
               )),
-          Divider(),
+          const Divider(),
           GetX<QuestioningController>(
               builder: (controller) => CustomWidgets.customDropdownButton(
                   select: 2,
@@ -61,7 +61,7 @@ class Fitness extends StatelessWidget {
                   value: controller.waterIntake.value,
                   values: controller.waterIntakes,
               )),
-          Divider(),
+          const Divider(),
           GetX<QuestioningController>(
               builder: (controller) => CustomWidgets.customDropdownButton(
                   select: 3,

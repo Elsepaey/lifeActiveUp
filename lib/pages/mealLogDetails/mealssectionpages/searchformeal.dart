@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nutrifit/pages/mealLogDetails/addingdialog/addingdialog.dart';
 
-import '../../../core/themes.dart';
 import '../../meals/mealscontroller.dart';
-import '../../widgets/widgets.dart';
+import '../addingdialog/addinddialogcontroller.dart';
 
 class SearchForMeal extends StatelessWidget {
-   SearchForMeal({super.key});
+  SearchForMeal({required this.mealType,super.key, required this.date});
   final MealsController controller = Get.put(MealsController());
+ // final  dialogController =Get.lazyPut(() => AddingDialogController(),fenix: true);
 
+  final String mealType;
+  final DateTime date;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           SizedBox(
             height: height / 18,
             child: TextField(
-
               decoration: InputDecoration(
-
                 labelText: 'Search for an meal',
 //floatingLabelBehavior: FloatingLabelBehavior.values.first,
                 prefixIcon: const Icon(Icons.search_outlined),
@@ -36,36 +36,52 @@ class SearchForMeal extends StatelessWidget {
               ),
               onChanged: (value) {
                 controller.search(value);
-
               },
-
             ),
           ),
           SizedBox(
-            height:height/140,
+            height: height / 140,
           ),
+          GetX<MealsController>(builder: (controller) {
+            return Expanded(
+              child: ListView.builder(
+
+                  // shrinkWrap: true,
+                  itemCount: controller.meals.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                        child: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  children: [
+                                    Text(controller.meals.value[index][1]),
+                                    Text(
+                                        "${controller.meals[index][3]} kcal for 100 g "),
+                                  ],
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    AddingDialogController dialogController=Get.put(AddingDialogController());
+                                    dialogController.initialValues(index);
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            AddingDialog(index: index,mealType: mealType,date: date,));
 
 
-
-          GetX<MealsController>(builder: (controller)   {   return   Expanded(
-            child: ListView.builder(
-
-              // shrinkWrap: true,
-                itemCount: controller.meals.length,
-                itemBuilder: (context, index) {
-                  return Card(child:Padding(padding: EdgeInsets.all(8),child: 
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Text( controller.meals.value[index][1]),
-                          Text("${controller.meals[index][3]} kcal for 100 g "),
-                        ],
-                      ),
-                      Icon(Icons.add)
-                    ],
-                    )
-                    ) );
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.add),
+                                      Text("Add "),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            )));
                     // CustomWidgets.recipeWidget(
                     //   controller.meals.value[index][1],
                     //   "${controller.meals[index][3]} kcal for 100 g ",
@@ -73,9 +89,10 @@ class SearchForMeal extends StatelessWidget {
                     //   controller.meals[index][4],
                     //   controller.meals[index][58],
                     //   controller.meals[index][60]);
-                }),
-          );}
-          )        ],
+                  }),
+            );
+          })
+        ],
       ),
     );
   }

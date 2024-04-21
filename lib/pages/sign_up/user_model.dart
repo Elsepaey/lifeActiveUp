@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class FirebaseUser {
   String? id;
   String? fullName;
@@ -50,8 +52,27 @@ class FirebaseUser {
 
   static String collectionName = "users";
 
-  Map<String, dynamic> toFirestore() {
-    return {
+  // Map<String, dynamic> toFirestore() {
+  //   return {
+  //     "id": id,
+  //     "fullname": fullName,
+  //     "email": email,
+  //     "password": password,
+  //     "gender": gender,
+  //     "height":height,
+  //     "weight":weight,
+  //     "dateOfBirth": dateOfBirth,
+  //     "diseasesList": diseasesList,
+  //     "allergiesList": allergiesList,
+  //     "fitnessLevel": fitnessLevel,
+  //     "fitnessGoal": fitnessGoal,
+  //     "sleepIntake": sleepIntake,
+  //     "waterIntake": waterIntake
+  //   };
+  // }
+  Future<Object?> saveToFirestore() async {
+    await FirebaseFirestore.instance
+        .collection(FirebaseUser.collectionName).doc(id).set({
       "id": id,
       "fullname": fullName,
       "email": email,
@@ -66,6 +87,8 @@ class FirebaseUser {
       "fitnessGoal": fitnessGoal,
       "sleepIntake": sleepIntake,
       "waterIntake": waterIntake
-    };
+    });
+   var res=FirebaseFirestore.instance.collection(FirebaseUser.collectionName).doc(id).get();
+    return res;
   }
 }

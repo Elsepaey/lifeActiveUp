@@ -60,7 +60,7 @@ class Questioning extends StatelessWidget {
                     },
                   )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Center(
@@ -79,7 +79,7 @@ class Questioning extends StatelessWidget {
                             onPressed: () {
                               controller.toNext(context);
                             },
-                            child: Text(controller.buttonText.value,style: TextStyle(color: Colors.blueAccent),),
+                            child: Text(controller.buttonText.value,style: const TextStyle(color: Colors.blueAccent),),
                           )),
                 ),
               ),

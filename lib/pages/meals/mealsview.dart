@@ -47,7 +47,7 @@ class Meals extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(" Sort by :",style: TextStyle(fontWeight: FontWeight.bold),),
+              const Text(" Sort by :",style: TextStyle(fontWeight: FontWeight.bold),),
               SizedBox(width: width/40,),
               Row(
                 children: [
@@ -57,7 +57,7 @@ class Meals extends StatelessWidget {
                     onTap: (){
                       controller.sortMeals(3);
                     },
-                    child: Container(padding: EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration: BoxDecoration(
+                    child: Container(padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration: BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
@@ -67,14 +67,14 @@ class Meals extends StatelessWidget {
 
                       ),
                     ),
-                    child: Text("Calories"),),
+                    child: const Text("Calories"),),
                   ),
                   SizedBox(width: width/50,),
                   InkWell(
                     onTap: (){
                       controller.sortMeals(38);
                     },
-                    child: Container(padding: EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration: BoxDecoration(
+                    child: Container(padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration: BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
@@ -84,14 +84,14 @@ class Meals extends StatelessWidget {
 
                       ),
                     ),
-                      child: Text("Protein"),),
+                      child: const Text("Protein"),),
                   ),
                   SizedBox(width: width/50,),
                   InkWell(
                     onTap: (){
                       controller.sortMeals(4);
                     },
-                    child: Container(padding: EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration: BoxDecoration(
+                    child: Container(padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration: BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
@@ -101,14 +101,14 @@ class Meals extends StatelessWidget {
 
                       ),
                     ),
-                      child: Text("Fat"),),
+                      child: const Text("Fat"),),
                   ),
                   SizedBox(width: width/50,),
                   InkWell(
                     onTap: (){
                       controller.sortMeals(58);
                     },
-                    child: Container(padding: EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration: BoxDecoration(
+                    child: Container(padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration: BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
@@ -118,14 +118,14 @@ class Meals extends StatelessWidget {
 
                       ),
                     ),
-                      child: Text("Carbs"),),
+                      child: const Text("Carbs"),),
                   ),
                   SizedBox(width: width/50,),
                   InkWell(
                     onTap: (){
                       controller.sortMeals(60);
                     },
-                    child: Container(padding: EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration: BoxDecoration(
+                    child: Container(padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration: BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
@@ -135,7 +135,7 @@ class Meals extends StatelessWidget {
 
                       ),
                     ),
-                      child: Text("Sugars"),),
+                      child: const Text("Sugars"),),
                   ),
 
                   // Card(child: Padding(

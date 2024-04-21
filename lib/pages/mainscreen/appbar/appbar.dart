@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return
       AppBar(
           forceMaterialTransparency: true,
-              iconTheme: IconThemeData(color: Colors.black),
+              iconTheme: const IconThemeData(color: Colors.black),
 
               title:
                    Row(
@@ -49,7 +49,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         hintText: 'Search...',
         border: InputBorder.none,
         suffixIcon: IconButton(
-          icon: Icon(Icons.close),
+          icon: const Icon(Icons.close),
           onPressed: () {
             controller.isSearching.value = false;
           },
@@ -62,7 +62,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return [
 
       IconButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.notifications,
           color: Colors.black,
         ),

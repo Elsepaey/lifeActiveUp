@@ -230,7 +230,7 @@ class CustomWidgets {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 250,
                             child:  Text(
                               name,

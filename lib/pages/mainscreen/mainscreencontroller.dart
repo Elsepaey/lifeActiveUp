@@ -20,25 +20,25 @@ class MainScreenController extends GetxController {
 
 
   List<NavbarItem> navitems = [
-    NavbarItem(Icons.home_outlined, 'Home',
+    const NavbarItem(Icons.home_outlined, 'Home',
         backgroundColor: mediumPurple,
         selectedIcon: Icon(
           Icons.home,
           size: 26,
         )),
-    NavbarItem(Icons.calendar_today_outlined, 'Meals',
+    const NavbarItem(Icons.calendar_today_outlined, 'Meals',
         backgroundColor: mediumPurple,
         selectedIcon: Icon(
           Icons.calendar_today,
           size: 26,
         )),
-    NavbarItem(Icons.emoji_food_beverage_outlined, 'Meals',
+    const NavbarItem(Icons.emoji_food_beverage_outlined, 'Meals',
         backgroundColor: mediumPurple,
         selectedIcon: Icon(
           Icons.emoji_food_beverage_rounded,
           size: 26,
         )),
-    NavbarItem(Icons.person_2_outlined, 'Profile',
+    const NavbarItem(Icons.person_2_outlined, 'Profile',
         backgroundColor: Colors.orange,
         selectedIcon: Icon(
           Icons.person,
