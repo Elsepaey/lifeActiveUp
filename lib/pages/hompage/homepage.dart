@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
@@ -9,9 +8,10 @@ import '../../core/dailystatics.dart';
 import '../../model/user controller.dart';
 
 class HomePage extends StatelessWidget {
+
   final HomeController controller = Get.put(HomeController());
-  AppUserController userController = Get.find();
-  DailyStatics staticsController = Get.put(DailyStatics(), permanent: true);
+   AppUserController userController = Get.find();
+  final  DailyStatics staticsController = Get.put(DailyStatics(),permanent: true);
 
   HomePage({super.key});
 
@@ -87,11 +87,10 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          spreadRadius: 5,
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 3,
                           blurRadius: 4,
-                          offset:
-                              const Offset(0, 1), // changes position of shadow
+                          offset: const Offset(0, 1), // changes position of shadow
                         ),
                       ]),
                   child: Column(
@@ -118,7 +117,7 @@ class HomePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Calories",
                             style: TextStyle(),
                           ),
@@ -126,8 +125,8 @@ class HomePage extends StatelessWidget {
                               "${staticsController.totalCalories.value.truncateToDouble()}/1800 kcal")
                         ],
                       ),
-                       LinearProgressIndicator(
-                        value: (staticsController.totalCalories.value)/300,
+                      LinearProgressIndicator(
+                        value: (staticsController.totalCalories.value) / 1800,
                       ),
                       SizedBox(
                         height: screenHeight / 200,
@@ -138,13 +137,14 @@ class HomePage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("protein"),
+                              const Text("protein"),
                               Text(
                                   "${staticsController.totalProtein.value.truncateToDouble()}/300"),
                               SizedBox(
                                   width: screenWidth / 6,
-                                  child:  LinearProgressIndicator(
-                                    value:(staticsController.totalProtein.value)/300,
+                                  child: LinearProgressIndicator(
+                                    value: (staticsController.totalProtein.value) /
+                                        300,
                                   )),
                             ],
                           ),
@@ -156,8 +156,9 @@ class HomePage extends StatelessWidget {
                                   "${staticsController.totalFats.value.truncateToDouble()}/300"),
                               SizedBox(
                                   width: screenWidth / 6,
-                                  child:  LinearProgressIndicator(
-                                    value: (staticsController.totalFats.value)/300,
+                                  child: LinearProgressIndicator(
+                                    value:
+                                    (staticsController.totalFats.value) / 300,
                                   )),
                             ],
                           ),
@@ -171,8 +172,7 @@ class HomePage extends StatelessWidget {
                                   width: screenWidth / 6,
                                   child: LinearProgressIndicator(
                                     value:
-                                        (staticsController.totalCarbs.value) /
-                                            300,
+                                    (staticsController.totalCarbs.value) / 300,
                                   )),
                             ],
                           ),

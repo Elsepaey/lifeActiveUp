@@ -20,7 +20,7 @@ class _IntroState extends State<Intro> {
   CollectionReference users = FirebaseFirestore.instance.collection('users');
   QuerySnapshot? querySnapshot;
   DocumentSnapshot? doc;
-  var userId=sharedPref!.getString('id');
+  var userId= sharedPref!.getString('id');
 
   @override
   void initState() {

@@ -73,4 +73,26 @@ class Meal {
         .get();
     return res;
   }
+  Future<Future<DocumentSnapshot<Map<String, dynamic>>>> deleteFromFirestore(
+      DateTime date) async {
+    int year = date.year;
+    int month = date.month;
+    int day = date.day;
+
+    String formattedDate = '$year-$month-$day';
+    FirebaseFirestore.instance
+      ..collection("users")
+          .doc(userController.id)
+          .collection('meals')
+          .doc(formattedDate)
+          .collection(mealType)
+          .doc(mealName).delete()
+    ;
+    var res = FirebaseFirestore.instance
+        .collection("users")
+        .doc(userController.id)
+        .get();
+    return res;
+  }
+
 }

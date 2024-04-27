@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/foodcalender/foodlogcontroller.dart';
-import 'package:nutrifit/pages/mealLogDetails/mealdetailscontroller.dart';
 import 'package:nutrifit/pages/widgets/widgets.dart';
 
 class Foodlog extends StatelessWidget {

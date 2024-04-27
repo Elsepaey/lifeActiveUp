@@ -36,7 +36,7 @@ class ShowLoggedMeals extends StatelessWidget {
                   ),
                 ),
               )),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Expanded(
@@ -49,7 +49,7 @@ class ShowLoggedMeals extends StatelessWidget {
 
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
-                      return Text('Loading....');
+                      return const Text('Loading....');
                     default:
                       return ListView.builder(
                           itemCount: snapshot.data?.docs.length,

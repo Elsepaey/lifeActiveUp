@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:nutrifit/core/dailystatics.dart';
-import 'package:nutrifit/pages/sign_up/user_model.dart';
 
 class AppUserController extends GetxController {
   String id = '';
@@ -26,7 +24,7 @@ class AppUserController extends GetxController {
         .collection("users")
         .doc("userController.id").get();
 
-    FirebaseUser user=FirebaseUser.fromFirestore(gg.data()!);
+    //FirebaseUser user=FirebaseUser.fromFirestore(gg.data()!);
 
     // TODO: implement onInit
     super.onInit();

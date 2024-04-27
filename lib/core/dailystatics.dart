@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 import '../databases/database.dart';
@@ -6,7 +5,7 @@ import '../databases/database.dart';
 class DailyStatics extends GetxController{
   static getTotalNutrient(String nutrient) async {
 
-    List<QuerySnapshot<Object?>> allItems = [
+    List allItems = [
       await DB.getLoggedMeals("Breakfast", DateTime.now()),
       await DB.getLoggedMeals("Dinner", DateTime.now()),
       await DB.getLoggedMeals("Launch", DateTime.now()),

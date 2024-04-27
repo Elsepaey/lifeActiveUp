@@ -34,8 +34,9 @@ class AddingDialogController extends GetxController {
 
   void changeValues(int value) {
     if (value == quantity) {
-    } else
+    } else {
       quantity = value;
+    }
     calories = calories * (value / 100);
     protein = protein * (value / 100);
     fat = fat * (value / 100);
@@ -82,10 +83,6 @@ class AddingDialogController extends GetxController {
     super.onInit();
   }
 
-  @override
-  // TODO: implement onDelete
-// TODO: implement onDelete
-  InternalFinalCallback<void> get onDelete => super.onDelete;
   double getNumbers(String measure) {
     // Extracting only numbers using regular expression
     RegExp regex = RegExp(r'\d+(\.\d+)?');

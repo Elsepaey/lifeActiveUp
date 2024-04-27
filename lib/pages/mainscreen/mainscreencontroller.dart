@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:nutrifit/pages/foodcalender/foodlog.dart';
 import 'package:nutrifit/pages/meals/mealsview.dart';
+import 'package:nutrifit/pages/workout/workoutview.dart';
 
-import '../profile/profile.dart';
 import '../hompage/homepage.dart';
 
 class MainScreenController extends GetxController {
@@ -14,8 +15,7 @@ class MainScreenController extends GetxController {
     HomePage(),
     Foodlog(),
     Meals(),
-    Profile(),
-
+Workout()
   ];
 
 
@@ -38,12 +38,10 @@ class MainScreenController extends GetxController {
           Icons.emoji_food_beverage_rounded,
           size: 26,
         )),
-    const NavbarItem(Icons.person_2_outlined, 'Profile',
+    const NavbarItem(FontAwesomeIcons.dumbbell, 'Workout',
         backgroundColor: Colors.orange,
-        selectedIcon: Icon(
-          Icons.person,
-          size: 26,
-        )),
+        selectedIcon:ImageIcon(AssetImage("assets/icons/icons8-workout-50.png"),          size: 30,
+        ),),
 
   ];
 
@@ -54,11 +52,12 @@ class MainScreenController extends GetxController {
     1: {
       '/': Foodlog(),
     },
-    3: {
-      '/': Profile(),
-    },
+
     2: {
       '/': Meals(),
+    },
+    3: {
+      '/': Workout(),
     },
   };
 }

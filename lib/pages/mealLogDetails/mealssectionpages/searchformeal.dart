@@ -73,7 +73,7 @@ class SearchForMeal extends StatelessWidget {
 
 
                                   },
-                                  child: Row(
+                                  child: const Row(
                                     children: [
                                       Icon(Icons.add),
                                       Text("Add "),

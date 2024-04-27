@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/pages/mealLogDetails/mealssectionpages/searchformeal.dart';
 
-import '../../core/dailystatics.dart';
 
 class MealDetailsController extends GetxController{
   RxInt checked = 0.obs;

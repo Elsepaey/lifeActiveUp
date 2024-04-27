@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nutrifit/core/progress_dialog_utils.dart';
 import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/foodcalender/foodlogcontroller.dart';
 import 'package:nutrifit/pages/mealLogDetails/mealdetailscontroller.dart';
-
 import '../../core/dailystatics.dart';
+import '../../databases/database.dart';
 
 class MealLogDetails extends StatelessWidget {
   MealLogDetails(
@@ -14,7 +14,7 @@ class MealLogDetails extends StatelessWidget {
   final DateTime checkedTime;
   MealDetailsController controller = Get.put(MealDetailsController());
   final FoodLogController foodLogController = Get.put(FoodLogController());
-  DailyStatics staticsController=Get.find();
+  DailyStatics staticsController = Get.put(DailyStatics());
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,7 @@ class MealLogDetails extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         forceMaterialTransparency: true,
         title: Text(
           "Log $mealType Items",
@@ -39,6 +40,7 @@ class MealLogDetails extends StatelessWidget {
           ),
           GetX<DailyStatics>(
             builder: (controller) => Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8),
               padding: const EdgeInsets.all(8),
               height: screenHeight / 7,
               decoration: BoxDecoration(
@@ -46,11 +48,10 @@ class MealLogDetails extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      spreadRadius: 5,
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 3,
                       blurRadius: 4,
-                      offset:
-                      const Offset(0, 1), // changes position of shadow
+                      offset: const Offset(0, 1), // changes position of shadow
                     ),
                   ]),
               child: Column(
@@ -77,7 +78,7 @@ class MealLogDetails extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Calories",
                         style: TextStyle(),
                       ),
@@ -86,7 +87,7 @@ class MealLogDetails extends StatelessWidget {
                     ],
                   ),
                   LinearProgressIndicator(
-                    value: (staticsController.totalCalories.value)/300,
+                    value: (staticsController.totalCalories.value) / 1800,
                   ),
                   SizedBox(
                     height: screenHeight / 200,
@@ -97,13 +98,14 @@ class MealLogDetails extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("protein"),
+                          const Text("protein"),
                           Text(
                               "${staticsController.totalProtein.value.truncateToDouble()}/300"),
                           SizedBox(
                               width: screenWidth / 6,
-                              child:  LinearProgressIndicator(
-                                value:(staticsController.totalProtein.value)/300,
+                              child: LinearProgressIndicator(
+                                value: (staticsController.totalProtein.value) /
+                                    300,
                               )),
                         ],
                       ),
@@ -115,8 +117,9 @@ class MealLogDetails extends StatelessWidget {
                               "${staticsController.totalFats.value.truncateToDouble()}/300"),
                           SizedBox(
                               width: screenWidth / 6,
-                              child:  LinearProgressIndicator(
-                                value: (staticsController.totalFats.value)/300,
+                              child: LinearProgressIndicator(
+                                value:
+                                    (staticsController.totalFats.value) / 300,
                               )),
                         ],
                       ),
@@ -130,8 +133,7 @@ class MealLogDetails extends StatelessWidget {
                               width: screenWidth / 6,
                               child: LinearProgressIndicator(
                                 value:
-                                (staticsController.totalCarbs.value) /
-                                    300,
+                                    (staticsController.totalCarbs.value) / 300,
                               )),
                         ],
                       ),
@@ -142,12 +144,10 @@ class MealLogDetails extends StatelessWidget {
               ),
             ),
           ),
-
-
+          SizedBox(
+            height: screenHeight / 40,
+          ),
           Container(
-              margin: EdgeInsets.only(
-                  top: screenHeight / 60, bottom: screenWidth / 40),
-              // padding: EdgeInsets.symmetric(horizontal: 5),
               decoration: BoxDecoration(
                 color: Colors.grey.shade200,
                 // borderRadius: BorderRadius.all(Radius.circular(8))
@@ -214,59 +214,150 @@ class MealLogDetails extends StatelessWidget {
                               )),
                         ],
                       ))),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Card(
-
-              elevation: 0,
-              shadowColor: Colors.transparent,
-              color: Colors.grey.shade100,
-              child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(20),
-                    ),
+          SizedBox(
+            height: screenHeight / 40,
+          ),
+          Card(
+            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+            elevation: 0,
+            shadowColor: Colors.transparent,
+            color: Colors.grey.shade100,
+            child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(20),
                   ),
-                  width: screenWidth,
-                  height: screenHeight / 1.81,
-                  child: GetBuilder<MealDetailsController>(
-                    builder: (controller) =>
-                        controller.buildMealsContainer(checkedTime),
-                  )),
-            ),
+                ),
+                width: screenWidth,
+                height: screenHeight / 1.81,
+                child: GetBuilder<MealDetailsController>(
+                  builder: (controller) =>
+                      controller.buildMealsContainer(checkedTime),
+                )),
           ),
           Row(
-            children: [
+mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment:CrossAxisAlignment.center,
+              children: [
               GetBuilder<MealDetailsController>(
                   builder: (controller) => Padding(
-                        padding: const EdgeInsets.all(3.0),
+                        padding: const EdgeInsets.only(top: 12,left: 4),
                         child: SizedBox(
-                          height: screenHeight / 11,
-                          width: screenWidth/1.6,
-                          child:
-              ListView.builder(
-                itemCount: controller.choosedItems.length,
-                itemBuilder: (context,index){
-                return           Container(
-                  margin: EdgeInsets.symmetric(vertical: 1),
-                  decoration: BoxDecoration(
-                    color: MyTheme.primary_color,
-borderRadius: BorderRadius.circular(12)
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  height: screenHeight/25,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(controller.choosedItems[index]),
-                      IconButton(icon: Icon(Icons.highlight_remove,color: Colors.red,size: screenWidth/16,), onPressed: () { controller.removeFromChoosed(index); },
-                      )
-                    ],
-                  ),
-                );
+                            height: screenHeight / 12,
+                            width: screenWidth / 1.6,
+                            child: ListView.builder(
+                              itemCount: controller.choosedItems.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      vertical: 1, horizontal: 2),
+                                  decoration: BoxDecoration(
+                                      color: MyTheme.primary_color.withOpacity(0.8),
+                                      borderRadius: BorderRadius.circular(12)),
+                                  padding: const EdgeInsets.only(
+                                      left: 6, right: 8, top: 1, bottom: 1),
+                                  height: screenHeight / 38,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    //crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        controller.choosedItems[index],
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: screenWidth / 30,
+                                        ),
+                                      ),
+                                      InkWell(
+                                          child: Icon(
+                                            Icons.delete_forever,
+                                            color: Colors.black,
+                                            size: screenWidth / 18,
+                                          ),
+                                          onTap: () {
+                                            showDialog(
+                                                context: context,
+                                                builder: (context) {
+                                                  return AlertDialog(
+                                                    content: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Row(
+                                                        children: [
+                                                          const Text(
+                                                            "Remove",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          ),
+                                                          Text(
+                                                            " '${controller.choosedItems[index]}'",
+                                                            style:
+                                                                const TextStyle(
+                                                                    color: Colors
+                                                                        .black),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    actionsAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    actions: [
+                                                      Card(
+                                                        child: TextButton(
+                                                            onPressed: () {
+                                                              Get.back();
+                                                            },
+                                                            child: const Text(
+                                                              "cancel",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black),
+                                                            )),
+                                                      ),
+                                                      Card(
+                                                        child: TextButton(
+                                                            onPressed:
+                                                                () async {
+                                                              ProgressDialogUtils.showLoading(context, "loading")
+                                                              ;
 
-                },)                    ),
+                                                              await DB.deleteMeal(
+                                                                  controller
+                                                                          .choosedItems[
+                                                                      index],
+                                                                  mealType,
+                                                                  checkedTime);
+                                                              staticsController.getTodayStatics();
+
+                                                              controller
+                                                                  .removeFromChoosed(
+                                                                      index);
+                                                              ProgressDialogUtils.hideLoading(context);
+                                                              Get.back();
+                                                            },
+                                                            child: const Text(
+                                                              "Confirm",
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black),
+                                                            )),
+                                                      ),
+                                                    ],
+                                                  );
+                                                });
+                                          })
+                                      // IconButton(icon: Icon(Icons.highlight_remove,color: Colors.red,size: screenWidth/23,), onPressed: () { controller.removeFromChoosed(index); },
+                                      // )
+                                    ],
+                                  ),
+                                );
+                              },
+                            )),
                       )),
             ],
           )
@@ -275,14 +366,15 @@ borderRadius: BorderRadius.circular(12)
       floatingActionButton: FloatingActionButton(
         elevation: 8,
         foregroundColor: Colors.white,
-        backgroundColor: const Color.fromRGBO(49, 220, 205, 1.0),
+        backgroundColor: MyTheme.primary_color,
+        // backgroundColor: const Color.fromRGBO(49, 220, 205, 1.0),
         tooltip: 'Increment',
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         onPressed: () {
-            Get.back();
-  foodLogController.changeViewIndex();
+          Get.back();
+          foodLogController.changeViewIndex();
         },
-        child: Text("Done"),
+        child: const Text("Done"),
       ),
     );
   }

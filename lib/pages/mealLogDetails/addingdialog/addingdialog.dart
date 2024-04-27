@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/core/progress_dialog_utils.dart';
 import 'package:nutrifit/pages/mealLogDetails/addingdialog/addinddialogcontroller.dart';
 
 import '../../../core/dailystatics.dart';
@@ -27,7 +26,7 @@ class AddingDialog extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Identify Quantity"),
+                const Text("Identify Quantity"),
                 DropdownButton<int>(
                   menuMaxHeight: 300,
                   value: dialogController.quantity,
@@ -50,40 +49,40 @@ class AddingDialog extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                contentPadding: EdgeInsets.all(0),
-                leading: Text("Calories"),
+                contentPadding: const EdgeInsets.all(0),
+                leading: const Text("Calories"),
                 trailing: Text("${dialogController.calories} kcal for 100 g "),
               ),
             ),
             SizedBox(
               height: 40,
               child: ListTile(
-                contentPadding: EdgeInsets.all(0),
-                leading: Text('Protein'),
+                contentPadding: const EdgeInsets.all(0),
+                leading: const Text('Protein'),
                 trailing: Text("${dialogController.protein}"),
               ),
             ),
             SizedBox(
               height: 40,
               child: ListTile(
-                contentPadding: EdgeInsets.all(0),
-                leading: Text('Fat'),
+                contentPadding: const EdgeInsets.all(0),
+                leading: const Text('Fat'),
                 trailing: Text("${dialogController.fat} "),
               ),
             ),
             SizedBox(
               height: 40,
               child: ListTile(
-                contentPadding: EdgeInsets.all(0),
-                leading: Text('Sugar'),
+                contentPadding: const EdgeInsets.all(0),
+                leading: const Text('Sugar'),
                 trailing: Text("${dialogController.sugar}"),
               ),
             ),
             SizedBox(
               height: 40,
               child: ListTile(
-                contentPadding: EdgeInsets.all(0),
-                leading: Text('Carbs'),
+                contentPadding: const EdgeInsets.all(0),
+                leading: const Text('Carbs'),
                 trailing: Text("${dialogController.carbs}"),
               ),
             ),
@@ -93,14 +92,14 @@ class AddingDialog extends StatelessWidget {
       actionsAlignment: MainAxisAlignment.spaceBetween,
       actions: [
         TextButton(
-          child: Text('Cancel'),
+          child: const Text('Cancel'),
           onPressed: () {
             Navigator.of(context).pop();
             Get.delete<AddingDialogController>();
           },
         ),
         TextButton(
-          child: Text('Confirm'),
+          child: const Text('Confirm'),
           onPressed: () {
             dialogController.submit(context, mealType,date);
             staticsController.update();
