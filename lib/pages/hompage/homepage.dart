@@ -123,11 +123,11 @@ class HomePage extends StatelessWidget {
                             style: TextStyle(),
                           ),
                           Text(
-                              "${staticsController.totalCalories.value.truncateToDouble()}/1800 kcal")
+                              "${staticsController.totalCalories.value.truncateToDouble()}/${userController.dailyIntake["total_calories"]} kcal")
                         ],
                       ),
                       LinearProgressIndicator(
-                        value: (staticsController.totalCalories.value) / 1800,
+                        value: (staticsController.totalCalories.value) / userController.dailyIntake["total_calories"]!,
                       ),
                       SizedBox(
                         height: screenHeight / 200,
@@ -140,7 +140,7 @@ class HomePage extends StatelessWidget {
                             children: [
                               const Text("protein"),
                               Text(
-                                  "${staticsController.totalProtein.value.truncateToDouble()}/300"),
+                                  "${staticsController.totalProtein.value.truncateToDouble()}/${userController.dailyIntake["protein"]}"),
                               SizedBox(
                                   width: screenWidth / 6,
                                   child: LinearProgressIndicator(
@@ -154,12 +154,12 @@ class HomePage extends StatelessWidget {
                             children: [
                               const Text("fats"),
                               Text(
-                                  "${staticsController.totalFats.value.truncateToDouble()}/300"),
+                                  "${staticsController.totalFats.value.truncateToDouble()}/${userController.dailyIntake["fat"]}"),
                               SizedBox(
                                   width: screenWidth / 6,
                                   child: LinearProgressIndicator(
                                     value:
-                                    (staticsController.totalFats.value) / 300,
+                                    (staticsController.totalFats.value) / userController.dailyIntake["fat"]!,
                                   )),
                             ],
                           ),
@@ -168,12 +168,12 @@ class HomePage extends StatelessWidget {
                             children: [
                               const Text("carbs"),
                               Text(
-                                  "${staticsController.totalCarbs.value.truncateToDouble()}/300"),
+                                  "${staticsController.totalCarbs.value.truncateToDouble()}/${userController.dailyIntake["carbohydrates"]}"),
                               SizedBox(
                                   width: screenWidth / 6,
                                   child: LinearProgressIndicator(
                                     value:
-                                    (staticsController.totalCarbs.value) / 300,
+                                    (staticsController.totalCarbs.value) / userController.dailyIntake["carbohydrates"]!,
                                   )),
                             ],
                           ),

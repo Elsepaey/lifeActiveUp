@@ -22,22 +22,22 @@ class AuthMiddleware extends GetMiddleware{
       }
     return super.redirect(route);
   }
-  Future<void> getUserDate() async {
-     querySnapshot = await users
-        .where('id', isEqualTo:userId )
-        .get();
-    doc = querySnapshot!.docs.first;
-    userController.id = doc?['id'];
-    userController.email = doc?['email'];
-    userController.password = doc?['password'];
-    userController.fullName = doc?['fullname'];
-    userController.diseasesList = doc?['diseasesList'];
-    userController.allergiesList = doc?['allergiesList'];
-    userController.dateOfBirth = doc?['dateOfBirth'];
-    userController.gender = doc?['gender'];
-    userController.fitnessLevel = doc?['fitnessLevel'];
-    userController.fitnessGoal = doc?['fitnessGoal'];
-    userController.sleepIntake = doc?['sleepIntake'];
-    userController.waterIntake = doc?['waterIntake'];
-  }
+  // Future<void> getUserDate() async {
+  //    querySnapshot = await users
+  //       .where('id', isEqualTo:userId )
+  //       .get();
+  //   doc = querySnapshot!.docs.first;
+  //   userController.id = doc?['id'];
+  //   userController.email = doc?['email'];
+  //   userController.password = doc?['password'];
+  //   userController.fullName = doc?['fullname'];
+  //   userController.diseasesList = doc?['diseasesList'];
+  //   userController.allergiesList = doc?['allergiesList'];
+  //   userController.dateOfBirth = doc?['dateOfBirth'];
+  //   userController.gender = doc?['gender'];
+  //   userController.fitnessLevel = doc?['fitnessLevel'];
+  //   userController.fitnessGoal = doc?['fitnessGoal'];
+  //   userController.sleepIntake = doc?['sleepIntake'];
+  //   userController.waterIntake = doc?['waterIntake'];
+  // }
 }

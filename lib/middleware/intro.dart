@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +29,7 @@ class _IntroState extends State<Intro> {
     super.initState();
 
 getUserDate();
+
   }
 
   Future<void> getUserDate() async {
@@ -48,7 +51,16 @@ getUserDate();
     userController.fitnessGoal = doc?['fitnessGoal'];
     userController.sleepIntake = doc?['sleepIntake'];
     userController.waterIntake = doc?['waterIntake'];
+    List<String> parts = userController.dateOfBirth.split('/');
+
+    // Extract the year part
+    int year = int.parse(parts[2]);
+
+    int age =DateTime.now().year-year;
+    userController.dailyIntake=userController.calculateNutrition(userController.gender, double.parse(userController.weight), double.parse(userController.height), age);
+
   }
+
 
   @override
   Widget build(BuildContext context) {
