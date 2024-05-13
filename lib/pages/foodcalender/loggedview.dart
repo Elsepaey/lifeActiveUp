@@ -40,14 +40,17 @@ class ShowLoggedMeals extends StatelessWidget {
             height: 20,
           ),
           Expanded(
-            child: FutureBuilder<QuerySnapshot>(
+            child:
+            FutureBuilder<QuerySnapshot>(
                 future: controller.getLoggedMeals(mealType),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   }
 
+
                   switch (snapshot.connectionState) {
+
                     case ConnectionState.waiting:
                       return const Text('Loading....');
                     default:

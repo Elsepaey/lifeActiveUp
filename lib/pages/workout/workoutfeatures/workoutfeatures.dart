@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
@@ -36,7 +37,7 @@ class WorkoutFeatures extends StatelessWidget {
                           border: Border.all(
                               width: 1.6, color: controller.currentIndex==0?MyTheme.primary_color:Colors.transparent)),
                       height: screenHeight / 28,
-                      width: screenWidth / 4,
+                      width: screenWidth / 2.3,
                       child: const Center(child: Text("Body Muscles")),
                     ),
                   ),
@@ -57,30 +58,30 @@ class WorkoutFeatures extends StatelessWidget {
                     ),
 
                       height: screenHeight / 28,
-                      width: screenWidth / 4,
+                      width: screenWidth / 2.3,
                       child: const Center(child: Text("Routines")),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      if(controller.currentIndex!=2) {
-                        controller.swipeView(2);                  }
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: controller.currentIndex==2?Colors.transparent:Colors.grey.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(width: 1.6,color: controller.currentIndex==2?MyTheme.primary_color:Colors.transparent)
-                      ),
-                      height: screenHeight / 28,
-                      width: screenWidth / 4,
-                      child: const Center(child: Text("Exercises")),
-                    ),
-                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     if(controller.currentIndex!=2) {
+                  //       controller.swipeView(2);                  }
+                  //   },
+                  //   child: Container(
+                  //     decoration: BoxDecoration(
+                  //       color: controller.currentIndex==2?Colors.transparent:Colors.grey.withOpacity(0.1),
+                  //       borderRadius: BorderRadius.circular(12),
+                  //       border: Border.all(width: 1.6,color: controller.currentIndex==2?MyTheme.primary_color:Colors.transparent)
+                  //     ),
+                  //     height: screenHeight / 28,
+                  //     width: screenWidth / 4,
+                  //     child: const Center(child: Text("Exercises")),
+                  //   ),
+                  // ),
                 ],
               ),
           ),
-          GetBuilder<WorkoutFeaturesController>(builder: (controller)=>controller.buildView())
+          Expanded(child: GetBuilder<WorkoutFeaturesController>(builder: (controller)=>controller.buildView()))
 
         ],
       ),

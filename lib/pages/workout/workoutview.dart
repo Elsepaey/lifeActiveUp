@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
@@ -50,8 +51,10 @@ WorkoutController controller=Get.put(WorkoutController());
             ],
 
           )),
-          GetBuilder<WorkoutController>(builder: (controller)=>
-              controller.buildView()
+          Expanded(
+            child: GetBuilder<WorkoutController>(builder: (controller)=>
+                controller.buildView()
+            ),
           ),
         ],
       ),

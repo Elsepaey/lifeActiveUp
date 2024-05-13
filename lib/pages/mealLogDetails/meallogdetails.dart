@@ -236,12 +236,12 @@ class MealLogDetails extends StatelessWidget {
                 )),
           ),
           Row(
-mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment:CrossAxisAlignment.center,
-              children: [
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
               GetBuilder<MealDetailsController>(
                   builder: (controller) => Padding(
-                        padding: const EdgeInsets.only(top: 12,left: 4),
+                        padding: const EdgeInsets.only(top: 12, left: 4),
                         child: SizedBox(
                             height: screenHeight / 12,
                             width: screenWidth / 1.6,
@@ -252,7 +252,8 @@ mainAxisAlignment: MainAxisAlignment.start,
                                   margin: const EdgeInsets.symmetric(
                                       vertical: 1, horizontal: 2),
                                   decoration: BoxDecoration(
-                                      color: MyTheme.primary_color.withOpacity(0.8),
+                                      color: MyTheme.primary_color
+                                          .withOpacity(0.8),
                                       borderRadius: BorderRadius.circular(12)),
                                   padding: const EdgeInsets.only(
                                       left: 6, right: 8, top: 1, bottom: 1),
@@ -323,8 +324,10 @@ mainAxisAlignment: MainAxisAlignment.start,
                                                         child: TextButton(
                                                             onPressed:
                                                                 () async {
-                                                              ProgressDialogUtils.showLoading(context, "loading")
-                                                              ;
+                                                              ProgressDialogUtils
+                                                                  .showLoading(
+                                                                      context,
+                                                                      "loading");
 
                                                               await DB.deleteMeal(
                                                                   controller
@@ -332,12 +335,15 @@ mainAxisAlignment: MainAxisAlignment.start,
                                                                       index],
                                                                   mealType,
                                                                   checkedTime);
-                                                              staticsController.getTodayStatics();
+                                                              staticsController
+                                                                  .getTodayStatics();
 
                                                               controller
                                                                   .removeFromChoosed(
                                                                       index);
-                                                              ProgressDialogUtils.hideLoading(context);
+                                                              ProgressDialogUtils
+                                                                  .hideLoading(
+                                                                      context);
                                                               Get.back();
                                                             },
                                                             child: const Text(

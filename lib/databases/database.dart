@@ -49,7 +49,8 @@ class DB {
     int month = date.month;
     int day = date.day;
     String formattedDate = '$year-$month-$day';
-    Future<QuerySnapshot<Map<String, dynamic>>>? items = FirebaseFirestore.instance
+    Future<QuerySnapshot<Map<String, dynamic>>>? items =
+    FirebaseFirestore.instance
         .collection("users")
         .doc(userId) // replace with the actual user ID
         .collection('meals')

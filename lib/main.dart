@@ -25,6 +25,7 @@ Future<void> main() async {
           messagingSenderId: 'sendid',
           projectId: 'lifeactiveup'));
   sharedPref=await SharedPreferences.getInstance();
+
   runApp(const MyApp());
 }
 

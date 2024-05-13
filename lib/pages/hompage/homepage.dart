@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/hompage/homePageController.dart';
+import 'package:nutrifit/pages/stepcounter/steo-counter.dart';
 
 import '../../core/dailystatics.dart';
 import '../../model/user controller.dart';
@@ -235,43 +236,78 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const ClipRRect(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.zero,
-                            topRight: Radius.circular(12),
-                            bottomLeft: Radius.zero,
-                            bottomRight: Radius.circular(12)), // Image border
-                        // Image radius
-                        child: Image(
-                          image: AssetImage(
-                              "assets/images/medium-shot-woman-practicing-with-dumbbells.jpg"),
-                        ))
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: const
+                      ClipRRect(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.zero,
+                              topRight: Radius.circular(12),
+                              bottomLeft: Radius.zero,
+                              bottomRight: Radius.circular(12)), // Image border
+                          // Image radius
+                          child: Image(
+                            image: AssetImage(
+                                "assets/images/fitness preview.png"),
+                          )),
+                    )
                   ],
                 ),
               ),
               SizedBox(
                 height: screenHeight / 50,
               ),
-              // Container(
-              //   padding: const EdgeInsets.all(8),
-              //   height: screenHeight / 7,
-              //   decoration: BoxDecoration(
-              //       color: Colors.white,
-              //       borderRadius: BorderRadius.circular(12),
-              //       boxShadow: [
-              //         BoxShadow(
-              //           color: Colors.grey.withOpacity(0.3),
-              //           spreadRadius: 5,
-              //           blurRadius: 4,
-              //           offset: const Offset(0, 1), // changes position of shadow
-              //         ),
-              //       ]),
-              // ),
-              // ElevatedButton(
-              //     onPressed: () {
-              //       controller.getTotalNutrient("protein");
-              //     },
-              //     child: Text("calculateCalories")),
+              Container(
+                padding: const EdgeInsets.all(8),
+                height: screenHeight / 7,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 5,
+                        blurRadius: 4,
+                        offset: const Offset(0, 1), // changes position of shadow
+                      ),
+                    ]),
+                child: Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Step Counter",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      InkWell(
+                        child: Text(
+                          "see details ",
+                          style: TextStyle(
+                              color: Colors.indigo[400],
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onTap: (){
+                          Get.to(StepCounter());
+                        },
+                      )
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                    Column(
+                      children: [
+                        Text("0/5000",style: TextStyle(fontWeight: FontWeight.bold),),
+                        Text("Today Steps"),
+
+                      ],
+                    ),
+                    ImageIcon(AssetImage("assets/images/running.png"),size: 80,)
+                  ],)
+
+                ],),
+              ),
+
             ],
           ),
         ),

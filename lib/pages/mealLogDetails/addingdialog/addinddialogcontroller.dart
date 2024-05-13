@@ -34,7 +34,9 @@ class AddingDialogController extends GetxController {
 
   void changeValues(int value) {
     if (value == quantity) {
-    } else {
+
+    }
+    else {
       quantity = value;
     }
     calories = calories * (value / 100);
@@ -47,7 +49,9 @@ class AddingDialogController extends GetxController {
 
   Future<void> submit(
       BuildContext context, String mealType, DateTime date) async {
+
     ProgressDialogUtils.showLoading(context, "Loading...");
+
     Meal meal = Meal(
         mealName: mealName,
         mealType: mealType,

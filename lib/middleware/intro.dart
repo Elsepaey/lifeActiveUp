@@ -68,7 +68,7 @@ getUserDate();
         nextScreen:   MainScreen()
 
         ,
-        splashTransition: SplashTransition.fadeTransition,
+        //splashTransition: SplashTransition.fadeTransition,
         backgroundColor: Colors.white);
 
   }

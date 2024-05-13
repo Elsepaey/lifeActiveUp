@@ -22,7 +22,7 @@ class MealDetailsController extends GetxController{
     currentPageIndex=checked.value;
     update();
   }
-  Widget buildMealsContainer(DateTime date)
+  Widget  buildMealsContainer(DateTime date)
   {
     switch (currentPageIndex){
       case 0:

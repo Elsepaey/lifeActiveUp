@@ -19,7 +19,6 @@ RxString keyword="".obs;
   search(String value)  async {
     var showResults = [];
     keyword.value=value;
-    print(keyword.value);
 
     if (keyword.value.isEmpty) {
       meals.value=await loadCsv();
@@ -30,7 +29,6 @@ RxString keyword="".obs;
     {
       meals.value=await loadCsv();
 
-      print("changed");
       for (var elementsnap in meals) {
         var Name = elementsnap[1].toString().toLowerCase();
         if (Name.contains(keyword.value.toString().toLowerCase()))

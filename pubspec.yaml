@@ -50,7 +50,9 @@ dependencies:
   intl: ^0.18.1
   font_awesome_flutter: ^10.7.0
 
+
 dev_dependencies:
+
   flutter_test:
     sdk: flutter
 
@@ -76,7 +78,14 @@ flutter:
   assets:
     [
     assets/images/,
+    assets/images/muscles/,
     assets/images/machines/,
+    assets/images/exercises/,
+    assets/images/routines/broadshoulders/,
+    assets/images/routines/chesttriceps/,
+    assets/images/routines/upperbodycardio/,
+
+
     assets/icons/,
     assets/sliderImages/,
     assets/meals/

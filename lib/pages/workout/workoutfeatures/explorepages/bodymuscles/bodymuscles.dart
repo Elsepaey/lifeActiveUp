@@ -1,102 +1,58 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:nutrifit/pages/workout/workoutfeatures/explorepages/bodymuscles/muscledetails/muscledetails.dart';
 
-import '../../musclecontainer.dart';
+import 'musclecontainer.dart';
 
 class BodyMuscles extends StatelessWidget {
-  const BodyMuscles({super.key});
+  BodyMuscles({super.key});
+  List muscles = [
+    Muscle(muscleName: "Abs", imagePath: "assets/images/muscles/abs.png"),
+    Muscle(muscleName: "Chest", imagePath:"assets/images/muscles/chest.png"),
+    Muscle(muscleName: "Traps", imagePath:"assets/images/muscles/traps.png"),
+    Muscle(muscleName: "Forearms", imagePath:"assets/images/muscles/forearms.png"),
+    Muscle(muscleName: "Triceps", imagePath:"assets/images/muscles/triceps.png"),
+    Muscle(muscleName: "Biceps", imagePath:"assets/images/muscles/biceps.png"),
+    Muscle(muscleName: "Hamstrings", imagePath:"assets/images/muscles/Hamstringsmuscle.png"),
+    Muscle(muscleName: "Quads", imagePath:"assets/images/muscles/Quads.png"),
+    Muscle(muscleName: "Calves", imagePath:"assets/images/muscles/calves.png"),
+    Muscle(muscleName: "Shoulders", imagePath:"assets/images/muscles/shoulder.png"),
+    Muscle(muscleName: "Lats", imagePath:"assets/images/muscles/lats.png"),
+    Muscle(muscleName: "Glutes", imagePath:"assets/images/muscles/glutes.png"),
 
+
+
+  ];
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
+      //mainAxisSize: MainAxisSize.min,
+      //mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: 40,
+          height: screenHeight/14,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Muscle(
-              imagePath: "assets/images/pngegg (5).png",
-              size: 100,
-            ),
-            Muscle(
-              imagePath: "assets/images/pngaaa.com-908004.png",
-              size: 100,
-            ),
-            Muscle(
-              imagePath:
-                  "assets/images/Know-Your-Anatomy_-Build-Bigger-Traps (1).png",
-              size: 100,
-            ),
-          ],
+        Expanded(
+          child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, mainAxisSpacing: screenHeight/90, crossAxisSpacing: screenWidth/20),
+              itemCount: muscles.length,
+              itemBuilder: (context, index) => InkWell(
+                onTap: (){Get.to(MuscleDetails(muscle: muscles[index].muscleName, imagePath:muscles[index].imagePath));},
+                child:MuscleWidget(imagePath: muscles[index].imagePath, size: 100))
+              ),
         ),
-        SizedBox(
-          height: 8,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Muscle(
-              imagePath:
-                  "assets/images/1000_F_54052154_Boy1wnR27p1yMHWKncVC1Ezsaq4T98IB.png",
-              size: 100,
-            ),
-            Muscle(
-              imagePath: "assets/images/klipartz.com (6).png",
-              size: 100,
-            ),
-            Muscle(
-              imagePath: "assets/images/Untitled.png",
-              size: 100,
-            )
-          ],
-        ),
-        SizedBox(
-          height: 8,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Muscle(
-              imagePath: "assets/images/Hamstringsmuscle.png",
-              size: 100,
-            ),
-            Muscle(
-              imagePath: "assets/images/Quads.png",
-              size: 100,
-            ),
-            Muscle(
-              imagePath: "assets/images/mollet-anatomy-1024x1024-1.png",
-              size: 100,
-            )
-          ],
-        ),
-        SizedBox(
-          height: 8,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Muscle(
-              imagePath: "assets/images/shoulder.png",
-              size: 100,
-            ),
-            Muscle(
-              imagePath: "assets/images/klipartz.com (2).png",
-              size: 100,
-            ),
-            Muscle(
-              imagePath: "assets/images/glutes.png",
-              size: 100,
-            )
-          ],
-        ),
-        SizedBox(
-          height: 12,
-        ),
+
       ],
     );
   }
+}
+class Muscle{
+  Muscle({required this.muscleName,required this.imagePath});
+  String muscleName;
+  String imagePath;
 }

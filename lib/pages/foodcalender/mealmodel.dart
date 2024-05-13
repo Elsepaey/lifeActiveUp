@@ -56,6 +56,7 @@ class Meal {
           .doc(formattedDate)
           .collection(mealType)
           .doc(mealName)
+
           .set({
         'mealName': mealName,
         'mealType': mealType,
@@ -73,6 +74,7 @@ class Meal {
         .get();
     return res;
   }
+
   Future<Future<DocumentSnapshot<Map<String, dynamic>>>> deleteFromFirestore(
       DateTime date) async {
     int year = date.year;

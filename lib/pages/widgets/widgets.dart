@@ -139,7 +139,8 @@ class CustomWidgets {
                 decoration: BoxDecoration(
                     //color: const Color(0xFFD2CFCF),
                     borderRadius: BorderRadius.circular(3)),
-                child: TextFormField(
+                child:
+                TextFormField(
                   onChanged: (value) {
                     newValue = value;
                   },

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/themes.dart';
+import '../../../../../core/themes.dart';
 
-class Muscle extends StatelessWidget {
-   Muscle({super.key,required this.imagePath,required this.size});
+class MuscleWidget extends StatelessWidget {
+   MuscleWidget({super.key,required this.imagePath,required this.size});
 String imagePath;
 double size;
   @override
