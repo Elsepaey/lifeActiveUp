@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:nutrifit/pages/mealLogDetails/addingdialog/addinddialogcontroller.dart';
 
 import '../../../core/dailystatics.dart';
-import '../../meals/mealscontroller.dart';
+import '../../meals/explore_meals/mealscontroller.dart';
 
 class AddingDialog extends StatelessWidget {
   AddingDialog({required this.index, required this.mealType, super.key, required this.date});

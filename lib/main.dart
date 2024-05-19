@@ -6,7 +6,8 @@ import 'package:nutrifit/middleware/intro.dart';
 import 'package:nutrifit/pages/Questioning/Questioning.dart';
 import 'package:nutrifit/pages/foodcalender/foodlog.dart';
 import 'package:nutrifit/pages/mainscreen/main_screen.dart';
-import 'package:nutrifit/pages/meals/mealsview.dart';
+import 'package:nutrifit/pages/meals/explore_meals/mealsview.dart';
+import 'package:nutrifit/pages/meals/view.dart';
 import 'package:nutrifit/pages/profile/profile.dart';
 import 'package:nutrifit/pages/sign_up/register.dart';
 import 'package:nutrifit/pages/log_in/sign_in.dart';
@@ -50,7 +51,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/intro", page: ()=>const Intro()),
         GetPage(name: "/foodLog", page: ()=>Foodlog()),
         GetPage(name: "/profile", page: ()=>Profile()),
-        GetPage(name: "/meals", page: ()=>Meals())
+        GetPage(name: "/meals", page: ()=>Meals()),
+        GetPage(name: "/viewmeals", page: ()=>ViewMeals())
+
       ],
       title: 'Flutter Demo',
       theme: ThemeData(),

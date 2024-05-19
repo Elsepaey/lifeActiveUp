@@ -7,7 +7,7 @@ import 'package:nutrifit/pages/mealLogDetails/mealdetailscontroller.dart';
 
 import '../../../core/progress_dialog_utils.dart';
 import '../../../databases/database.dart';
-import '../../meals/mealscontroller.dart';
+import '../../meals/explore_meals/mealscontroller.dart';
 
 class AddingDialogController extends GetxController {
   final MealsController controller = Get.find();

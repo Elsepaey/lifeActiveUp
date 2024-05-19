@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/pages/mealLogDetails/addingdialog/addingdialog.dart';
 
-import '../../meals/mealscontroller.dart';
+import '../../meals/explore_meals/mealscontroller.dart';
 import '../addingdialog/addinddialogcontroller.dart';
 
 class SearchForMeal extends StatelessWidget {

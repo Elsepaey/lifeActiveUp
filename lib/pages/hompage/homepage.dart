@@ -22,8 +22,8 @@ class HomePage extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: SingleChildScrollView(
+        padding: EdgeInsets.only(
+            top: screenHeight/66,bottom: screenHeight / 11.40, left: screenWidth / 60, right: screenWidth / 60),         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -307,7 +307,59 @@ class HomePage extends StatelessWidget {
 
                 ],),
               ),
+              SizedBox(
+                height: screenHeight / 50,
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                height: screenHeight / 7,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 5,
+                        blurRadius: 4,
+                        offset: const Offset(0, 1), // changes position of shadow
+                      ),
+                    ]),
+                child: Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Water Tracker",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      InkWell(
+                        child: Text(
+                          "see details ",
+                          style: TextStyle(
+                              color: Colors.indigo[400],
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onTap: (){
+                          Get.to(StepCounter());
+                        },
+                      )
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          Text("0,5/2  Litre",style: TextStyle(fontWeight: FontWeight.bold),),
+                          Text("Today Intake"),
 
+                        ],
+                      ),
+                      ImageIcon(AssetImage("assets/images/icons8-water-64.png"),size: 80,)
+                    ],)
+
+                ],),
+              ),
             ],
           ),
         ),

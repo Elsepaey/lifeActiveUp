@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
-import 'package:nutrifit/pages/meals/mealscontroller.dart';
-import '../widgets/widgets.dart';
+import 'package:nutrifit/pages/meals/explore_meals/mealscontroller.dart';
+import '../../widgets/widgets.dart';
 
 class Meals extends StatelessWidget {
   Meals({super.key});
@@ -21,12 +21,12 @@ class Meals extends StatelessWidget {
 
           SizedBox(
             height: height / 18,
-            child: TextField(
+            child:
+            TextField(
 
               decoration: InputDecoration(
 
                 labelText: 'Search for an meal',
-//floatingLabelBehavior: FloatingLabelBehavior.values.first,
                 prefixIcon: const Icon(Icons.search_outlined),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(

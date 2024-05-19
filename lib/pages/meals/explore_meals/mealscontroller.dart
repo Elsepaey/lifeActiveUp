@@ -3,9 +3,8 @@ import 'package:get/get.dart';
 
 class MealsController extends GetxController {
  RxList<dynamic> meals = [].obs;
-RxString keyword="".obs;
-// TextEditingController textController=TextEditingController();
-//  final formKey = GlobalKey<FormState>();
+ RxString keyword="".obs;
+
 
   Future<List> loadCsv() async {
     String csvString = await rootBundle.loadString('assets/meals/meals.csv');
