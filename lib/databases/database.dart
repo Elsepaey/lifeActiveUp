@@ -43,6 +43,33 @@ class DB {
     return res;
 
   }
+  static addWaterIntake(int quantity)
+  async {
+    DateTime date=DateTime.now();
+    int year = date.year;
+    int month = date.month;
+    int day = date.day;
+
+    String formattedDate = '$year-$month-$day';
+    FirebaseFirestore.instance
+      ..collection("users")
+          .doc(userController.id)
+          .collection('waterIntakes')
+          .doc(formattedDate)
+          .collection("intakes")
+          .doc("${date.hour}-${date.minute}")
+
+          .set({
+        'quantity': quantity,
+        'time': "${date.hour}-${date.minute}",
+      });
+    var res = FirebaseFirestore.instance
+        .collection("users")
+        .doc(userController.id)
+        .get();
+    return res;
+
+  }
   static  Future<QuerySnapshot<Map<String, dynamic>>>? getLoggedMeals(String mealType,DateTime date) {
     var userId= sharedPref!.getString('id');
     int year = date.year;
@@ -56,6 +83,23 @@ class DB {
         .collection('meals')
         .doc(formattedDate)
         .collection(mealType)
+        .get();
+    return items;
+  }
+  static Future<QuerySnapshot<Map<String,dynamic>>>? getLoggedWater(DateTime date)
+  {
+    var userId= sharedPref!.getString('id');
+    int year = date.year;
+    int month = date.month;
+    int day = date.day;
+    String formattedDate = '$year-$month-$day';
+    Future<QuerySnapshot<Map<String, dynamic>>>? items =
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(userId) // replace with the actual user ID
+        .collection('waterIntakes')
+        .doc(formattedDate)
+        .collection("intakes")
         .get();
     return items;
   }

@@ -30,6 +30,10 @@ class SigningController extends GetxController {
     update();
   }
 
+  List<String> parts = [];
+  int year = 0;
+  int age = 0;
+
   Future<void> signInWithEmailAndPassword(BuildContext context) async {
     ProgressDialogUtils.showLoading(context, "Loading..");
     CollectionReference users = firestore.collection('users');
@@ -48,17 +52,28 @@ class SigningController extends GetxController {
               userController.id = doc['id'],
               userController.email = email.value,
               userController.password = password.value,
-              userController.fullName= doc['fullname'],
+              userController.fullName = doc['fullname'],
               userController.diseasesList = doc['diseasesList'],
               userController.allergiesList = doc['allergiesList'],
               userController.dateOfBirth = doc['dateOfBirth'],
               userController.gender = doc['gender'],
-              userController.height=doc['height'],
-              userController.weight=doc['weight'],
+              userController.height = doc['height'],
+              userController.weight = doc['weight'],
               userController.fitnessLevel = doc['fitnessLevel'],
               userController.fitnessGoal = doc['fitnessGoal'],
               userController.sleepIntake = doc['sleepIntake'],
               userController.waterIntake = doc['waterIntake'],
+
+              parts = userController.dateOfBirth.split('/'),
+              // Extract the year part
+              year = int.parse(parts[2]),
+              age = DateTime.now().year - year,
+              userController.dailyIntake = userController.calculateNutrition(
+                  userController.gender,
+                  double.parse(userController.weight),
+                  double.parse(userController.height),
+                  age),
+
               ProgressDialogUtils.hideLoading(context),
               Get.off(() => MainScreen())
             })

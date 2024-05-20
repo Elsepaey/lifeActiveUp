@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/hompage/homePageController.dart';
 import 'package:nutrifit/pages/stepcounter/steo-counter.dart';
+import 'package:nutrifit/pages/water_tracker/water_view.dart';
 
 import '../../core/dailystatics.dart';
 import '../../model/user controller.dart';
@@ -340,7 +341,7 @@ class HomePage extends StatelessWidget {
                               fontWeight: FontWeight.bold),
                         ),
                         onTap: (){
-                          Get.to(StepCounter());
+                          Get.to(WaterView());
                         },
                       )
                     ],

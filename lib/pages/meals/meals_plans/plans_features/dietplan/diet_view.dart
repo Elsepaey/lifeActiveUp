@@ -1,13 +1,15 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:nutrifit/core/themes.dart';
-
+import '../../../../../model/user controller.dart';
 import '../../mealsplans_api.dart';
 
 class DietView extends StatelessWidget {
    DietView({super.key});
+   final AppUserController userController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -189,9 +191,30 @@ class DietView extends StatelessWidget {
    Future<dynamic> getData()
    async {
 
-     var data= await MealsApi.postDiet();
+     var data= await MealsApi.postDiet(gender:userController.gender,weight: userController.weight,height: userController.height,age: "${calculateAge(userController.dateOfBirth)}");
      print(data);
      return data;
 
    }
+
+   int calculateAge(String birthDateString) {
+     // Parse the date of birth string to a DateTime object
+     DateFormat dateFormat = DateFormat('MM/dd/yyyy');
+     DateTime birthDate = dateFormat.parse(birthDateString);
+
+     // Get the current date
+     DateTime currentDate = DateTime.now();
+
+     // Calculate age in years
+     int age = currentDate.year - birthDate.year;
+
+     // Check if the current date has already passed the birth date this year
+     if (currentDate.month < birthDate.month ||
+         (currentDate.month == birthDate.month && currentDate.day < birthDate.day)) {
+       age--;
+     }
+     print (age);
+     return age;
+   }
+
 }

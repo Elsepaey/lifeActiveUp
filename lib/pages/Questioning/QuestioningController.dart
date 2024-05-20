@@ -102,15 +102,7 @@ void onValueChange ({required String value,required int select}){
     }
   }
 
-  // void toPrevious() {
-  //   if (currentPageIndex > 0) {
-  //     pageController.animateToPage(currentPageIndex - 1,
-  //         duration: const Duration(milliseconds: 500), curve: Curves.ease);
-  //   } else {
-  //     // Handle if first page
-  //     // For example, navigate to previous screen or perform any action
-  //   }
-  // }
+
   Future<void> submit(BuildContext context) async {
     ProgressDialogUtils.showLoading(context, "Loading...");
     newUser = FirebaseUser(
@@ -141,7 +133,14 @@ void onValueChange ({required String value,required int select}){
       userController.fitnessGoal=fitnessGoal.value;
       userController.sleepIntake=sleepIntake.value;
       userController.waterIntake=waterIntake.value;
-    ProgressDialogUtils.hideLoading(context);
+
+      List<String> dateParts = birth.value.split('/');
+      // Extract the year part
+      int year = int.parse(dateParts[2]);
+      int age =DateTime.now().year-year;
+      userController.dailyIntake=userController.calculateNutrition(userController.gender, double.parse(userController.weight), double.parse(userController.height), age);
+
+      ProgressDialogUtils.hideLoading(context);
       Get.off(() => MainScreen());
     }
     else {

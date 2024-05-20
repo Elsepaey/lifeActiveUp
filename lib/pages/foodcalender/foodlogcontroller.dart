@@ -5,16 +5,17 @@ import 'package:nutrifit/model/user%20controller.dart';
 import 'package:nutrifit/pages/foodcalender/loggedview.dart';
 
 class FoodLogController extends GetxController {
+  AppUserController userController=Get.find();
+
   DateTime date = DateTime.now();
 
-  RxInt checked = 0.obs;
-  int currentPageIndex = 0;
-AppUserController userController=Get.find();
+
   void changeViewIndex() {
     currentPageIndex = checked.value;
     update();
   }
-
+  RxInt checked = 0.obs;
+  int currentPageIndex = 0;
   Widget buildMealsContainer() {
     switch (currentPageIndex) {
       case 0:

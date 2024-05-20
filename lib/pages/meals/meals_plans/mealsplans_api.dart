@@ -1,8 +1,14 @@
 import 'dart:convert';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../model/user controller.dart';
+
 class MealsApi {
-  static Future<Map<String, dynamic>> postDiet() async {
+  static AppUserController userController = Get.find();
+
+  static Future<Map<String, dynamic>> postDiet({required String gender,required String weight,required String height,required String age}) async {
     var url = Uri.parse('http://10.0.2.2:8000/predict/');
     var headers = {
       'accept': 'application/json',
@@ -11,10 +17,10 @@ class MealsApi {
 
     var body = json.encode({
       "metrics_input": [
-        "male",
-        "72",
-        "170",
-        "23"
+        gender,
+        "$weight",
+        "$height",
+        "$age"
       ],
       "ingredients": [],
       "params": {
