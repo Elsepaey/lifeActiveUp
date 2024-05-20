@@ -282,12 +282,16 @@ class CustomFood extends StatelessWidget {
                 ),
               ),
             ),
+            TextField(decoration: InputDecoration(
+              hintText: "add ingredients"
+            ),),
             ElevatedButton(onPressed: ( ) async {
 Get.to(CustomOutput());
 
 
 
-            }, child: Text("generate"))
+            }, child: Text("generate")),
+
           ],
         ),
       ),
@@ -300,7 +304,8 @@ Get.to(CustomOutput());
       required String lable,
       required double value,
       required double min,
-      required double max}) {
+      required double max})
+{
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(

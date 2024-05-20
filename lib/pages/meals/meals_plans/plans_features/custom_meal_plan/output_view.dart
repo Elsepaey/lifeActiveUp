@@ -78,7 +78,7 @@ class CustomOutput extends StatelessWidget {
   async {
     List nutritions=[controller.calorieSliderValue,controller.fatSliderValue,controller.saturatedFatSliderValue,controller.cholesterolSliderValue,controller.sodiumSliderValue,controller.carbSliderValue,controller.fiberSliderValue,controller.sugarSliderValue,controller.proteinSliderValue];
 
-var data= await MealsApi.postCustom(nutritions, ["carrots"]);
+var data= await MealsApi.postCustom(nutritions, []);
 print(data);
    return data;
 

@@ -105,7 +105,7 @@ class WaterView extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
                   width: screenWidth,
-                  height: screenHeight / 4,
+                  height: screenHeight / 3.5,
                   child: GetBuilder<WaterController>(
                       builder: (controller) =>
                           controller.buildViewContainer())),
