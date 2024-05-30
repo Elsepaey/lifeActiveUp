@@ -21,7 +21,23 @@ class DailyStatics extends GetxController{
     print(total);
     return total;
   }
- // double extractedValue = value.truncateToDouble() * 100 / 100;
+   getTotalWaterIntakes() async {
+    List intakes= [];
+    intakes.add(await DB.getLoggedWater(DateTime.now()));
+    int total = 0;
+    for (var element in intakes) {
+      for (var doc in element.docs) {
+        int count = doc["quantity"];
+        total = (total + count);
+      }
+    }
+    waterIntakes.value=total;
+
+  }
+  void updateWaterIntakes(int quantity){
+    waterIntakes.value+=quantity;
+
+  }
    RxDouble totalCalories = 0.0.obs;
    RxDouble totalProtein = 0.0.obs;
    RxDouble totalFats = 0.0.obs;
@@ -31,12 +47,8 @@ class DailyStatics extends GetxController{
      totalProtein .value= await getTotalNutrient("protein");
      totalFats.value = await getTotalNutrient("fat");
      totalCarbs.value = await getTotalNutrient("carbs");
-    //  Statics statics = Statics(
-    //     calories: totalCalories,
-    //     protein: totalProtein,
-    //     fats: totalFats,
-    //     carbs: totalCarbs);
-    // return statics;
+     waterIntakes.value=await getTotalWaterIntakes();
+
   }
   void updateStatics(double cal,double prot,double fat,double carbs)
   {
@@ -46,21 +58,14 @@ class DailyStatics extends GetxController{
     totalCarbs.value+=carbs;
     update();
   }
+  RxInt waterIntakes=0.obs;
+
   @override
   void onInit() {
     // TODO: implement onInit
     getTodayStatics();
+    getTotalWaterIntakes();
     super.onInit();
   }
 }
-class Statics {
-  double calories;
-  double protein;
-  double fats;
-  double carbs;
-  Statics(
-      {required this.calories,
-        required this.protein,
-        required this.fats,
-        required this.carbs});
-}
+

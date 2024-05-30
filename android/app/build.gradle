@@ -3,7 +3,6 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
-
 }
 
 def localProperties = new Properties()
@@ -25,6 +24,7 @@ if (flutterVersionName == null) {
 }
 
 android {
+    //compileSdkVersion 34
     namespace "com.example.nutrifit"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
@@ -55,7 +55,7 @@ android {
 
 
     }
-    
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

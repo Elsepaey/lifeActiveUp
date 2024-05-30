@@ -8,7 +8,7 @@ import '../addingdialog/addinddialogcontroller.dart';
 class SearchForMeal extends StatelessWidget {
   SearchForMeal({required this.mealType,super.key, required this.date});
   final MealsController controller = Get.put(MealsController());
- // final  dialogController =Get.lazyPut(() => AddingDialogController(),fenix: true);
+
 
   final String mealType;
   final DateTime date;

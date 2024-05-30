@@ -9,7 +9,7 @@ class MealsApi {
   static AppUserController userController = Get.find();
 
   static Future<Map<String, dynamic>> postDiet({required String gender,required String weight,required String height,required String age}) async {
-    var url = Uri.parse('http://10.0.2.2:8000/predict/');
+    var url = Uri.parse('http://dietrecommender.live/predict/');
     var headers = {
       'accept': 'application/json',
       'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ class MealsApi {
   }
 
   static  postCustom(List nutritions,List ingredients) async {
-    var url = Uri.parse('http://10.0.2.2:8000/recommendCustomFood/');
+    var url = Uri.parse('http://dietrecommender.live/recommendCustomFood/');
     var headers = {
       'accept': 'application/json',
       'Content-Type': 'application/json',

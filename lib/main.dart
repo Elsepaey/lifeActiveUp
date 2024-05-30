@@ -1,3 +1,4 @@
+import 'package:alarm/alarm.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ import 'package:nutrifit/pages/profile/profile.dart';
 import 'package:nutrifit/pages/sign_up/register.dart';
 import 'package:nutrifit/pages/log_in/sign_in.dart';
 import 'package:nutrifit/pages/splash/splash-view.dart';
+import 'package:nutrifit/pages/stepcounter/step_counter_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'model/user controller.dart';
 
@@ -26,7 +28,7 @@ Future<void> main() async {
           messagingSenderId: 'sendid',
           projectId: 'lifeactiveup'));
   sharedPref=await SharedPreferences.getInstance();
-
+  await Alarm.init();
   runApp(const MyApp());
 }
 
@@ -41,6 +43,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/splash",
       initialBinding: BindingsBuilder(() {
         Get.put(AppUserController(), permanent: true);
+        Get.put(StepController(),permanent: true);
+
       }),
       getPages: [
         GetPage(name: "/splash", page: () => Splash(),middlewares: [AuthMiddleware()]),

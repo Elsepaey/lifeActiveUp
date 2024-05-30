@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/hompage/homePageController.dart';
-import 'package:nutrifit/pages/stepcounter/steo-counter.dart';
+import 'package:nutrifit/pages/stepcounter/step-counter.dart';
 import 'package:nutrifit/pages/water_tracker/water_view.dart';
 
 import '../../core/dailystatics.dart';
 import '../../model/user controller.dart';
+import '../sleep_tracker/sleep_view.dart';
+import '../stepcounter/step_counter_controller.dart';
 
 class HomePage extends StatelessWidget {
-
   final HomeController controller = Get.put(HomeController());
-   AppUserController userController = Get.find();
-  final  DailyStatics staticsController = Get.put(DailyStatics(),permanent: true);
+  AppUserController userController = Get.find();
+  StepController stepsController = Get.find();
+
+  final DailyStatics staticsController =
+      Get.put(DailyStatics(), permanent: true);
 
   HomePage({super.key});
 
@@ -24,7 +28,11 @@ class HomePage extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(
-            top: screenHeight/66,bottom: screenHeight / 11.40, left: screenWidth / 60, right: screenWidth / 60),         child: SingleChildScrollView(
+            top: screenHeight / 66,
+            bottom: screenHeight / 10,
+            left: screenWidth / 60,
+            right: screenWidth / 60),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -79,7 +87,6 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: screenHeight / 50,
               ),
-
               GetX<DailyStatics>(
                 builder: (controller) => Container(
                   padding: const EdgeInsets.all(8),
@@ -92,7 +99,8 @@ class HomePage extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.2),
                           spreadRadius: 3,
                           blurRadius: 4,
-                          offset: const Offset(0, 1), // changes position of shadow
+                          offset:
+                              const Offset(0, 1), // changes position of shadow
                         ),
                       ]),
                   child: Column(
@@ -128,7 +136,8 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                       LinearProgressIndicator(
-                        value: (staticsController.totalCalories.value) / userController.dailyIntake["total_calories"]!,
+                        value: (staticsController.totalCalories.value) /
+                            userController.dailyIntake["total_calories"]!,
                       ),
                       SizedBox(
                         height: screenHeight / 200,
@@ -145,8 +154,9 @@ class HomePage extends StatelessWidget {
                               SizedBox(
                                   width: screenWidth / 6,
                                   child: LinearProgressIndicator(
-                                    value: (staticsController.totalProtein.value) /
-                                        300,
+                                    value:
+                                        (staticsController.totalProtein.value) /
+                                            300,
                                   )),
                             ],
                           ),
@@ -159,8 +169,8 @@ class HomePage extends StatelessWidget {
                               SizedBox(
                                   width: screenWidth / 6,
                                   child: LinearProgressIndicator(
-                                    value:
-                                    (staticsController.totalFats.value) / userController.dailyIntake["fat"]!,
+                                    value: (staticsController.totalFats.value) /
+                                        userController.dailyIntake["fat"]!,
                                   )),
                             ],
                           ),
@@ -174,7 +184,9 @@ class HomePage extends StatelessWidget {
                                   width: screenWidth / 6,
                                   child: LinearProgressIndicator(
                                     value:
-                                    (staticsController.totalCarbs.value) / userController.dailyIntake["carbohydrates"]!,
+                                        (staticsController.totalCarbs.value) /
+                                            userController
+                                                .dailyIntake["carbohydrates"]!,
                                   )),
                             ],
                           ),
@@ -185,7 +197,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-
               SizedBox(
                 height: screenHeight / 50,
               ),
@@ -239,8 +250,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
-                      child: const
-                      ClipRRect(
+                      child: const ClipRRect(
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.zero,
                               topRight: Radius.circular(12),
@@ -248,8 +258,8 @@ class HomePage extends StatelessWidget {
                               bottomRight: Radius.circular(12)), // Image border
                           // Image radius
                           child: Image(
-                            image: AssetImage(
-                                "assets/images/fitness preview.png"),
+                            image:
+                                AssetImage("assets/images/fitness preview.png"),
                           )),
                     )
                   ],
@@ -269,44 +279,54 @@ class HomePage extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.3),
                         spreadRadius: 5,
                         blurRadius: 4,
-                        offset: const Offset(0, 1), // changes position of shadow
+                        offset:
+                            const Offset(0, 1), // changes position of shadow
                       ),
                     ]),
-                child: Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Step Counter",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      InkWell(
-                        child: Text(
-                          "see details ",
-                          style: TextStyle(
-                              color: Colors.indigo[400],
-                              fontWeight: FontWeight.bold),
-                        ),
-                        onTap: (){
-                          Get.to(StepCounter());
-                        },
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                    Column(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("0/5000",style: TextStyle(fontWeight: FontWeight.bold),),
-                        Text("Today Steps"),
-
+                        const Text(
+                          "Step Counter",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        InkWell(
+                          child: Text(
+                            "see details ",
+                            style: TextStyle(
+                                color: Colors.indigo[400],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            Get.to(() => StepCounter());
+                          },
+                        )
                       ],
                     ),
-                    ImageIcon(AssetImage("assets/images/running.png"),size: 80,)
-                  ],)
-
-                ],),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            Obx(() => Text(
+                                  '${stepsController.steps.value}',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                            Text("Today Steps"),
+                          ],
+                        ),
+                        ImageIcon(
+                          AssetImage("assets/images/running.png"),
+                          size: 80,
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: screenHeight / 50,
@@ -322,45 +342,115 @@ class HomePage extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.3),
                         spreadRadius: 5,
                         blurRadius: 4,
-                        offset: const Offset(0, 1), // changes position of shadow
+                        offset:
+                            const Offset(0, 1), // changes position of shadow
                       ),
                     ]),
-                child: Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Water Tracker",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      InkWell(
-                        child: Text(
-                          "see details ",
-                          style: TextStyle(
-                              color: Colors.indigo[400],
-                              fontWeight: FontWeight.bold),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Water Tracker",
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        onTap: (){
-                          Get.to(WaterView());
-                        },
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          Text("0,5/2  Litre",style: TextStyle(fontWeight: FontWeight.bold),),
-                          Text("Today Intake"),
-
-                        ],
-                      ),
-                      ImageIcon(AssetImage("assets/images/icons8-water-64.png"),size: 80,)
-                    ],)
-
-                ],),
+                        InkWell(
+                          child: Text(
+                            "see details ",
+                            style: TextStyle(
+                                color: Colors.indigo[400],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            Get.to(() => WaterView());
+                          },
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              "${staticsController.waterIntakes}/${(int.parse(userController.waterIntake[0])??0) * 1000}  ml",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text("Today Intake"),
+                          ],
+                        ),
+                        ImageIcon(
+                          AssetImage("assets/images/icons8-water-64.png"),
+                          size: 80,
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
+              SizedBox(
+                height: screenHeight / 50,
+              ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                height: screenHeight / 7,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 5,
+                        blurRadius: 4,
+                        offset:
+                        const Offset(0, 1), // changes position of shadow
+                      ),
+                    ]),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Sleep Tracker",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        InkWell(
+                          child: Text(
+                            "see details ",
+                            style: TextStyle(
+                                color: Colors.indigo[400],
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            Get.to(() => SleepView());
+                          },
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            Text("8h 20m",style: TextStyle(fontWeight: FontWeight.bold),),
+
+                            Text(
+                              "last Night Sleep",
+                            ),
+                          ],
+                        ),
+                        ImageIcon(
+                          AssetImage("assets/icons/sleep_1422872.png"),
+                          size: 80,
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+
             ],
           ),
         ),

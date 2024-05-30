@@ -5,13 +5,10 @@ import 'package:nutrifit/pages/water_tracker/water_controller.dart';
 
 import 'Addingdialoge.dart';
 
-
 class ShowLoggedWater extends StatelessWidget {
-  ShowLoggedWater(
-      {super.key,required this.checkedTime});
+  ShowLoggedWater({super.key, required this.checkedTime});
   final WaterController controller = Get.find();
   final DateTime checkedTime;
-
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +19,11 @@ class ShowLoggedWater extends StatelessWidget {
         children: [
           InkWell(
               onTap: () {
-    showDialog(
-    context: context,
-    builder: (BuildContext context) =>
-    AddingWaterDialog(date: controller.date));
-    },
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        AddingWaterDialog(date: controller.date));
+              },
               child: const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Card(
@@ -40,17 +37,14 @@ class ShowLoggedWater extends StatelessWidget {
             height: 20,
           ),
           Expanded(
-            child:
-            FutureBuilder<QuerySnapshot>(
+            child: FutureBuilder<QuerySnapshot>(
                 future: controller.getLoggedWater(checkedTime),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   }
 
-
                   switch (snapshot.connectionState) {
-
                     case ConnectionState.waiting:
                       return const Text('Loading....');
                     default:
@@ -58,9 +52,12 @@ class ShowLoggedWater extends StatelessWidget {
                           itemCount: snapshot.data?.docs.length,
                           itemBuilder: (context, index) {
                             DocumentSnapshot document =
-                            snapshot.data!.docs[index];
+                                snapshot.data!.docs[index];
                             return ListTile(
-                              trailing: Text("${document['time']}",style: TextStyle(fontSize: 12),),
+                              trailing: Text(
+                                "${document['time']}",
+                                style: TextStyle(fontSize: 12),
+                              ),
                               title: Text("${document['quantity']} ml"),
                             );
                           });

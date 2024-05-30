@@ -21,12 +21,11 @@ class AddingController extends GetxController{
 
     ProgressDialogUtils.showLoading(context, "Loading...");
 
-    waterIntake intake=waterIntake(quantity: quantity, time: date.hour);
+    waterIntake intake=waterIntake(quantity: quantity);
     var addedIntake = await DB.addWaterIntake(intake.quantity);
     if (addedIntake != null) {
       ProgressDialogUtils.hideLoading(context);
       Get.back();
-      //staticsController.updateStatics(calories,protein,fat,carbs);
     } else {
       ProgressDialogUtils.showMessage(
           context: context,
@@ -38,7 +37,6 @@ class AddingController extends GetxController{
 
 }
 class waterIntake{
-  waterIntake({required this.quantity,required this.time});
+  waterIntake({required this.quantity,});
   int quantity;
-  int time;
 }

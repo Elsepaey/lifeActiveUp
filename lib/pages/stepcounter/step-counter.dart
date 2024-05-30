@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nutrifit/pages/stepcounter/step_counter_controller.dart';
 
 class StepCounter extends StatelessWidget {
    StepCounter({super.key});
+   StepController controller =Get.find();
   TextEditingController textEditingController=TextEditingController();
 
   @override
@@ -17,8 +20,9 @@ class StepCounter extends StatelessWidget {
         children: [
           SizedBox(
             height: 29,
-          ),
-          SizedBox(
+          )
+          ,GetX<StepController>(builder: (controller)=>
+              SizedBox(
             height: 200.0,
             child: Stack(
               children: <Widget>[
@@ -29,18 +33,23 @@ class StepCounter extends StatelessWidget {
                     child: new CircularProgressIndicator(
                       backgroundColor: Colors.grey.shade300,
                       strokeWidth: 15,
-                      value: 0.4,
+                      value: int.parse(controller.steps.value )/8000,
                     ),
                   ),
                 ),
                 Center(
                     child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Text("Today Steps"), Text("400")],
-                )),
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Today Steps"),
+                        Text("${controller.steps.value}")
+                  ],
+                    )),
               ],
             ),
           ),
+          ),
+
           SizedBox(
             height: 20,
           ),
@@ -74,20 +83,20 @@ class StepCounter extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Text(
-                          "0.12 km",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        Obx(() => Text(
+                          ' ${controller.distance.value.toStringAsFixed(2)} km',
+                          style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                        )),
                         Text("Distance"),
                       ],
                     ),
                     Container(width: 4,height:40,color: Colors.black,),
                     Column(
                       children: [
-                        Text(
-                          "600 steps",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        Obx(() => Text(
+                          'Steps: ${controller.steps.value}',
+                          style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                        )),
                         Text("Steps Covered"),
                       ],
                     ),
@@ -129,7 +138,7 @@ class StepCounter extends StatelessWidget {
                   children: [
                     Text("Steps Goal"),
                     Text(
-                      "600 steps",
+                      "8000 steps",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -142,3 +151,4 @@ class StepCounter extends StatelessWidget {
     );
   }
 }
+

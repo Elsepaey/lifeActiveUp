@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/pages/mealLogDetails/addingdialog/addinddialogcontroller.dart';
 import 'package:nutrifit/pages/water_tracker/water_controller.dart';
+import '../../core/dailystatics.dart';
 import 'adding_controller.dart';
 
 class AddingWaterDialog extends StatelessWidget {
   AddingWaterDialog({ super.key, required this.date});
   final AddingController dialogController = Get.put(AddingController());
   WaterController controller=Get.put(WaterController());
-  //final DailyStatics staticsController=Get.put(DailyStatics());
+  final DailyStatics staticsController=Get.put(DailyStatics());
 
   final DateTime date;
 
@@ -62,9 +63,8 @@ class AddingWaterDialog extends StatelessWidget {
           onPressed: () {
              dialogController.submit(context, date);
              controller.update();
-            // staticsController.update();
+             staticsController.updateWaterIntakes(dialogController.quantity);
             //
-            // Get.delete<AddingDialogController>();
           },
         ),
       ],

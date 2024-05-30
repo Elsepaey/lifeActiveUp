@@ -52,6 +52,13 @@ dependencies:
   http: ^1.2.1
   expandable: ^5.0.1
   flutter_svg: ^2.0.10+1
+  pedometer: ^4.0.1
+  permission_handler: ^10.2.0
+  graphic: ^2.2.1
+  fl_chart: ^0.68.0
+  alarm: ^3.1.4
+  flutter_local_notifications: ^12.0.4
+
 
 
 dev_dependencies:
@@ -91,7 +98,8 @@ flutter:
 
     assets/icons/,
     assets/sliderImages/,
-    assets/meals/
+    assets/meals/,
+    assets/rings/iPhone.mp3
     ]
 
 
