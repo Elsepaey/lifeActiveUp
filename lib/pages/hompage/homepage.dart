@@ -434,11 +434,10 @@ class HomePage extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            Text("8h 20m",style: TextStyle(fontWeight: FontWeight.bold),),
-
+                            Text("Log Sleep Intake ",style: TextStyle(fontWeight: FontWeight.w500),),
                             Text(
-                              "last Night Sleep",
-                            ),
+                              "& Set Alarms",style: TextStyle(fontWeight: FontWeight.w500,
+                            )),
                           ],
                         ),
                         ImageIcon(

@@ -31,7 +31,7 @@ class DailyStatics extends GetxController{
         total = (total + count);
       }
     }
-    waterIntakes.value=total;
+    return total;
 
   }
   void updateWaterIntakes(int quantity){

@@ -1,14 +1,11 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
-
 import '../../../model/user controller.dart';
-
 class MealsApi {
   static AppUserController userController = Get.find();
 
-  static Future<Map<String, dynamic>> postDiet({required String gender,required String weight,required String height,required String age}) async {
+  static Future<Map<String, dynamic>> postDiet({required String gender,required String weight,required String height,required String age,required String diseases,required activityLevel}) async {
     var url = Uri.parse('http://dietrecommender.live/predict/');
     var headers = {
       'accept': 'application/json',
@@ -18,11 +15,14 @@ class MealsApi {
     var body = json.encode({
       "metrics_input": [
         gender,
-        "$weight",
-        "$height",
-        "$age"
+        weight,
+        height,
+        age,
+        diseases,
+        activityLevel
       ],
       "ingredients": [],
+      "allergies": userController.allergiesList,
       "params": {
         "n_neighbors": 5,
         "return_distance": false

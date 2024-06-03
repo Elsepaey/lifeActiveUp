@@ -15,7 +15,8 @@ class AddingWaterDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
+    return
+      AlertDialog(
       title: Text("Add your intake"),
       content: GetBuilder<AddingController>(
         builder: (controller) => Column(

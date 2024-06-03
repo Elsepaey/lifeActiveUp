@@ -1,210 +1,347 @@
 import 'dart:io';
 
 import 'package:alarm/alarm.dart';
-import 'package:alarm/model/alarm_settings.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:intl/intl.dart';
 import 'package:nutrifit/pages/sleep_tracker/sleep_controller.dart';
-import 'package:permission_handler/permission_handler.dart';
+
+import '../../core/themes.dart';
 
 class SleepView extends StatelessWidget {
   SleepView({super.key});
-  final SleepController controller = Get.put(SleepController());
-  final List<String> weekdays = [
-    'Mon',
-    'Tue',
-    'Wed',
-    'Thu',
-    'Fri',
-    'Sat',
-    'Sun'
-  ];
-  final alarmSettings = AlarmSettings(
-
-    id: 43,
-    androidFullScreenIntent: true,
-
-    dateTime: DateTime.now().add(Duration(minutes: 1)),
-    assetAudioPath: "assets/rings/iPhone.mp3",
-    loopAudio: false,
-    vibrate: false,
-    volume: 0.8,
-    fadeDuration: 3.0,
-    notificationTitle: 'This is the title',
-    notificationBody: 'This is the body',
-    enableNotificationOnKill: Platform.isAndroid,
+  final SleepController controller = Get.put(SleepController(),permanent: true);
 
 
-  );
   @override
   Widget build(BuildContext context) {
+    List<String> getLast7Days() {
+      final DateFormat formatter = DateFormat('E');
+      final DateTime now = DateTime.now();
+      return List.generate(7, (index) {
+        final DateTime day = now.subtract(Duration(days: 6 - index));
+        return formatter.format(day);
+      });
+    }
+
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(),
       body: Column(
         children: [
           SizedBox(
-            height: 260,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: BarChart(
-                BarChartData(
-                  alignment: BarChartAlignment.spaceAround,
-                  maxY: 10,
-                  minY: 2,
-                  barTouchData: BarTouchData(
-                    touchTooltipData: BarTouchTooltipData(
-                        //  tooltipBgColor: Colors.blueGrey,
+              height: 260,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GetX<SleepController>(
+                    builder: (controller) => SizedBox(
+                          height: 260,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: BarChart(
+                              BarChartData(
+                                alignment: BarChartAlignment.spaceAround,
+                                maxY: 12,
+                                minY: 0,
+                                barTouchData: BarTouchData(
+                                  touchTooltipData: BarTouchTooltipData(
+                                      //  tooltipBgColor: Colors.blueGrey,
+                                      ),
+                                  touchCallback:
+                                      (FlTouchEvent event, barTouchResponse) {},
+                                  handleBuiltInTouches: true,
+                                ),
+                                titlesData: FlTitlesData(
+                                  show: true,
+                                  bottomTitles: AxisTitles(
+                                    sideTitles: SideTitles(
+                                      showTitles: true,
+                                      getTitlesWidget:
+                                          (double value, TitleMeta meta) {
+                                        TextStyle style = TextStyle(
+                                          color: Colors.indigo,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                        );
+                                        List<String> days = getLast7Days();
+                                        Widget text = Text(days[value.toInt()],
+                                            style: style);
+                                        return SideTitleWidget(
+                                          axisSide: meta.axisSide,
+                                          child: text,
+                                        );
+                                      },
+                                      reservedSize: 28,
+                                    ),
+                                  ),
+                                  leftTitles: AxisTitles(
+                                    sideTitles: SideTitles(
+                                      showTitles: true,
+                                      getTitlesWidget:
+                                          (double value, TitleMeta meta) {
+                                        return Text("${value.toInt()} h",
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14,
+                                            ));
+                                      },
+                                      interval: 1,
+                                      reservedSize: 50,
+                                    ),
+                                  ),
+                                  rightTitles: AxisTitles(),
+                                ),
+                                borderData: FlBorderData(
+                                  show: false,
+                                ),
+                                barGroups: [
+                                  BarChartGroupData(
+                                    x: 0,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: controller.previousDaysSleep[
+                                                DateFormat('yyyy-MM-dd').format(
+                                                    DateTime.now().subtract(
+                                                        Duration(days: 6)))] ??
+                                            0.0,
+                                        color: MyTheme.primary_color,
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 1,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: controller.previousDaysSleep[
+                                                DateFormat('yyyy-MM-dd').format(
+                                                    DateTime.now().subtract(
+                                                        Duration(days: 5)))] ??
+                                            0,
+                                        color: MyTheme.primary_color,
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 2,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: controller.previousDaysSleep[
+                                                DateFormat('yyyy-MM-dd').format(
+                                                    DateTime.now().subtract(
+                                                        Duration(days: 4)))] ??
+                                            0,
+                                        color: MyTheme.primary_color,
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 3,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: controller.previousDaysSleep[
+                                                DateFormat('yyyy-MM-dd').format(
+                                                    DateTime.now().subtract(
+                                                        Duration(days: 3)))] ??
+                                            0,
+                                        color: MyTheme.primary_color,
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 4,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: controller.previousDaysSleep[
+                                                DateFormat('yyyy-MM-dd').format(
+                                                    DateTime.now().subtract(
+                                                        Duration(days: 2)))] ??
+                                            0,
+                                        color: MyTheme.primary_color,
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 5,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: controller.previousDaysSleep[
+                                                DateFormat('yyyy-MM-dd').format(
+                                                    DateTime.now().subtract(
+                                                        Duration(days: 1)))] ??
+                                            0,
+                                        color: MyTheme.primary_color,
+                                      ),
+                                    ],
+                                  ),
+                                  BarChartGroupData(
+                                    x: 6,
+                                    barRods: [
+                                      BarChartRodData(
+                                        toY: controller.todayIntake.value,
+                                        color: MyTheme.primary_color,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        )),
+              )),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
+            child:GetX<SleepController>(builder: (controller)=>controller.todayIntake.value == 0.0?
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text("press to log"),
+                Icon(Icons.arrow_forward_outlined),
+                ElevatedButton(onPressed: ( ){
+                  showDialog(context: context, builder: (_){return       AlertDialog(
+                    title: Text("Add your intake"),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 38,
+                          width: 200,
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(12.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black26,
+                                blurRadius: 6.0,
+                                offset: Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: TextField(
+                            controller: controller.sleepDurationController,
+
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              hintText: 'Enter hours of sleep',
+                              border: InputBorder.none,
+                            ),
+                          ),
                         ),
-                    touchCallback: (FlTouchEvent event, barTouchResponse) {},
-                    handleBuiltInTouches: true,
-                  ),
-                  titlesData: FlTitlesData(
-                      show: true,
-                      bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          getTitlesWidget: (double value, TitleMeta meta) {
-                            const style = TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            );
-                            Widget text;
-                            switch (value.toInt()) {
-                              case 0:
-                                text = Text('Mon', style: style);
-                                break;
-                              case 1:
-                                text = Text('Tue', style: style);
-                                break;
-                              case 2:
-                                text = Text('Wed', style: style);
-                                break;
-                              case 3:
-                                text = Text('Thu', style: style);
-                                break;
-                              case 4:
-                                text = Text('Fri', style: style);
-                                break;
-                              case 5:
-                                text = Text('Sat', style: style);
-                                break;
-                              case 6:
-                                text = Text('Sun', style: style);
-                                break;
-                              default:
-                                text = Text('', style: style);
-                                break;
-                            }
-                            return SideTitleWidget(
-                              axisSide: meta.axisSide,
-                              child: text,
-                            );
-                          },
-                          reservedSize: 28,
-                        ),
+
+                      ],
+
+                    ),
+                    actionsAlignment: MainAxisAlignment.spaceBetween,
+                    actions: [
+                      TextButton(
+                        child: const Text('Cancel'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                       ),
-                      leftTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          getTitlesWidget: (double value, TitleMeta meta) {
-                            return Text("${value.toInt().toString()}h",
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14,
-                                ));
-                          },
-                          interval: 1,
-                          reservedSize: 32,
-                        ),
+                      TextButton(
+                        child: const Text('Confirm'),
+                        onPressed: () {
+                          controller.saveTodaySleep();
+                          controller.update();
+                          Get.back();
+                          //
+                        },
                       ),
-                      rightTitles: AxisTitles()),
-                  borderData: FlBorderData(
-                    show: false,
-                  ),
-                  barGroups: [
-                    BarChartGroupData(
-                      x: 0,
-                      barRods: [
-                        BarChartRodData(
-                          toY: 8,
-                          color: Colors.black.withOpacity(0.6),
+                    ],
+                  );
+                  });
+                }, child:                 Text(
+                  "Let's Log your Sleep ",
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                ),
+                ),
+              ],
+            ):
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [Text("Last Night Sleep :",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400),),Text("${controller.todayIntake} hours",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),],
+))
+                        ,
+          ),
+          SizedBox(height: 22,),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.bedtime_off_outlined),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          children: [
+                            GetX<SleepController>(builder: (controller)=>
+                            controller.sleepAlarm?
+                            Column(
+                              children: [
+                                Text(
+                                'Sleep Time: ${controller.sleepTime.value.format(context)}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300),),
+                                Text(
+                                  'Left Time: ${controller.sleepCountdown.value}',
+                                  style: TextStyle(fontSize: 16),
+                                )
+                              ],
+                            )                                :
+                            InkWell(
+
+                              onTap: () =>
+                                  controller.selectSleepTime(context),
+                              child: Column(
+                                children: [
+                                   Text(
+                                    'Sleep Time: ${controller.sleepTime.value.format(context)}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),),
+
+                                      Text(
+                                    'Left Time: ${controller.sleepCountdown.value}',
+                                    style: TextStyle(fontSize: 16),
+                                  )
+                                ],
+                              ),
+                            ))
+
+                            ,
+                          ],
                         ),
                       ],
                     ),
-                    BarChartGroupData(
-                      x: 1,
-                      barRods: [
-                        BarChartRodData(
-                          toY: 10,
-                          color: Colors.lightBlueAccent,
-                        ),
-                      ],
-                    ),
-                    BarChartGroupData(
-                      x: 2,
-                      barRods: [
-                        BarChartRodData(
-                          toY: 6,
-                          color: Colors.lightBlueAccent,
-                        ),
-                      ],
-                    ),
-                    BarChartGroupData(
-                      x: 3,
-                      barRods: [
-                        BarChartRodData(
-                          toY: 7,
-                          color: Colors.lightBlueAccent,
-                        ),
-                      ],
-                    ),
-                    BarChartGroupData(
-                      x: 4,
-                      barRods: [
-                        BarChartRodData(
-                          toY: 5,
-                          color: Colors.lightBlueAccent,
-                        ),
-                      ],
-                    ),
-                    BarChartGroupData(
-                      x: 5,
-                      barRods: [
-                        BarChartRodData(
-                          toY: 9,
-                          color: Colors.lightBlueAccent,
-                        ),
-                      ],
-                    ),
-                    BarChartGroupData(
-                      x: 6,
-                      barRods: [
-                        BarChartRodData(
-                          toY: 4,
-                          color: Colors.lightBlueAccent,
-                        ),
-                      ],
-                    ),
+                    GetBuilder<SleepController>(builder: (controller)=>Switch(
+                        activeColor: Colors.teal,
+                        value: controller.sleepAlarm, onChanged: (value)
+                    {if(value==true)
+                    {
+                      controller.sleepAlarm=value;
+                      controller.setAlarm(id: 1);
+
+                    }
+                    else
+                    {
+                      controller.sleepAlarm=value;
+                      controller.cancelAlarm(id: 1);
+                    }
+                    }))
+
                   ],
                 ),
               ),
             ),
           ),
-          ElevatedButton(
-              onPressed: () async {
-                checkAndroidScheduleExactAlarmPermission();
-                await Alarm.setNotificationOnAppKillContent("njn", "my alarm");
-                await Alarm.set(alarmSettings: alarmSettings
-
-
-                );
-
-print("set");
-              },
-              child: Text("set alarm")),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
@@ -212,63 +349,78 @@ print("set");
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                  children: [
-                  Row(
-                    children: [
-                      Icon(Icons.bedtime_off_outlined),
-                      SizedBox(width: 15,),
-                      Column(
-                        children: [
-                          Text("BedTime 11:00pm"),
-                          Text("in 6 hours 25 minuter")
-                        ],
-                      ),
-                    ],
-                  ),
-                  Switch(value: true, onChanged: (value){})
-                ],),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                   children: [
                     Row(
                       children: [
                         Icon(Icons.alarm),
-                        SizedBox(width: 15,),
+                        SizedBox(
+                          width: 15,
+                        ),
                         Column(
                           children: [
-                            Text("WakeUp Alarm 7:00am"),
-                            Text("in 6 hours 25 minuter")
+                            GetX<SleepController>(builder: (controller)=>
+                            controller.wakeupAlarm?
+                            Column(
+                              children: [
+                                Text(
+                                  'Wakeup Time: ${controller.wakeupTime.value.format(context)}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300),),
+                                Text(
+                                  'Left Time: ${controller.wakeupCountdown.value}',
+                                  style: TextStyle(fontSize: 16),
+                                )
+                              ],
+                            )                                :
+                            InkWell(
+
+                              onTap: () =>
+                                  controller.selectWakeupTime(context),
+                              child: Column(
+                                children: [
+                                   Text(
+                                    'Wakeup Time: ${controller.wakeupTime.value.format(context)}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),),
+
+                                      Text(
+                                        'Left Time: ${controller.wakeupCountdown.value}',
+                                        style: TextStyle(fontSize: 16),
+                                      )
+                                ],
+                              ),
+                            ))
+
+                            ,
                           ],
                         ),
                       ],
                     ),
-                    Switch(value: true, onChanged: (value){})
-                  ],),
+                    GetBuilder<SleepController>(builder: (controller)=>Switch(
+                        activeColor: Colors.teal,
+
+                        value: controller.wakeupAlarm, onChanged: (value)
+                    {if(value==true)
+                    {
+                      controller.wakeupAlarm=value;
+                      controller.setAlarm(id: 2);
+
+                    }
+                    else
+                    {
+                      controller.wakeupAlarm=value;
+                      controller.cancelAlarm(id: 2);
+                    }
+                    }))
+
+                  ],
+                ),
               ),
             ),
-          )
+          ),
+          SizedBox(
+              height: 170,
+              child: Image(image: AssetImage("assets/images/slept.png")))
 
         ],
       ),
     );
   }
-  Future<void> checkAndroidScheduleExactAlarmPermission() async {
-    final status = await Permission.scheduleExactAlarm.status;
-    print('Schedule exact alarm permission: $status.');
-    if (status.isDenied) {
-      print('Requesting schedule exact alarm permission...');
-      final res = await Permission.scheduleExactAlarm.request();
-      print('Schedule exact alarm permission ${res.isGranted ? '' : 'not'} granted.');
-    }
-  }
+
 }
