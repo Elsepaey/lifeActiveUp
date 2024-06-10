@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <application
 
-        android:label="nutrifit"
+        android:label="LifeActiveUp"
         android:name="${applicationName}"
         android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/launcher_icon">

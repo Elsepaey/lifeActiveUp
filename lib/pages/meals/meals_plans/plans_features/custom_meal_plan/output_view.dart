@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/meals/meals_plans/mealsplans_api.dart';
@@ -13,7 +11,8 @@ class CustomOutput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,),
@@ -23,7 +22,7 @@ class CustomOutput extends StatelessWidget {
         children: [
 
           SizedBox(
-              height: 200,
+              height:screenHeight/4.2 ,
               child: Image(image: AssetImage("assets/images/chef_2.png",),)),
           Expanded(
             child: Padding(
@@ -33,11 +32,11 @@ class CustomOutput extends StatelessWidget {
                 future: getData(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
                     return Center(child: Text('Error: ${snapshot.error}'));
                   } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return Center(child: Text('No data available'));
+                    return const Center(child: Text('No data available'));
                   } else {
                     var data=snapshot.data!["output"];
                     print(data.length);
@@ -46,11 +45,11 @@ class CustomOutput extends StatelessWidget {
                       return ToggleListItem(
 
                         title: Card(
-                          margin: EdgeInsets.all(0),
+                          margin: const EdgeInsets.all(0),
                             color: MyTheme.primary_color,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text(item["Name"], style: TextStyle(fontSize: 18)),
+                              child: Text(item["Name"], style: const TextStyle(fontSize: 18)),
                             )),
             
                         content: Padding(
@@ -59,7 +58,7 @@ class CustomOutput extends StatelessWidget {
                            // mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Text("RecipeIngredients",style: TextStyle(fontWeight: FontWeight.bold),),
+                              const Text("RecipeIngredients",style: TextStyle(fontWeight: FontWeight.bold),),
                               SizedBox(
                                   height:40,
                                   child: ListView(children:item["RecipeIngredientParts"].map<Card>((item)=>Card(
@@ -69,17 +68,17 @@ class CustomOutput extends StatelessWidget {
                                         child: Text(item),
                                       ))).toList(),scrollDirection: Axis.horizontal,)),
 
-                              Text("Calories:                          ${item["Calories"]}",style: TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Fat Content:                      ${item["FatContent"]}",style: TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Saturated Fat Content:     ${item["SaturatedFatContent"]}",style: TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Cholesterol Content:        ${item["CholesterolContent"]}",style: TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Sodium Content:             ${item["SodiumContent"]}",style: TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Carbohydrate Content:     ${item["CarbohydrateContent"]}",style: TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Fiber Content:                     ${item["FiberContent"]}",style: TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Sugar Content:                    ${item["SugarContent"]}",style: TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Protein Content:                ${item["ProteinContent"]}",style: TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Calories:                          ${item["Calories"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Fat Content:                      ${item["FatContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Saturated Fat Content:     ${item["SaturatedFatContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Cholesterol Content:        ${item["CholesterolContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Sodium Content:             ${item["SodiumContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Carbohydrate Content:     ${item["CarbohydrateContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Fiber Content:                     ${item["FiberContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Sugar Content:                    ${item["SugarContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Protein Content:                ${item["ProteinContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
                             ].map((text) => Padding(
-                              padding: EdgeInsets.only(bottom: 8.0),
+                              padding: const EdgeInsets.only(bottom: 8.0),
                               child: text,
                             )).toList(),
                           ),

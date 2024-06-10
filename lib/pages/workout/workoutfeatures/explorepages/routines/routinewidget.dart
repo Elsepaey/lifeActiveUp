@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import '../../../../../core/themes.dart';
 import '../bodymuscles/musclecontainer.dart';
 
@@ -21,7 +19,7 @@ class Routine extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Row(
@@ -29,9 +27,9 @@ class Routine extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
-                Row(
+                const Row(
                   children: [
                     Icon(
                       Icons.bookmark,
@@ -45,14 +43,14 @@ class Routine extends StatelessWidget {
                 )
               ],
             ),
-            Divider(),
+            const Divider(),
             Expanded(
               child: ListView.builder(
 
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemCount: muscles.length,
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   itemBuilder: (context, index) =>
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -64,7 +62,7 @@ class Routine extends StatelessWidget {
                             ),
                             Text(
                               muscles[index].name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 10, fontWeight: FontWeight.bold),
                             )
                           ],
@@ -84,7 +82,7 @@ class Routine extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
 
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(6)),
+                      borderRadius: const BorderRadius.all(Radius.circular(6)),
                       color: MyTheme.greyAccent,
                     ),
                     child: Image(
@@ -93,7 +91,7 @@ class Routine extends StatelessWidget {
                     )),
               ),
             ),
-            SizedBox(height: 5,)
+            const SizedBox(height: 5,)
           ],
         ),
       ),

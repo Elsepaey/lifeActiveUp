@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:nutrifit/pages/foodcalender/foodlog.dart';
-import 'package:nutrifit/pages/meals/explore_meals/mealsview.dart';
 import 'package:nutrifit/pages/workout/workoutview.dart';
 
 import '../hompage/homepage.dart';
@@ -19,8 +18,8 @@ class MainScreenController extends GetxController {
 Workout()
   ];
 
-
-  List<NavbarItem> navitems = [
+  List<NavbarItem> navitems =
+  [
     const NavbarItem(Icons.home_outlined, 'Home',
         backgroundColor: mediumPurple,
         selectedIcon: Icon(

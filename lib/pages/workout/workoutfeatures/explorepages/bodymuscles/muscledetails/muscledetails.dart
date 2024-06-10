@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/workout/workoutfeatures/explorepages/bodymuscles/muscledetails/muscledetailscontroller.dart';
 import 'package:nutrifit/pages/workout/workoutfeatures/explorepages/bodymuscles/musclecontainer.dart';
 import 'package:nutrifit/pages/workout/workoutfeatures/explorepages/exercises/exerciseWidget.dart';
@@ -21,7 +18,7 @@ class MuscleDetails extends StatelessWidget {
         //backgroundColor: MyTheme.primary_color,
         title: Text(
           "$muscle muscle",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         //centerTitle: true,
       ),
@@ -31,7 +28,7 @@ class MuscleDetails extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 18,
               ),
               Row(
@@ -49,7 +46,7 @@ class MuscleDetails extends StatelessWidget {
                               fontSize: screenWidth / 23,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 4,
                         ),
                         Text(controller.muscles[muscle]?["Function"]),
@@ -71,10 +68,10 @@ class MuscleDetails extends StatelessWidget {
                         fontSize: screenWidth / 23,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
-                  Container(
+                  SizedBox(
                     height: screenHeight/8,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
@@ -85,14 +82,14 @@ class MuscleDetails extends StatelessWidget {
                           child: ExerciseWidget(
                               title: "Push Up",
                               imagePath: "assets/images/exercises/pushUp.jpg",
-                              muscles: ["chest", "triceps"]),
+                              muscles: const ["chest", "triceps"]),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ExerciseWidget(
                               title: "Blank",
                               imagePath: "assets/images/exercises/Blank.gif",
-                              muscles: ["shoulders", "abs","glutes"]),
+                              muscles: const ["shoulders", "abs","glutes"]),
                         ),
                       ],
                     ),
@@ -108,17 +105,17 @@ class MuscleDetails extends StatelessWidget {
                         fontSize: screenWidth / 23,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
-                  Container(
+                  SizedBox(
                     height: screenHeight/8,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
 
                       children: [
                         Container(
-                          margin: EdgeInsets.all(4),
+                          margin: const EdgeInsets.all(4),
 
                           decoration: BoxDecoration(
                     boxShadow: [
@@ -133,7 +130,7 @@ class MuscleDetails extends StatelessWidget {
 
                           ),
                           child:
-                          ClipRRect(
+                          const ClipRRect(
                               borderRadius: BorderRadius.all(Radius.circular(12)),// Image border
                               // Image radius
                               child: Image(image: AssetImage("assets/images/machines/lat pulldown.jpg"),fit: BoxFit.fill,),),
@@ -141,7 +138,7 @@ class MuscleDetails extends StatelessWidget {
 
                         ),
                         Container(
-                          margin: EdgeInsets.all(4),
+                          margin: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -155,7 +152,7 @@ class MuscleDetails extends StatelessWidget {
 
                           ),
                           child:
-                          ClipRRect(
+                          const ClipRRect(
                             borderRadius: BorderRadius.all(Radius.circular(12)),// Image border
                             // Image radius
                             child: Image(image: AssetImage("assets/images/machines/dip station.jpg"),fit: BoxFit.fill,),),
@@ -163,7 +160,7 @@ class MuscleDetails extends StatelessWidget {
 
                         ),
                         Container(
-                          margin: EdgeInsets.all(4),
+                          margin: const EdgeInsets.all(4),
 
                           decoration: BoxDecoration(
                             boxShadow: [
@@ -178,7 +175,7 @@ class MuscleDetails extends StatelessWidget {
 
                           ),
                           child:
-                          ClipRRect(
+                          const ClipRRect(
                             borderRadius: BorderRadius.all(Radius.circular(12)),// Image border
                             // Image radius
                             child: Image(image: AssetImage("assets/images/machines/lat pulldown.jpg"),fit: BoxFit.fill,),),
@@ -186,7 +183,7 @@ class MuscleDetails extends StatelessWidget {
 
                         ),
                         Container(
-                          margin: EdgeInsets.all(4),
+                          margin: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
@@ -200,7 +197,7 @@ class MuscleDetails extends StatelessWidget {
 
                           ),
                           child:
-                          ClipRRect(
+                          const ClipRRect(
                             borderRadius: BorderRadius.all(Radius.circular(12)),// Image border
                             // Image radius
                             child: Image(image: AssetImage("assets/images/machines/dip station.jpg"),fit: BoxFit.fill,),),
@@ -214,7 +211,7 @@ class MuscleDetails extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 12,),
+              const SizedBox(height: 12,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -224,7 +221,7 @@ class MuscleDetails extends StatelessWidget {
                         fontSize: screenWidth / 23,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 4,
                   ),
                   Text(controller.muscles[muscle]?["Nutrition and Supplements"],style: TextStyle(fontSize: screenWidth/30),),

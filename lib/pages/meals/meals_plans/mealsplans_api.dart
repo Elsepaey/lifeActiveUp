@@ -5,7 +5,7 @@ import '../../../model/user controller.dart';
 class MealsApi {
   static AppUserController userController = Get.find();
 
-  static Future<Map<String, dynamic>> postDiet({required String gender,required String weight,required String height,required String age,required String diseases,required activityLevel}) async {
+  static Future<Map<String, dynamic>> postDiet({required String gender,required String weight,required String height,required String age,required String diseases,required activityLevel,required String dietType}) async {
     var url = Uri.parse('http://dietrecommender.live/predict/');
     var headers = {
       'accept': 'application/json',
@@ -19,7 +19,8 @@ class MealsApi {
         height,
         age,
         diseases,
-        activityLevel
+        activityLevel,
+        dietType
       ],
       "ingredients": [],
       "allergies": userController.allergiesList,

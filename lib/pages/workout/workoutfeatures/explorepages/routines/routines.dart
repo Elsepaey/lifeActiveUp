@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:nutrifit/pages/workout/workoutfeatures/explorepages/routines/routinedetails/routinedetails.dart';
 import 'package:nutrifit/pages/workout/workoutfeatures/explorepages/routines/routinewidget.dart';
 
@@ -155,7 +153,7 @@ class Routines extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         Expanded(
@@ -163,7 +161,7 @@ class Routines extends StatelessWidget {
           children: [
             InkWell(
 
-              child: Container(
+              child: SizedBox(
                 height: 230,
                 child: Routine(title: "Broad Shoulders", muscles: muscles["Broad Shoulders"]
                 , exercises:exercises["Broad Shoulders"]
@@ -177,7 +175,7 @@ class Routines extends StatelessWidget {
               onTap: (){
                 Get.to(RoutineDetails(title: "Chest Tricebs", muscles: muscles["Chest Tricebs"], exercises: exercises["Chest Tricebs"]));
               },
-              child: Container(
+              child: SizedBox(
                 height: 230,
                 child: Routine(title: "Chest Tricebs", muscles:
                muscles["Chest Tricebs"], exercises:
@@ -188,7 +186,7 @@ class Routines extends StatelessWidget {
               onTap: (){
                 Get.to(RoutineDetails(title: "Upper-Body Cardio at Home", muscles: muscles["Upper-Body Cardio at Home"], exercises: exercises["Upper-Body Cardio at Home"]));
               },
-              child: Container(
+              child: SizedBox(
                 height: 230,
                 child: Routine(title: "Upper-Body Cardio at Home", muscles:
                muscles["Upper-Body Cardio at Home"], exercises:

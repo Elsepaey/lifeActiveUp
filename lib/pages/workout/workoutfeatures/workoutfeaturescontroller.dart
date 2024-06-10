@@ -21,7 +21,7 @@ class WorkoutFeaturesController extends GetxController{
     }
     else
       {
-        return Execises();
+        return const Execises();
       }
   }
 }

@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:nutrifit/pages/meals/meals_plans/mealsplans_controller.dart';
 
 import '../../../core/themes.dart';
@@ -14,10 +12,10 @@ MealsPlansController controller =Get.put(MealsPlansController());
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    return Padding(padding: EdgeInsets.all(8),
+    return Padding(padding: const EdgeInsets.all(8),
       child:Column(children: [
 
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         GetBuilder<MealsPlansController>(builder: (controller)=>

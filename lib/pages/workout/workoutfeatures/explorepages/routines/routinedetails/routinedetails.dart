@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-import '../../../../../../core/themes.dart';
 import '../../bodymuscles/musclecontainer.dart';
 
 class RoutineDetails extends StatelessWidget {
@@ -21,7 +18,7 @@ List exercises;
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Row(
+            const Row(
               children: [
                 ImageIcon(AssetImage("assets/icons/arm.png",),size: 36,),
                 Text("Working Muscles",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),)
@@ -34,7 +31,7 @@ List exercises;
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemCount: muscles.length,
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   itemBuilder: (context, index) =>
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -46,24 +43,24 @@ List exercises;
                             ),
                             Text(
                               muscles[index].name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 10, fontWeight: FontWeight.bold),
                             )
                           ],
                         ),
                       )),
             ),
-            Divider(),
-            Text("Exercises",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+            const Divider(),
+            const Text("Exercises",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
             Expanded(
               flex: 4,
               child:
               ListView.builder(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
               shrinkWrap: true,
               itemCount: exercises.length,
               itemBuilder: (context, index) => Container(
-                margin: EdgeInsets.all(4),
+                margin: const EdgeInsets.all(4),
                 decoration: BoxDecoration(color:Colors.white,border: Border.all(),borderRadius: BorderRadius.circular(10)),
                 //padding: EdgeInsets.all(2),
                 child: Row(
@@ -73,19 +70,19 @@ List exercises;
                       child: Container(
                        // margin: const EdgeInsets.symmetric(horizontal: 4.0),
                         clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(6)),
                           //color: MyTheme.greyAccent,
                         ),
+                        width: screenWidth/3,height: screenHeight/13,
                         child: Image(
                           image: AssetImage(exercises[index].imagePath,),
                           fit: BoxFit.fill,
                                       
                         ),
-                        width: screenWidth/3,height: screenHeight/13,
                       ),
                     ),
-                    SizedBox(width: 4,),
+                    const SizedBox(width: 4,),
                     Expanded(child: Text(exercises[index].title)),
                     Padding(
                       padding: const EdgeInsets.all(8.0),

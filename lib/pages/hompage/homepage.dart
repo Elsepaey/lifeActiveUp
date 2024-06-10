@@ -52,7 +52,6 @@ class HomePage extends StatelessWidget {
                       return Container(
                           width: screenWidth,
                           margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                          //padding: EdgeInsets.symmetric(horizontal: 15),
 
                           child: Image(
                             image: image,
@@ -89,7 +88,7 @@ class HomePage extends StatelessWidget {
               ),
               GetX<DailyStatics>(
                 builder: (controller) => Container(
-                  padding: const EdgeInsets.all(8),
+                  padding:  EdgeInsets.all(screenHeight/150),
                   height: screenHeight / 7,
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -127,12 +126,12 @@ class HomePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                           Text(
                             "Calories",
-                            style: TextStyle(),
+                            style: TextStyle(fontSize: screenHeight/55),
                           ),
                           Text(
-                              "${staticsController.totalCalories.value.truncateToDouble()}/${userController.dailyIntake["total_calories"]} kcal")
+                              "${staticsController.totalCalories.value.truncateToDouble()}/${userController.dailyIntake["total_calories"]} kcal",style: TextStyle(fontSize: screenHeight/55),)
                         ],
                       ),
                       LinearProgressIndicator(
@@ -148,9 +147,9 @@ class HomePage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text("protein"),
+                               Text("protein",style: TextStyle(fontSize: screenHeight/55),),
                               Text(
-                                  "${staticsController.totalProtein.value.truncateToDouble()}/${userController.dailyIntake["protein"]}"),
+                                  "${staticsController.totalProtein.value.truncateToDouble()}/${userController.dailyIntake["protein"]}",style: TextStyle(fontSize: screenHeight/55),),
                               SizedBox(
                                   width: screenWidth / 6,
                                   child: LinearProgressIndicator(
@@ -163,9 +162,9 @@ class HomePage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text("fats"),
+                               Text("fats",style: TextStyle(fontSize: screenHeight/55),),
                               Text(
-                                  "${staticsController.totalFats.value.truncateToDouble()}/${userController.dailyIntake["fat"]}"),
+                                  "${staticsController.totalFats.value.truncateToDouble()}/${userController.dailyIntake["fat"]}",style: TextStyle(fontSize: screenHeight/55),),
                               SizedBox(
                                   width: screenWidth / 6,
                                   child: LinearProgressIndicator(
@@ -177,9 +176,9 @@ class HomePage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text("carbs"),
+                               Text("carbs",style: TextStyle(fontSize: screenHeight/55),),
                               Text(
-                                  "${staticsController.totalCarbs.value.truncateToDouble()}/${userController.dailyIntake["carbohydrates"]}"),
+                                  "${staticsController.totalCarbs.value.truncateToDouble()}/${userController.dailyIntake["carbohydrates"]}",style: TextStyle(fontSize: screenHeight/55),),
                               SizedBox(
                                   width: screenWidth / 6,
                                   child: LinearProgressIndicator(
@@ -201,7 +200,7 @@ class HomePage extends StatelessWidget {
                 height: screenHeight / 50,
               ),
               Container(
-                //padding: EdgeInsets.all(8),
+                //padding: EdgeInsets.all(screenHeight/160),
                 height: screenHeight / 7,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -219,7 +218,7 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding:  EdgeInsets.all(screenHeight/150),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -235,8 +234,8 @@ class HomePage extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 12, fontWeight: FontWeight.w500),
                           ),
-                          const Text(". 12 week"),
-                          const Text(".  beginner"),
+                           Text(". 12 week",style: TextStyle(fontSize: screenHeight/55),),
+                           Text(".  beginner",style: TextStyle(fontSize: screenHeight/55),),
                           SizedBox(
                             height: screenHeight / 130,
                           ),
@@ -250,7 +249,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
-                      child: const ClipRRect(
+                      child:  ClipRRect(
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.zero,
                               topRight: Radius.circular(12),
@@ -269,7 +268,7 @@ class HomePage extends StatelessWidget {
                 height: screenHeight / 50,
               ),
               Container(
-                padding: const EdgeInsets.all(8),
+                padding:  EdgeInsets.all(screenHeight/150),
                 height: screenHeight / 7,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -313,15 +312,15 @@ class HomePage extends StatelessWidget {
                             Obx(() => Text(
                                   '${stepsController.steps.value}',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: screenHeight/45,
                                       fontWeight: FontWeight.bold),
                                 )),
-                            Text("Today Steps"),
+                            Text("Today Steps",style: TextStyle(fontSize: screenHeight/55),),
                           ],
                         ),
                         ImageIcon(
                           AssetImage("assets/images/running.png"),
-                          size: 80,
+                          size: screenHeight/12,
                         )
                       ],
                     )
@@ -332,7 +331,7 @@ class HomePage extends StatelessWidget {
                 height: screenHeight / 50,
               ),
               Container(
-                padding: const EdgeInsets.all(8),
+                padding:  EdgeInsets.all(screenHeight/150),
                 height: screenHeight / 7,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -382,7 +381,7 @@ class HomePage extends StatelessWidget {
                         ),
                         ImageIcon(
                           AssetImage("assets/images/icons8-water-64.png"),
-                          size: 80,
+                          size: screenHeight/12,
                         )
                       ],
                     )
@@ -393,7 +392,7 @@ class HomePage extends StatelessWidget {
                 height: screenHeight / 50,
               ),
               Container(
-                padding: const EdgeInsets.all(8),
+                padding:  EdgeInsets.all(screenHeight/150),
                 height: screenHeight / 7,
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -434,15 +433,15 @@ class HomePage extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            Text("Log Sleep Intake ",style: TextStyle(fontWeight: FontWeight.w500),),
+                            Text("Log Sleep Intake ",style: TextStyle(fontWeight: FontWeight.w500,fontSize: screenHeight/57),),
                             Text(
-                              "& Set Alarms",style: TextStyle(fontWeight: FontWeight.w500,
+                              "& Set Alarms",style: TextStyle(fontWeight: FontWeight.w500,fontSize: screenHeight/57
                             )),
                           ],
                         ),
                         ImageIcon(
                           AssetImage("assets/icons/sleep_1422872.png"),
-                          size: 80,
+                          size: screenHeight/12,
                         )
                       ],
                     )

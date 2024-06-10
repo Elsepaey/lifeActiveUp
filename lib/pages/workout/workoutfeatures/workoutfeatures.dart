@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
@@ -18,7 +17,7 @@ class WorkoutFeatures extends StatelessWidget {
 
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           GetBuilder<WorkoutFeaturesController>(builder: (controller)=>

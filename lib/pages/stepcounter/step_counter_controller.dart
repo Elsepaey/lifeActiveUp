@@ -107,13 +107,13 @@ class StepController extends GetxController {
   }
   Future<void> saveStepsForPreviousDay() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String key = DateFormat('yyyy-MM-dd').format(lastUpdatedDate.subtract(Duration(days: 1)));
+    String key = DateFormat('yyyy-MM-dd').format(lastUpdatedDate.subtract(const Duration(days: 1)));
     await prefs.setInt(key, yesterdaySteps);
     update();
   }
 Future<void> getYesterdaySteps() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String yesterday = DateFormat('yyyy-MM-dd').format(DateTime.now().subtract(Duration(days: 1)));
+  String yesterday = DateFormat('yyyy-MM-dd').format(DateTime.now().subtract(const Duration(days: 1)));
 print (yesterday);
   yesterdaySteps=prefs.getInt(yesterday)??0;
   print("saved");

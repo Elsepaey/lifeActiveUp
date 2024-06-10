@@ -56,7 +56,7 @@ class ShowLoggedWater extends StatelessWidget {
                             return ListTile(
                               trailing: Text(
                                 "${document['time']}",
-                                style: TextStyle(fontSize: 12),
+                                style: const TextStyle(fontSize: 12),
                               ),
                               title: Text("${document['quantity']} ml"),
                             );

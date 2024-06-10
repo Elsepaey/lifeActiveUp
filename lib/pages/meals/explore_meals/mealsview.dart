@@ -67,7 +67,7 @@ class Meals extends StatelessWidget {
 
                       ),
                     ),
-                    child: const Text("Calories"),),
+                    child:  Text("Calories",style: TextStyle(fontSize: width/28),),),
                   ),
                   SizedBox(width: width/50,),
                   InkWell(
@@ -84,7 +84,7 @@ class Meals extends StatelessWidget {
 
                       ),
                     ),
-                      child: const Text("Protein"),),
+                      child:  Text("Protein",style: TextStyle(fontSize: width/28),),),
                   ),
                   SizedBox(width: width/50,),
                   InkWell(
@@ -101,7 +101,7 @@ class Meals extends StatelessWidget {
 
                       ),
                     ),
-                      child: const Text("Fat"),),
+                      child:  Text("Fat",style: TextStyle(fontSize: width/28),),),
                   ),
                   SizedBox(width: width/50,),
                   InkWell(
@@ -118,7 +118,7 @@ class Meals extends StatelessWidget {
 
                       ),
                     ),
-                      child: const Text("Carbs"),),
+                      child:  Text("Carbs",style: TextStyle(fontSize: width/28),),),
                   ),
                   SizedBox(width: width/50,),
                   InkWell(
@@ -135,7 +135,7 @@ class Meals extends StatelessWidget {
 
                       ),
                     ),
-                      child: const Text("Sugars"),),
+                      child:  Text("Sugars",style: TextStyle(fontSize: width/28),),),
                   ),
 
                   // Card(child: Padding(

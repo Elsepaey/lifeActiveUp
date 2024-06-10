@@ -35,7 +35,7 @@ class StepCounter extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Today Steps"),
+        title: const Text("Today Steps"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -66,7 +66,7 @@ class StepCounter extends StatelessWidget {
                               showTitles: true,
                               getTitlesWidget:
                                   (double value, TitleMeta meta) {
-                                TextStyle style = TextStyle(
+                                TextStyle style = const TextStyle(
                                   color:Colors.indigo,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
@@ -89,7 +89,7 @@ class StepCounter extends StatelessWidget {
                                   (double value, TitleMeta meta) {
                                 return Text("${value.toInt()}",
                                     textAlign: TextAlign.center,
-                                    style:  TextStyle(
+                                    style:  const TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
@@ -99,7 +99,7 @@ class StepCounter extends StatelessWidget {
                               reservedSize: 60,
                             ),
                           ),
-                          rightTitles: AxisTitles(),
+                          rightTitles: const AxisTitles(),
                         ),
                         borderData: FlBorderData(
                           show: false,
@@ -112,7 +112,7 @@ class StepCounter extends StatelessWidget {
                                 toY: controller.previousDaysSteps[
                                 DateFormat('yyyy-MM-dd').format(
                                     DateTime.now().subtract(
-                                        Duration(days: 6)))]
+                                        const Duration(days: 6)))]
                                     .toDouble(),
                                 color: MyTheme.primary_color,
                               ),
@@ -125,7 +125,7 @@ class StepCounter extends StatelessWidget {
                                 toY: controller.previousDaysSteps[
                                 DateFormat('yyyy-MM-dd').format(
                                     DateTime.now().subtract(
-                                        Duration(days: 5)))]
+                                        const Duration(days: 5)))]
                                     .toDouble(),
                                 color: MyTheme.primary_color,
                               ),
@@ -138,7 +138,7 @@ class StepCounter extends StatelessWidget {
                                 toY: controller.previousDaysSteps[
                                 DateFormat('yyyy-MM-dd').format(
                                     DateTime.now().subtract(
-                                        Duration(days: 4)))]
+                                        const Duration(days: 4)))]
                                     .toDouble(),
                                 color: MyTheme.primary_color,
                               ),
@@ -151,7 +151,7 @@ class StepCounter extends StatelessWidget {
                                 toY: controller.previousDaysSteps[
                                 DateFormat('yyyy-MM-dd').format(
                                     DateTime.now().subtract(
-                                        Duration(days: 3)))]
+                                        const Duration(days: 3)))]
                                     .toDouble(),
                                 color: MyTheme.primary_color,
                               ),
@@ -164,7 +164,7 @@ class StepCounter extends StatelessWidget {
                                 toY: controller.previousDaysSteps[
                                 DateFormat('yyyy-MM-dd').format(
                                     DateTime.now().subtract(
-                                        Duration(days: 2)))]
+                                        const Duration(days: 2)))]
                                     .toDouble(),
                                 color: MyTheme.primary_color,
                               ),
@@ -177,7 +177,7 @@ class StepCounter extends StatelessWidget {
                                 toY: controller.previousDaysSteps[
                                 DateFormat('yyyy-MM-dd').format(
                                     DateTime.now().subtract(
-                                        Duration(days: 1)))]
+                                        const Duration(days: 1)))]
                                     .toDouble(),
                                 color: MyTheme.primary_color,
                               ),
@@ -197,7 +197,7 @@ class StepCounter extends StatelessWidget {
                     ),
                   ),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 29,
             ),
             GetX<StepController>(
@@ -254,7 +254,7 @@ class StepCounter extends StatelessWidget {
                     "Summary",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Row(
@@ -264,10 +264,10 @@ class StepCounter extends StatelessWidget {
                         children: [
                           Obx(() => Text(
                                 ' ${controller.distance.value.toStringAsFixed(2)} km',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
                               )),
-                          Text("Distance"),
+                          const Text("Distance"),
                         ],
                       ),
                       Container(
@@ -279,10 +279,10 @@ class StepCounter extends StatelessWidget {
                         children: [
                           Obx(() => Text(
                                 'Steps: ${controller.steps.value}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
                               )),
-                          Text("Steps Covered"),
+                          const Text("Steps Covered"),
                         ],
                       ),
                     ],
@@ -294,7 +294,7 @@ class StepCounter extends StatelessWidget {
               height: 20,
             ),
             Container(
-              margin: EdgeInsets.all(8),
+              margin: const EdgeInsets.all(8),
               padding: const EdgeInsets.all(12),
               height: screenHeight / 7,
               decoration: BoxDecoration(
@@ -308,10 +308,10 @@ class StepCounter extends StatelessWidget {
                       offset: const Offset(0, 1), // changes position of shadow
                     ),
                   ]),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "Goal",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),

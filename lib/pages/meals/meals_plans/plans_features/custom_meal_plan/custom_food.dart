@@ -1,9 +1,6 @@
-import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:nutrifit/pages/meals/meals_plans/plans_features/custom_meal_plan/customfood_controller.dart';
 import 'package:nutrifit/pages/meals/meals_plans/plans_features/custom_meal_plan/output_view.dart';
 
@@ -27,7 +24,7 @@ class CustomFood extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Calories"),
+                    const Text("Calories"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -56,7 +53,7 @@ class CustomFood extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Fat"),
+                    const Text("Fat"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -85,7 +82,7 @@ class CustomFood extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("SaturatedFat"),
+                    const Text("SaturatedFat"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -114,7 +111,7 @@ class CustomFood extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Cholesterol"),
+                    const Text("Cholesterol"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -143,7 +140,7 @@ class CustomFood extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Sodium"),
+                    const Text("Sodium"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -172,7 +169,7 @@ class CustomFood extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Carbohydrates"),
+                    const Text("Carbohydrates"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -201,7 +198,7 @@ class CustomFood extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Fiber"),
+                    const Text("Fiber"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -230,7 +227,7 @@ class CustomFood extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Sugar"),
+                    const Text("Sugar"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -259,7 +256,7 @@ class CustomFood extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Protein"),
+                    const Text("Protein"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -282,7 +279,7 @@ class CustomFood extends StatelessWidget {
                 ),
               ),
             ),
-            TextField(decoration: InputDecoration(
+            const TextField(decoration: InputDecoration(
               hintText: "add ingredients"
             ),),
             ElevatedButton(onPressed: ( ) async {
@@ -290,7 +287,7 @@ Get.to(CustomOutput());
 
 
 
-            }, child: Text("generate")),
+            }, child: const Text("generate")),
 
           ],
         ),

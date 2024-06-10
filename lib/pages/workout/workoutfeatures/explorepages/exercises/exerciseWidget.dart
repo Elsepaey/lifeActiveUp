@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nutrifit/core/themes.dart';
 
 class ExerciseWidget extends StatelessWidget {
    ExerciseWidget({super.key,required this.title,required this.imagePath,required this.muscles});
@@ -9,7 +8,7 @@ List muscles;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(4),
+      padding: const EdgeInsets.all(4),
 decoration: BoxDecoration(
     color: Colors.white,
     borderRadius: BorderRadius.circular(12),
@@ -40,16 +39,16 @@ decoration: BoxDecoration(
                     image: AssetImage(imagePath),
                     fit: BoxFit.fill,
                   )),
-              SizedBox(width: 8,),
+              const SizedBox(width: 8,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                mainAxisAlignment: MainAxisAlignment.center,
                // mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Icon(Icons.star_border),
-                  Text(title,style: TextStyle(fontWeight: FontWeight.bold),),
+                  const Icon(Icons.star_border),
+                  Text(title,style: const TextStyle(fontWeight: FontWeight.bold),),
 
-                  Text(muscles.join(","),style: TextStyle(fontSize: 12),)
+                  Text(muscles.join(","),style: const TextStyle(fontSize: 12),)
                 ],
               ),
             ],

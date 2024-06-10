@@ -6,12 +6,15 @@ import 'package:nutrifit/pages/foodcalender/foodlogcontroller.dart';
 import 'package:nutrifit/pages/mealLogDetails/mealdetailscontroller.dart';
 import '../../core/dailystatics.dart';
 import '../../databases/database.dart';
+import '../../model/user controller.dart';
 
 class MealLogDetails extends StatelessWidget {
   MealLogDetails(
       {super.key, required this.mealType, required this.checkedTime});
   final String mealType;
   final DateTime checkedTime;
+  AppUserController userController = Get.find();
+
   MealDetailsController controller = Get.put(MealDetailsController());
   final FoodLogController foodLogController = Get.put(FoodLogController());
   DailyStatics staticsController = Get.put(DailyStatics());
@@ -40,8 +43,7 @@ class MealLogDetails extends StatelessWidget {
           ),
           GetX<DailyStatics>(
             builder: (controller) => Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8),
-              padding: const EdgeInsets.all(8),
+              padding:  EdgeInsets.all(screenHeight/150),
               height: screenHeight / 7,
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -51,7 +53,8 @@ class MealLogDetails extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.2),
                       spreadRadius: 3,
                       blurRadius: 4,
-                      offset: const Offset(0, 1), // changes position of shadow
+                      offset:
+                      const Offset(0, 1), // changes position of shadow
                     ),
                   ]),
               child: Column(
@@ -78,16 +81,17 @@ class MealLogDetails extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         "Calories",
-                        style: TextStyle(),
+                        style: TextStyle(fontSize: screenHeight/55),
                       ),
                       Text(
-                          "${staticsController.totalCalories.value.truncateToDouble()}/1800 kcal")
+                        "${staticsController.totalCalories.value.truncateToDouble()}/${userController.dailyIntake["total_calories"]} kcal",style: TextStyle(fontSize: screenHeight/55),)
                     ],
                   ),
                   LinearProgressIndicator(
-                    value: (staticsController.totalCalories.value) / 1800,
+                    value: (staticsController.totalCalories.value) /
+                        userController.dailyIntake["total_calories"]!,
                   ),
                   SizedBox(
                     height: screenHeight / 200,
@@ -98,13 +102,14 @@ class MealLogDetails extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text("protein"),
+                          Text("protein",style: TextStyle(fontSize: screenHeight/55),),
                           Text(
-                              "${staticsController.totalProtein.value.truncateToDouble()}/300"),
+                            "${staticsController.totalProtein.value.truncateToDouble()}/${userController.dailyIntake["protein"]}",style: TextStyle(fontSize: screenHeight/55),),
                           SizedBox(
                               width: screenWidth / 6,
                               child: LinearProgressIndicator(
-                                value: (staticsController.totalProtein.value) /
+                                value:
+                                (staticsController.totalProtein.value) /
                                     300,
                               )),
                         ],
@@ -112,28 +117,30 @@ class MealLogDetails extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text("fats"),
+                          Text("fats",style: TextStyle(fontSize: screenHeight/55),),
                           Text(
-                              "${staticsController.totalFats.value.truncateToDouble()}/300"),
+                            "${staticsController.totalFats.value.truncateToDouble()}/${userController.dailyIntake["fat"]}",style: TextStyle(fontSize: screenHeight/55),),
                           SizedBox(
                               width: screenWidth / 6,
                               child: LinearProgressIndicator(
-                                value:
-                                    (staticsController.totalFats.value) / 300,
+                                value: (staticsController.totalFats.value) /
+                                    userController.dailyIntake["fat"]!,
                               )),
                         ],
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text("carbs"),
+                          Text("carbs",style: TextStyle(fontSize: screenHeight/55),),
                           Text(
-                              "${staticsController.totalCarbs.value.truncateToDouble()}/300"),
+                            "${staticsController.totalCarbs.value.truncateToDouble()}/${userController.dailyIntake["carbohydrates"]}",style: TextStyle(fontSize: screenHeight/55),),
                           SizedBox(
                               width: screenWidth / 6,
                               child: LinearProgressIndicator(
                                 value:
-                                    (staticsController.totalCarbs.value) / 300,
+                                (staticsController.totalCarbs.value) /
+                                    userController
+                                        .dailyIntake["carbohydrates"]!,
                               )),
                         ],
                       ),

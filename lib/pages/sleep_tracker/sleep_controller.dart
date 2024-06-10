@@ -5,7 +5,6 @@ import 'package:alarm/alarm.dart';
 import 'package:alarm/model/alarm_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,8 +26,8 @@ TextEditingController sleepDurationController=TextEditingController();
     _startTimer();
   }
 
-  var sleepTime = TimeOfDay(hour: 22, minute: 0).obs; // default 10:00 PM
-  var wakeupTime = TimeOfDay(hour: 6, minute: 0).obs; // default 6:00 AM
+  var sleepTime = const TimeOfDay(hour: 22, minute: 0).obs; // default 10:00 PM
+  var wakeupTime = const TimeOfDay(hour: 6, minute: 0).obs; // default 6:00 AM
 
   Future<void> loadTimes() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -92,7 +91,7 @@ TextEditingController sleepDurationController=TextEditingController();
     );
 
     final difference = targetDateTime.isBefore(now)
-        ? targetDateTime.add(Duration(days: 1)).difference(now)
+        ? targetDateTime.add(const Duration(days: 1)).difference(now)
         : targetDateTime.difference(now);
 
     final hours = difference.inHours;
@@ -101,7 +100,7 @@ TextEditingController sleepDurationController=TextEditingController();
   }
 
   void _startTimer() {
-    Timer.periodic(Duration(minutes: 1), (timer) {
+    Timer.periodic(const Duration(minutes: 1), (timer) {
       updateCountdowns();
     });
   }

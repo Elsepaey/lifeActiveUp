@@ -96,6 +96,7 @@ class CustomWidgets {
               isExpanded: true,
               borderRadius: BorderRadius.circular(12),
               dropdownColor: Colors.grey.shade100,
+              style: TextStyle(fontSize: screenWidth/30,color: Colors.black,fontWeight: FontWeight.w500),
               value: value,
 
               onChanged: (String? newValue) {

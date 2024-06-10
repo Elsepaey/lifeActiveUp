@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/pages/meals/meals_plans/plans_features/custom_meal_plan/custom_food.dart';
-import 'package:nutrifit/pages/meals/meals_plans/plans_features/dietplan/diet_view.dart';
+import 'package:nutrifit/pages/meals/meals_plans/plans_features/dietplan/diet_type.dart';
 
 class MealsPlansController extends GetxController{
   int currentIndex=0;
@@ -15,7 +15,7 @@ class MealsPlansController extends GetxController{
       return CustomFood();}
     else
     {
-      return DietView();
+      return DietSelectionScreen();
 
     }
 

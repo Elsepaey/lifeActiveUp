@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
@@ -16,7 +15,8 @@ WorkoutController controller=Get.put(WorkoutController());
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          GetBuilder<WorkoutController>(builder: (controller)=>Row(
+          GetBuilder<WorkoutController>(builder: (controller)=>
+              Row(
            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
@@ -50,7 +50,8 @@ WorkoutController controller=Get.put(WorkoutController());
               ),
             ],
 
-          )),
+          )
+          ),
           Expanded(
             child: GetBuilder<WorkoutController>(builder: (controller)=>
                 controller.buildView()

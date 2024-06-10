@@ -17,7 +17,7 @@ class AddingWaterDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       AlertDialog(
-      title: Text("Add your intake"),
+      title: const Text("Add your intake"),
       content: GetBuilder<AddingController>(
         builder: (controller) => Column(
           mainAxisSize: MainAxisSize.min,

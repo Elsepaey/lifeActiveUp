@@ -1,10 +1,7 @@
-import 'dart:io';
 
-import 'package:alarm/alarm.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:nutrifit/pages/sleep_tracker/sleep_controller.dart';
 
@@ -60,7 +57,7 @@ class SleepView extends StatelessWidget {
                                       showTitles: true,
                                       getTitlesWidget:
                                           (double value, TitleMeta meta) {
-                                        TextStyle style = TextStyle(
+                                        TextStyle style = const TextStyle(
                                           color: Colors.indigo,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14,
@@ -83,7 +80,7 @@ class SleepView extends StatelessWidget {
                                           (double value, TitleMeta meta) {
                                         return Text("${value.toInt()} h",
                                             textAlign: TextAlign.start,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: Colors.black,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 14,
@@ -93,7 +90,7 @@ class SleepView extends StatelessWidget {
                                       reservedSize: 50,
                                     ),
                                   ),
-                                  rightTitles: AxisTitles(),
+                                  rightTitles: const AxisTitles(),
                                 ),
                                 borderData: FlBorderData(
                                   show: false,
@@ -106,7 +103,7 @@ class SleepView extends StatelessWidget {
                                         toY: controller.previousDaysSleep[
                                                 DateFormat('yyyy-MM-dd').format(
                                                     DateTime.now().subtract(
-                                                        Duration(days: 6)))] ??
+                                                        const Duration(days: 6)))] ??
                                             0.0,
                                         color: MyTheme.primary_color,
                                       ),
@@ -119,7 +116,7 @@ class SleepView extends StatelessWidget {
                                         toY: controller.previousDaysSleep[
                                                 DateFormat('yyyy-MM-dd').format(
                                                     DateTime.now().subtract(
-                                                        Duration(days: 5)))] ??
+                                                        const Duration(days: 5)))] ??
                                             0,
                                         color: MyTheme.primary_color,
                                       ),
@@ -132,7 +129,7 @@ class SleepView extends StatelessWidget {
                                         toY: controller.previousDaysSleep[
                                                 DateFormat('yyyy-MM-dd').format(
                                                     DateTime.now().subtract(
-                                                        Duration(days: 4)))] ??
+                                                        const Duration(days: 4)))] ??
                                             0,
                                         color: MyTheme.primary_color,
                                       ),
@@ -145,7 +142,7 @@ class SleepView extends StatelessWidget {
                                         toY: controller.previousDaysSleep[
                                                 DateFormat('yyyy-MM-dd').format(
                                                     DateTime.now().subtract(
-                                                        Duration(days: 3)))] ??
+                                                        const Duration(days: 3)))] ??
                                             0,
                                         color: MyTheme.primary_color,
                                       ),
@@ -158,7 +155,7 @@ class SleepView extends StatelessWidget {
                                         toY: controller.previousDaysSleep[
                                                 DateFormat('yyyy-MM-dd').format(
                                                     DateTime.now().subtract(
-                                                        Duration(days: 2)))] ??
+                                                        const Duration(days: 2)))] ??
                                             0,
                                         color: MyTheme.primary_color,
                                       ),
@@ -171,7 +168,7 @@ class SleepView extends StatelessWidget {
                                         toY: controller.previousDaysSleep[
                                                 DateFormat('yyyy-MM-dd').format(
                                                     DateTime.now().subtract(
-                                                        Duration(days: 1)))] ??
+                                                        const Duration(days: 1)))] ??
                                             0,
                                         color: MyTheme.primary_color,
                                       ),
@@ -198,11 +195,11 @@ class SleepView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text("press to log"),
-                Icon(Icons.arrow_forward_outlined),
+                const Text("press to log"),
+                const Icon(Icons.arrow_forward_outlined),
                 ElevatedButton(onPressed: ( ){
                   showDialog(context: context, builder: (_){return       AlertDialog(
-                    title: Text("Add your intake"),
+                    title: const Text("Add your intake"),
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,11 +207,11 @@ class SleepView extends StatelessWidget {
                         Container(
                           height: 38,
                           width: 200,
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           decoration: BoxDecoration(
                             color: Colors.grey[200],
                             borderRadius: BorderRadius.circular(12.0),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Colors.black26,
                                 blurRadius: 6.0,
@@ -226,7 +223,7 @@ class SleepView extends StatelessWidget {
                             controller: controller.sleepDurationController,
 
                             keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintText: 'Enter hours of sleep',
                               border: InputBorder.none,
                             ),
@@ -256,7 +253,7 @@ class SleepView extends StatelessWidget {
                     ],
                   );
                   });
-                }, child:                 Text(
+                }, child:                 const Text(
                   "Let's Log your Sleep ",
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                 ),
@@ -265,11 +262,11 @@ class SleepView extends StatelessWidget {
             ):
 Row(
   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [Text("Last Night Sleep :",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400),),Text("${controller.todayIntake} hours",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),],
+  children: [const Text("Last Night Sleep :",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400),),Text("${controller.todayIntake} hours",style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),],
 ))
                         ,
           ),
-          SizedBox(height: 22,),
+          const SizedBox(height: 22,),
 
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -281,8 +278,8 @@ Row(
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.bedtime_off_outlined),
-                        SizedBox(
+                        const Icon(Icons.bedtime_off_outlined),
+                        const SizedBox(
                           width: 15,
                         ),
                         Column(
@@ -292,10 +289,10 @@ Row(
                             Column(
                               children: [
                                 Text(
-                                'Sleep Time: ${controller.sleepTime.value.format(context)}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300),),
+                                'Sleep Time: ${controller.sleepTime.value.format(context)}',style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w300),),
                                 Text(
                                   'Left Time: ${controller.sleepCountdown.value}',
-                                  style: TextStyle(fontSize: 16),
+                                  style: const TextStyle(fontSize: 16),
                                 )
                               ],
                             )                                :
@@ -306,11 +303,11 @@ Row(
                               child: Column(
                                 children: [
                                    Text(
-                                    'Sleep Time: ${controller.sleepTime.value.format(context)}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),),
+                                    'Sleep Time: ${controller.sleepTime.value.format(context)}',style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500),),
 
                                       Text(
                                     'Left Time: ${controller.sleepCountdown.value}',
-                                    style: TextStyle(fontSize: 16),
+                                    style: const TextStyle(fontSize: 16),
                                   )
                                 ],
                               ),
@@ -352,8 +349,8 @@ Row(
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.alarm),
-                        SizedBox(
+                        const Icon(Icons.alarm),
+                        const SizedBox(
                           width: 15,
                         ),
                         Column(
@@ -363,10 +360,10 @@ Row(
                             Column(
                               children: [
                                 Text(
-                                  'Wakeup Time: ${controller.wakeupTime.value.format(context)}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300),),
+                                  'Wakeup Time: ${controller.wakeupTime.value.format(context)}',style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w300),),
                                 Text(
                                   'Left Time: ${controller.wakeupCountdown.value}',
-                                  style: TextStyle(fontSize: 16),
+                                  style: const TextStyle(fontSize: 16),
                                 )
                               ],
                             )                                :
@@ -377,11 +374,11 @@ Row(
                               child: Column(
                                 children: [
                                    Text(
-                                    'Wakeup Time: ${controller.wakeupTime.value.format(context)}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),),
+                                    'Wakeup Time: ${controller.wakeupTime.value.format(context)}',style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500),),
 
                                       Text(
                                         'Left Time: ${controller.wakeupCountdown.value}',
-                                        style: TextStyle(fontSize: 16),
+                                        style: const TextStyle(fontSize: 16),
                                       )
                                 ],
                               ),
@@ -414,7 +411,7 @@ Row(
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
               height: 170,
               child: Image(image: AssetImage("assets/images/slept.png")))
 

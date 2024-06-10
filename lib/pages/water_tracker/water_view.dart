@@ -1,6 +1,5 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/pages/water_tracker/water_controller.dart';
 
@@ -19,7 +18,7 @@ class WaterView extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
             fit: BoxFit.fill,
@@ -29,7 +28,7 @@ class WaterView extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text("Water Tracker"),
+          title: const Text("Water Tracker"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -53,7 +52,7 @@ class WaterView extends StatelessWidget {
                 selectableDayPredicate: (date) => true,
                 locale: 'en_ISO',
               ),
-              SizedBox(height: 45,),
+              const SizedBox(height: 45,),
               // Padding(
               //   padding: const EdgeInsets.symmetric(vertical: 18.0),
               //   child: Row(
@@ -96,16 +95,16 @@ class WaterView extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "Target",
                               style: TextStyle(fontSize: 16),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 7,
                             ),
                             Text(
                               "${int.parse(userController.waterIntake[0])*1000} ml",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             )
                           ],
@@ -118,7 +117,7 @@ class WaterView extends StatelessWidget {
                     width: 150,
                     child: Stack(
                       children: <Widget>[
-                        Container(
+                        SizedBox(
                           width: 150,
                           height: 150,
                           child: CircularProgressIndicator(
@@ -132,7 +131,7 @@ class WaterView extends StatelessWidget {
                         Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [Text("Today Intake"), Text("${staticsController.waterIntakes} ml")],
+                              children: [const Text("Today Intake"), Text("${staticsController.waterIntakes} ml")],
                             )),
                       ],
                     ),
