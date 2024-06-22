@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/pages/workout/workoutfeatures/workoutfeatures.dart';
+import 'package:nutrifit/pages/workout/workoutplans/workoutplans.dart';
 
 class WorkoutController extends GetxController{
   int currentIndex=0;
@@ -14,10 +15,7 @@ update();
         return WorkoutFeatures();}
     else
       {
-        return Container(
-          height: 200,
-          width: 200,
-          color: Colors.black,);
+        return  WorkoutPlans();
 
       }
   }

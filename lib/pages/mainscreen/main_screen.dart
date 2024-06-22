@@ -4,12 +4,16 @@ import 'package:navbar_router/navbar_router.dart';
 import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/mainscreen/mainscreencontroller.dart';
 
+import '../../model/user controller.dart';
+import '../profile/profile.dart';
+import 'about.dart';
 import 'appbar/appbar.dart';
 
 
 
 class MainScreen extends StatelessWidget {
   MainScreenController controller = Get.put(MainScreenController());
+  AppUserController userController = Get.find();
 
   MainScreen({
     super.key,
@@ -21,7 +25,42 @@ class MainScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      drawer: const Drawer(),
+      drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+SizedBox(height: 100,),
+              DrawerHeader(child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleAvatar(child: Icon(Icons.person,color: Colors.white,size: 40,),backgroundColor: Colors.black,maxRadius: 30,),SizedBox(height: 10,),
+                  Text(userController.fullName),
+                ],
+              )),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text('Profile'),
+                onTap: () {
+                  // Navigate to profile page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Profile()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.info),
+                title: Text('About'),
+                onTap: () {
+                  // Navigate to about page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => About()),
+                  );
+                },
+              ),
+            ],
+          ),),
       appBar: CustomAppBar(),
       body:  NavbarRouter(
         type: NavbarType.floating,

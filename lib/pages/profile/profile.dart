@@ -16,33 +16,36 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.only(right: 18, bottom: 82, left: 18),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 30,
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.account_circle_outlined,
-                size: screenWidth / 8,
-                color: MyTheme.primary_color,
-              ),
-              Text(
-                "My Account",
-                style: TextStyle(fontSize: screenWidth / 19),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          GetX<ProfileController>(
-              builder: (controller) => Expanded(
-                    child: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(surfaceTintColor: Colors.transparent,backgroundColor: Colors.transparent,),
+      body:       Padding(
+        padding: const EdgeInsets.only(right: 18, bottom: 82, left: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.account_circle_outlined,
+                  size: screenWidth / 8,
+                  color: MyTheme.primary_color,
+                ),
+                Text(
+                  "My Account",
+                  style: TextStyle(fontSize: screenWidth / 19),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            GetX<ProfileController>(
+                builder: (controller) => Expanded(
+                  child: SingleChildScrollView(
+                    child: Form(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -136,13 +139,16 @@ class Profile extends StatelessWidget {
                               context: context,
                               newValue: newValue,
                               fieldName: 'sleepIntake'),
-                          
+                      
                         ],
                       ),
                     ),
-                  ))
-        ],
-      ),
+                  ),
+                ))
+          ],
+        ),
+      )
+
     );
   }
 }
