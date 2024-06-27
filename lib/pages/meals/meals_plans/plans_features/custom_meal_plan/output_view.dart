@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/meals/meals_plans/mealsplans_api.dart';
+import 'package:nutrifit/pages/meals/meals_plans/plans_features/custom_meal_plan/outputController.dart';
 import 'package:toggle_list/toggle_list.dart';
 import 'customfood_controller.dart';
 
 class CustomOutput extends StatelessWidget {
    CustomOutput({super.key});
   final CustomFoodController controller = Get.find();
-
+OutputController outputController=Get.put(OutputController());
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -39,7 +40,6 @@ class CustomOutput extends StatelessWidget {
                     return const Center(child: Text('No data available'));
                   } else {
                     var data=snapshot.data!["output"];
-                    print(data.length);
                     List<ToggleListItem> toggleListItems = data.map<ToggleListItem>((item)
                     {
                       return ToggleListItem(
@@ -77,6 +77,70 @@ class CustomOutput extends StatelessWidget {
                               Text("Fiber Content:                     ${item["FiberContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
                               Text("Sugar Content:                    ${item["SugarContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
                               Text("Protein Content:                ${item["ProteinContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
+                              GetX<OutputController>(builder: (controller)=>                              
+                                  Card(
+                                    color: Colors.white,
+
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                                                      children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text("Add this meal to :",style: TextStyle(fontWeight: FontWeight.w500),),
+
+                                          DropdownButton<String>(
+                                            menuMaxHeight: 300,
+                                            value: outputController.mealType.value,
+                                            style: TextStyle(color: Colors.black,fontWeight: FontWeight.w400),
+                                            items: [
+                                              DropdownMenuItem(
+                                                value:'Breakfast',
+                                                child: Text('Breakfast'),
+                                              ),
+                                              DropdownMenuItem(
+                                                value: 'Launch',
+                                                child: Text('Launch'),
+                                              ),DropdownMenuItem(
+                                                value: 'Dinner',
+                                                child: Text('Dinner'),
+                                              ),
+                                              DropdownMenuItem(
+                                                value: 'snack',
+                                                child: Text('snack'),
+                                              ),
+                                            ],
+                                            onChanged: (String? newValue) {
+                                              outputController.mealType.value=newValue!;
+                                            },
+                                          ),
+
+
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 25,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            foregroundColor: MyTheme.primary_color, backgroundColor: Colors.white, // text color
+                                            side: BorderSide(
+                                              width: 1.2,
+                                              color: MyTheme.primary_color,
+                                              style: BorderStyle.solid, // solid border
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            outputController.confirm(context, item["Name"],item["Calories"], item["ProteinContent"], item["FatContent"], item["CarbohydrateContent"], item["SugarContent"]);
+                                          },
+                                          child: Text('Confirm'),
+                                        )
+                                      )
+                                                                      ],
+                                                                    ),
+                                    ),
+                                  )
+                              )
                             ].map((text) => Padding(
                               padding: const EdgeInsets.only(bottom: 8.0),
                               child: text,

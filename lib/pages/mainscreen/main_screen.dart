@@ -27,18 +27,19 @@ class MainScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       drawer: Drawer(
           child: ListView(
-            padding: EdgeInsets.zero,
+            padding: EdgeInsets.all(8),
             children: [
 SizedBox(height: 100,),
-              DrawerHeader(child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              DrawerHeader(child: Row(
+                //crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(child: Icon(Icons.person,color: Colors.white,size: 40,),backgroundColor: Colors.black,maxRadius: 30,),SizedBox(height: 10,),
-                  Text(userController.fullName),
+                  CircleAvatar(child: Icon(Icons.person,color: Colors.white,size: 40,),backgroundColor: MyTheme.primary_color,maxRadius: 30,),SizedBox(height: 10,),
+SizedBox(width: 12,),
+                  Text(userController.fullName,textAlign: TextAlign.center,),
                 ],
               )),
               ListTile(
-                leading: Icon(Icons.person),
+                leading: Icon(Icons.person,color: Colors.grey,size: screenWidth/11,),
                 title: Text('Profile'),
                 onTap: () {
                   // Navigate to profile page
@@ -48,8 +49,10 @@ SizedBox(height: 100,),
                   );
                 },
               ),
+              Divider(),
+
               ListTile(
-                leading: Icon(Icons.info),
+                leading: Icon(Icons.info,color: Colors.grey,size: screenWidth/11,),
                 title: Text('About'),
                 onTap: () {
                   // Navigate to about page
@@ -59,10 +62,14 @@ SizedBox(height: 100,),
                   );
                 },
               ),
+              Divider(),
+
             ],
           ),),
       appBar: CustomAppBar(),
       body:  NavbarRouter(
+
+
         type: NavbarType.floating,
 
         errorBuilder: (context) {
@@ -89,6 +96,7 @@ SizedBox(height: 100,),
     initialRoute: controller.routes[i]!.keys.first,
     ),
     ],
+
     ),
 
     );

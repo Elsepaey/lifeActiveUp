@@ -60,20 +60,9 @@ class MealLogDetails extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "My Daily Calories",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        "+ Add food ",
-                        style: TextStyle(
-                            color: Colors.indigo[400],
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
+                  const Text(
+                    "My Daily Calories",
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: screenHeight / 150,

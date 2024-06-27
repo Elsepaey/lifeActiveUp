@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
   AppUserController userController = Get.find();
   StepController stepsController = Get.find();
 
-  final DailyStatics staticsController =
+   DailyStatics staticsController =
       Get.put(DailyStatics(), permanent: true);
 
   HomePage({super.key});
@@ -105,20 +105,9 @@ class HomePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "My Daily Calories",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "+ Add food ",
-                            style: TextStyle(
-                                color: Colors.indigo[400],
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
+                      const Text(
+                        "My Daily Calories",
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: screenHeight / 150,
@@ -136,7 +125,7 @@ class HomePage extends StatelessWidget {
                       ),
                       LinearProgressIndicator(
                         value: (staticsController.totalCalories.value) /
-                            userController.dailyIntake["total_calories"]!,
+                            userController.dailyIntake['total_calories']!,
                       ),
                       SizedBox(
                         height: screenHeight / 200,

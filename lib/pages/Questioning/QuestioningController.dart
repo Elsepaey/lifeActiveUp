@@ -55,7 +55,7 @@ class QuestioningController extends GetxController {
 //Fitness
   List<String> levels=["Beginner","Intermediate","Advanced"];
   RxString level="Beginner".obs;
-  List<String> fitnessGoals=["Weight loss","Weight gain","muscles gain"];
+  List<String> fitnessGoals=["weight Loss","weight Gain","muscle Gain"];
   RxString fitnessGoal="Weight loss".obs;
   List<String> waterIntakes=["1 Litre","1.5 Litre","2 Litre"];
   RxString waterIntake="1 Litre".obs;

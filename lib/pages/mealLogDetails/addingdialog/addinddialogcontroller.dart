@@ -48,7 +48,8 @@ class AddingDialogController extends GetxController {
   }
 
   Future<void> submit(
-      BuildContext context, String mealType, DateTime date) async {
+      BuildContext context, String mealType, DateTime date)
+  async {
 
     ProgressDialogUtils.showLoading(context, "Loading...");
 

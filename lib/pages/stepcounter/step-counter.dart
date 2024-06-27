@@ -207,7 +207,7 @@ class StepCounter extends StatelessWidget {
                   children: <Widget>[
                     Center(
                       child: SizedBox(
-                        width: 200,
+                        width: 170,
                         height: 150,
                         child: CircularProgressIndicator(
                           color: Colors.indigo,
@@ -271,7 +271,7 @@ class StepCounter extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        width: 4,
+                        width: 2,
                         height: 40,
                         color: Colors.black,
                       ),
@@ -285,8 +285,26 @@ class StepCounter extends StatelessWidget {
                           const Text("Steps Covered"),
                         ],
                       ),
+                      Container(
+                        width: 2,
+                        height: 40,
+                        color: Colors.black,
+                      ),
+                      Column(
+                        //mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Obx(() => Text(
+                            ' ${controller.caloriesBurned.value.toStringAsFixed(2)} ',
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          )),
+                          Text("Calories Burned")
+                        ],
+                      )
+
                     ],
-                  )
+                  ),
+
                 ],
               ),
             ),
