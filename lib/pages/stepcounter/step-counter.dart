@@ -7,7 +7,8 @@ import 'package:nutrifit/pages/stepcounter/step_counter_controller.dart';
 
 class StepCounter extends StatelessWidget {
   StepCounter({super.key});
-  StepController controller = Get.find();
+  StepController controller = Get.put(StepController(),permanent: true);
+
   TextEditingController textEditingController = TextEditingController();
 
   List<String> getLast7Days() {

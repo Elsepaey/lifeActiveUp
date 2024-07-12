@@ -14,7 +14,8 @@ import '../stepcounter/step_counter_controller.dart';
 class HomePage extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
   AppUserController userController = Get.find();
-  StepController stepsController = Get.find();
+  StepController stepsController =        Get.put(StepController(),permanent: true);
+
 
    DailyStatics staticsController =
       Get.put(DailyStatics(), permanent: true);

@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -9,6 +10,8 @@ import '../hompage/homepage.dart';
 import '../meals/view.dart';
 
 class MainScreenController extends GetxController {
+  @override
+
   int currentIndex = 0;
 
   final List<Widget> pages = [

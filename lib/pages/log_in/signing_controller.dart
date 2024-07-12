@@ -75,8 +75,10 @@ class SigningController extends GetxController {
                   age),
 
               ProgressDialogUtils.hideLoading(context),
-              Get.off(() => MainScreen())
-            })
+              Get.off(() => MainScreen()),
+              sharedPref!.setBool('formCompleted',true)
+
+    })
         .onError((error, stackTrace) => {
               ProgressDialogUtils.hideLoading(context),
               ProgressDialogUtils.showMessage(

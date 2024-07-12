@@ -37,11 +37,9 @@ class OutputController extends GetxController{
     var addedItem = await DB.addMeal(meal, DateTime.now());
     if (addedItem != null) {
       addedItem=mealName;
-      print (addedItem==mealName);
       ProgressDialogUtils.hideLoading(context);
       logController.addToChoosed(meal.mealName);
       Get.back();
-
       staticsController.updateStatics(calories,protein,fat,carbs);
     } else {
       ProgressDialogUtils.showMessage(

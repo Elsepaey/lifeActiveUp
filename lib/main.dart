@@ -1,5 +1,6 @@
 import 'package:alarm/alarm.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/middleware/AuthMiddleware.dart';
@@ -21,12 +22,29 @@ SharedPreferences? sharedPref;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
       options: const FirebaseOptions(
           apiKey: 'AIzaSyA5Kdc3uQpNL09MgSsWMCAawgOmo3IVAd8',
-          appId: 'lifeactiveup',
-          messagingSenderId: 'sendid',
-          projectId: 'lifeactiveup'));
+          appId: '1:1042020173390:android:b00fc5aa7b1701b252e51f',
+          projectId: 'lifeactiveup', messagingSenderId: '1042020173390'));
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  // Request permission for notifications
+  // NotificationSettings settings = await messaging.requestPermission(
+  //   alert: true,
+  //   announcement: false,
+  //   badge: true,
+  //   carPlay: false,
+  //   criticalAlert: false,
+  //   provisional: false,
+  //   sound: true,
+  // );
+
+  // Get the token
+  String? token = await messaging.getToken();
+  print("FCM Registration Token: $token");
+
   sharedPref=await SharedPreferences.getInstance();
   await Alarm.init();
   runApp(const MyApp());
@@ -38,12 +56,12 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: "/splash",
       initialBinding: BindingsBuilder(() {
         Get.put(AppUserController(), permanent: true);
-        Get.put(StepController(),permanent: true);
 
       }),
       getPages: [
