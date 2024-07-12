@@ -28,8 +28,7 @@ class BodyMuscles extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Column(
-      //mainAxisSize: MainAxisSize.min,
-      //mainAxisAlignment: MainAxisAlignment.center,
+
       children: [
         SizedBox(
           height: screenHeight/14,

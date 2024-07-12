@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../core/progress_dialog_utils.dart';
 import '../../databases/database.dart';
+import '../../main.dart';
 import '../../model/user controller.dart';
 import '../mainscreen/main_screen.dart';
 import '../sign_up/user_model.dart';
@@ -55,8 +56,8 @@ class QuestioningController extends GetxController {
 //Fitness
   List<String> levels=["Beginner","Intermediate","Advanced"];
   RxString level="Beginner".obs;
-  List<String> fitnessGoals=["weight Loss","weight Gain","muscle Gain"];
-  RxString fitnessGoal="Weight loss".obs;
+  List<String> fitnessGoals=["weight Loss","keep Fit","muscle Gain"];
+  RxString fitnessGoal="weight Loss".obs;
   List<String> waterIntakes=["1 Litre","1.5 Litre","2 Litre"];
   RxString waterIntake="1 Litre".obs;
   List<String> sleepIntakes=["8 hours","6 hours","4 hours"];
@@ -139,8 +140,10 @@ void onValueChange ({required String value,required int select}){
       int year = int.parse(dateParts[2]);
       int age =DateTime.now().year-year;
       userController.dailyIntake=userController.calculateNutrition(userController.gender, double.parse(userController.weight), double.parse(userController.height), age);
+      sharedPref!.setBool('formCompleted',true);
 
       ProgressDialogUtils.hideLoading(context);
+
       Get.off(() => MainScreen());
     }
     else {

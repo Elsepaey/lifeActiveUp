@@ -31,7 +31,6 @@ class StepController extends GetxController {
     super.onInit();
     requestActivityRecognitionPermission();
     loadStepsFromPreferences();
-    // getYesterdaySteps();
     getPreviousDaysSteps();
   }
 
@@ -81,6 +80,31 @@ class StepController extends GetxController {
     saveStepsToPreferences();
   }
 
+
+
+  void onPedestrianStatusChanged(PedestrianStatus event) {
+    status.value = event.status;
+  }
+
+  void onPedestrianStatusError(error) {
+    print('onPedestrianStatusError: $error');
+    status.value = 'Pedestrian Status not available';
+  }
+
+  void onStepCountError(error) {
+    print('onStepCountError: $error');
+    steps.value = 'Step Count not available';
+  }
+
+  void initPlatformState() {
+    _pedestrianStatusStream = Pedometer.pedestrianStatusStream;
+    _pedestrianStatusStream
+        .listen(onPedestrianStatusChanged)
+        .onError(onPedestrianStatusError);
+
+    stepCountStream = Pedometer.stepCountStream;
+    stepCountStream?.listen(onStepCount).onError(onStepCountError);
+  }
   void calculateDistance(int steps) {
     double distanceInMeters = steps * stepLength;
     double distanceInKilometers = distanceInMeters / 1000.0;
@@ -94,11 +118,6 @@ class StepController extends GetxController {
     required int steps,
     double speedKmH = 5.0, // Default walking speed
   }) {
-    // Validate gender
-    if (gender.toLowerCase() != 'male' && gender.toLowerCase() != 'female') {
-      throw ArgumentError('Invalid gender: $gender');
-    }
-
     // Calculate stride length in meters
     double strideLengthMeters;
     if (gender.toLowerCase() == 'male') {
@@ -126,30 +145,6 @@ class StepController extends GetxController {
     double caloriesBurned = metValue * weightKg * distanceKm;
 
     return caloriesBurned;
-  }
-
-  void onPedestrianStatusChanged(PedestrianStatus event) {
-    status.value = event.status;
-  }
-
-  void onPedestrianStatusError(error) {
-    print('onPedestrianStatusError: $error');
-    status.value = 'Pedestrian Status not available';
-  }
-
-  void onStepCountError(error) {
-    print('onStepCountError: $error');
-    steps.value = 'Step Count not available';
-  }
-
-  void initPlatformState() {
-    _pedestrianStatusStream = Pedometer.pedestrianStatusStream;
-    _pedestrianStatusStream
-        .listen(onPedestrianStatusChanged)
-        .onError(onPedestrianStatusError);
-
-    stepCountStream = Pedometer.stepCountStream;
-    stepCountStream?.listen(onStepCount).onError(onStepCountError);
   }
 
   Future<void> saveStepsForPreviousDay() async {
@@ -194,11 +189,9 @@ class StepController extends GetxController {
         stepsData[date] = 0; // If no data found for that day, set steps to 0
       }
       previousDaysSteps = stepsData;
-      print('Date: $date, Steps: ${stepsData[date]}');
     }
     return stepsData;
     // Now you have the steps data for the past 6 days in the stepsData map
-    print("Steps data for the past 6 days: $stepsData");
   }
 
   Future<void> loadStepsFromPreferences() async {

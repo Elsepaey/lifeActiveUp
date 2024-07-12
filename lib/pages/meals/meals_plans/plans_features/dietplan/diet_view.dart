@@ -78,6 +78,13 @@ final DietController controller=Get.put(DietController());
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(item),
                                       ))).toList(),scrollDirection: Axis.horizontal,)),
+                              ExpansionTile(
+                                tilePadding: EdgeInsets.symmetric(vertical: 4),
+                                title: Text("RecipeInstructions",style: TextStyle(fontWeight: FontWeight.bold),),
+                                children: item["RecipeInstructions"]
+                                    .map<Text>((item) => Text(item))
+                                    .toList(),
+                              ),
 
                               Text("Calories:                          ${item["Calories"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
                               Text("Fat Content:                      ${item["FatContent"]}",style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -469,10 +476,9 @@ final DietController controller=Get.put(DietController());
         age: "${calculateAge(userController.dateOfBirth)}",
         diseases: userController.allergiesList.join(","),
         activityLevel: userController.fitnessLevel, dietType: dietType);
-    print(data);
+
     return data;
   }
-
   int calculateAge(String birthDateString) {
     // Parse the date of birth string to a DateTime object
     DateFormat dateFormat = DateFormat('MM/dd/yyyy');

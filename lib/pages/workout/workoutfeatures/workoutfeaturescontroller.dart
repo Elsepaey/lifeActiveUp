@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/pages/workout/workoutfeatures/explorepages/bodymuscles/bodymuscles.dart';
-import 'package:nutrifit/pages/workout/workoutfeatures/explorepages/exercises/exercises.dart';
 import 'package:nutrifit/pages/workout/workoutfeatures/explorepages/routines/routines.dart';
 
 class WorkoutFeaturesController extends GetxController{
@@ -14,14 +13,11 @@ class WorkoutFeaturesController extends GetxController{
     if(currentIndex==0)
     {
       return BodyMuscles();}
-    else if(currentIndex==1)
+    else
     {
       return Routines();
 
     }
-    else
-      {
-        return const Execises();
-      }
+
   }
 }

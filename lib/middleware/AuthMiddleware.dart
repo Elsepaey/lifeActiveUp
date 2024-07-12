@@ -11,33 +11,19 @@ class AuthMiddleware extends GetMiddleware{
   QuerySnapshot? querySnapshot;
   DocumentSnapshot? doc;
   var userId=sharedPref!.getString('id');
+  var formCompleted=sharedPref?.getBool('formCompleted') ?? false;
   @override
   RouteSettings? redirect(String? route)  {
     // TODO: implement redirect
     if(userId!=null)
       {
-        return const RouteSettings(name: "/intro");
+        if(formCompleted) {
+          return const RouteSettings(name: "/intro");
+        } else {
+          return const RouteSettings(name: "/questioning");
+        }
 
-   // return const RouteSettings(name: "/home");
       }
     return super.redirect(route);
   }
-  // Future<void> getUserDate() async {
-  //    querySnapshot = await users
-  //       .where('id', isEqualTo:userId )
-  //       .get();
-  //   doc = querySnapshot!.docs.first;
-  //   userController.id = doc?['id'];
-  //   userController.email = doc?['email'];
-  //   userController.password = doc?['password'];
-  //   userController.fullName = doc?['fullname'];
-  //   userController.diseasesList = doc?['diseasesList'];
-  //   userController.allergiesList = doc?['allergiesList'];
-  //   userController.dateOfBirth = doc?['dateOfBirth'];
-  //   userController.gender = doc?['gender'];
-  //   userController.fitnessLevel = doc?['fitnessLevel'];
-  //   userController.fitnessGoal = doc?['fitnessGoal'];
-  //   userController.sleepIntake = doc?['sleepIntake'];
-  //   userController.waterIntake = doc?['waterIntake'];
-  // }
 }

@@ -18,6 +18,10 @@ TextEditingController sleepDurationController=TextEditingController();
   var wakeupCountdown = "".obs;
   Map previousDaysSleep = {}.obs;
   RxDouble todayIntake = 0.0.obs;
+
+  var sleepTime = const TimeOfDay(hour: 22, minute: 0).obs; // default 10:00 PM
+  var wakeupTime = const TimeOfDay(hour: 6, minute: 0).obs; // default 6:00 AM
+
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -25,10 +29,6 @@ TextEditingController sleepDurationController=TextEditingController();
     loadTimes();
     _startTimer();
   }
-
-  var sleepTime = const TimeOfDay(hour: 22, minute: 0).obs; // default 10:00 PM
-  var wakeupTime = const TimeOfDay(hour: 6, minute: 0).obs; // default 6:00 AM
-
   Future<void> loadTimes() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     sleepTime.value = TimeOfDay(

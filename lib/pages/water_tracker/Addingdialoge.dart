@@ -31,7 +31,7 @@ class AddingWaterDialog extends StatelessWidget {
                   menuMaxHeight: 300,
                   value: dialogController.quantity,
                   items: [
-                    for (int i = 50; i <= 2000; i += 20)
+                    for (int i = 50; i <= 1000; i += 10)
                       DropdownMenuItem(
                         value: i,
                         child: Text('$i'),

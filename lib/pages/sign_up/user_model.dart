@@ -52,24 +52,6 @@ class FirebaseUser {
 
   static String collectionName = "users";
 
-  // Map<String, dynamic> toFirestore() {
-  //   return {
-  //     "id": id,
-  //     "fullname": fullName,
-  //     "email": email,
-  //     "password": password,
-  //     "gender": gender,
-  //     "height":height,
-  //     "weight":weight,
-  //     "dateOfBirth": dateOfBirth,
-  //     "diseasesList": diseasesList,
-  //     "allergiesList": allergiesList,
-  //     "fitnessLevel": fitnessLevel,
-  //     "fitnessGoal": fitnessGoal,
-  //     "sleepIntake": sleepIntake,
-  //     "waterIntake": waterIntake
-  //   };
-  // }
   Future<Object?> saveToFirestore() async {
     await FirebaseFirestore.instance
         .collection(FirebaseUser.collectionName).doc(id).set({

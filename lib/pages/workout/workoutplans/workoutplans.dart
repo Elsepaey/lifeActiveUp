@@ -138,10 +138,9 @@ class WorkoutPlans extends StatelessWidget {
                 String? gender = userController.gender.capitalizeFirst;
                 String level = userController.fitnessLevel;
                 String goal = userController.fitnessGoal.removeAllWhitespace;
+
                 String path = goal + gender! + place;
-                print(path);
-                print(level);
-                print(controller.sliderValue.toInt());
+
                 Map<String, List<Map<String, dynamic>>>? plan =
                     controller.plans[path.trim()]![level]
                         ?["${controller.sliderValue.toInt()}"];

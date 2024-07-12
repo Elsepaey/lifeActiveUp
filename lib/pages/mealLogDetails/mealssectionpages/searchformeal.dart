@@ -82,13 +82,7 @@ class SearchForMeal extends StatelessWidget {
                                 )
                               ],
                             )));
-                    // CustomWidgets.recipeWidget(
-                    //   controller.meals.value[index][1],
-                    //   "${controller.meals[index][3]} kcal for 100 g ",
-                    //   controller.meals[index][38],
-                    //   controller.meals[index][4],
-                    //   controller.meals[index][58],
-                    //   controller.meals[index][60]);
+
                   }),
             );
           })

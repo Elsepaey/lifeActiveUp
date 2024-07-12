@@ -47,12 +47,14 @@ class Routines extends StatelessWidget {
     ]
 
   };
-   Map<String,dynamic> exercises={
+  Map<String,dynamic> exercises={
      "Broad Shoulders":[
        Excercise(
            imagePath:"assets/images/routines/broadshoulders/cable-face-pull-muscles-1024x482.png",
            muscleFocusedImagePath:
-           "assets/images/muscles/shoulder.png", title: 'Cable Standing Face Pull', instructions: '3 sets x 12 reps'),
+           "assets/images/muscles/shoulder.png",
+           title: 'Cable Standing Face Pull',
+           instructions: '3 sets x 12 reps'),
 
        Excercise(
            imagePath:

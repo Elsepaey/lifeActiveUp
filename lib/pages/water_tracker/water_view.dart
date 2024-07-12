@@ -37,7 +37,7 @@ class WaterView extends StatelessWidget {
             children: [
               CalendarTimeline(
                 initialDate: DateTime.now(),
-                firstDate: DateTime.now().subtract(const Duration(days: 182)),
+                firstDate: DateTime.now().subtract(const Duration(days: 180)),
                 lastDate: DateTime.now().add(const Duration(days: 180)),
                 onDateSelected: (date) {
                   controller.date = date;
@@ -53,37 +53,6 @@ class WaterView extends StatelessWidget {
                 locale: 'en_ISO',
               ),
               const SizedBox(height: 45,),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(vertical: 18.0),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //     children: [
-              //       SvgPicture.asset(
-              //         'assets/images/water-drop-svgrepo-com.svg',
-              //         semanticsLabel: 'My SVG Image',
-              //         height: 80,
-              //         width: 40,
-              //       ),
-              //       SvgPicture.asset(
-              //         'assets/images/water-drop-svgrepo-com.svg',
-              //         semanticsLabel: 'My SVG Image',
-              //         height: 80,
-              //         width: 40,
-              //       ),SvgPicture.asset(
-              //         'assets/images/water-drop-svgrepo-com.svg',
-              //         semanticsLabel: 'My SVG Image',
-              //         height: 80,
-              //         width: 40,
-              //       ),SvgPicture.asset(
-              //         'assets/images/water-drop-svgrepo-com.svg',
-              //         semanticsLabel: 'My SVG Image',
-              //         height: 80,
-              //         width: 40,
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // Image(image: AssetImage("assets/images/water.png")),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [

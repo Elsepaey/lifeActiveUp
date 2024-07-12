@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/pages/Questioning/QuestioningController.dart';
@@ -36,7 +37,7 @@ class WeightAndHeight extends StatelessWidget {
                         height: screenHeight / 32,
                       ),
                       SizedBox(
-                          height: screenHeight / 32,
+                          height: screenHeight / 27,
                           width: screenWidth / 4.5,
                           // Adjust the width as needed
                           child: TextField(
@@ -49,6 +50,7 @@ class WeightAndHeight extends StatelessWidget {
                             maxLength:
                             3, // Maximum number of characters allowed
                             decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(3),
                               counterText:
                               '', // Hide character counter
                               //hintText: 'Enter number',
@@ -70,7 +72,7 @@ class WeightAndHeight extends StatelessWidget {
                         height: screenHeight / 32,
                       ),
                       SizedBox(
-                          height: screenHeight / 32,
+                          height: screenHeight / 27,
                           width: screenWidth / 4.5,
                           // Adjust the width as needed
                           child: TextField(
@@ -83,6 +85,8 @@ class WeightAndHeight extends StatelessWidget {
                             maxLength:
                             3, // Maximum number of characters allowed
                             decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.all(3),
+
                               counterText:
                               '', // Hide character counter
                               //hintText: 'Enter number',

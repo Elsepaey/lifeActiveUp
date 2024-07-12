@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/pages/meals/meals_plans/plans_features/custom_meal_plan/customfood_controller.dart';
@@ -16,7 +15,11 @@ class CustomFood extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(
-            top: height/66,bottom: height / 11.40, left: width / 60, right: width / 60),        child: Column(
+            top: height / 66,
+            bottom: height / 11.40,
+            left: width / 60,
+            right: width / 60),
+        child: Column(
           children: [
             GetBuilder<CustomFoodController>(
               builder: (controller) => Padding(
@@ -279,16 +282,15 @@ class CustomFood extends StatelessWidget {
                 ),
               ),
             ),
-            const TextField(decoration: InputDecoration(
-              hintText: "add ingredients"
-            ),),
-            ElevatedButton(onPressed: ( ) async {
-Get.to(CustomOutput());
+            const TextField(
 
-
-
-            }, child: const Text("generate")),
-
+              decoration: InputDecoration(hintText: "add ingredients"),
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  Get.to(CustomOutput());
+                },
+                child: const Text("generate")),
           ],
         ),
       ),
@@ -301,8 +303,7 @@ Get.to(CustomOutput());
       required String lable,
       required double value,
       required double min,
-      required double max})
-{
+      required double max}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
