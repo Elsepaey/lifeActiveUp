@@ -16,7 +16,7 @@ class WorkoutPlans extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       child: GetBuilder<WorkoutPlansController>(
         builder: (controller) => Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +46,7 @@ class WorkoutPlans extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image(
-                                image: AssetImage(
+                                image: const AssetImage(
                                   "assets/images/fromHome.png",
                                 ),
                                 width: screenWidth / 2.8,
@@ -87,7 +87,7 @@ class WorkoutPlans extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Image(
-                            image: AssetImage(
+                            image: const AssetImage(
                               "assets/images/fromGym.png",
                             ),
                             width: screenWidth / 2.8,

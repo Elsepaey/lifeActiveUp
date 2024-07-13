@@ -299,7 +299,7 @@ class StepCounter extends StatelessWidget {
                             style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           )),
-                          Text("Calories Burned")
+                          const Text("Calories Burned")
                         ],
                       )
 

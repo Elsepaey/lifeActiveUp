@@ -14,7 +14,6 @@ import 'package:nutrifit/pages/profile/profile.dart';
 import 'package:nutrifit/pages/sign_up/register.dart';
 import 'package:nutrifit/pages/log_in/sign_in.dart';
 import 'package:nutrifit/pages/splash/splash-view.dart';
-import 'package:nutrifit/pages/stepcounter/step_counter_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'model/user controller.dart';
 

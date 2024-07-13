@@ -1,4 +1,3 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:navbar_router/navbar_router.dart';
@@ -29,20 +28,20 @@ class MainScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       drawer: Drawer(
           child: ListView(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             children: [
-SizedBox(height: 100,),
+const SizedBox(height: 100,),
               DrawerHeader(child: Row(
                 //crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(child: Icon(Icons.person,color: Colors.white,size: 40,),backgroundColor: MyTheme.primary_color,maxRadius: 30,),SizedBox(height: 10,),
-SizedBox(width: 12,),
+                  CircleAvatar(backgroundColor: MyTheme.primary_color,maxRadius: 30,child: const Icon(Icons.person,color: Colors.white,size: 40,),),const SizedBox(height: 10,),
+const SizedBox(width: 12,),
                   Text(userController.fullName,textAlign: TextAlign.center,),
                 ],
               )),
               ListTile(
                 leading: Icon(Icons.person,color: Colors.grey,size: screenWidth/11,),
-                title: Text('Profile'),
+                title: const Text('Profile'),
                 onTap: () {
                   // Navigate to profile page
                   Navigator.push(
@@ -51,20 +50,20 @@ SizedBox(width: 12,),
                   );
                 },
               ),
-              Divider(),
+              const Divider(),
 
               ListTile(
                 leading: Icon(Icons.info,color: Colors.grey,size: screenWidth/11,),
-                title: Text('About'),
+                title: const Text('About'),
                 onTap: () {
                   // Navigate to about page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => About()),
+                    MaterialPageRoute(builder: (context) => const About()),
                   );
                 },
               ),
-              Divider(),
+              const Divider(),
 
             ],
           ),),

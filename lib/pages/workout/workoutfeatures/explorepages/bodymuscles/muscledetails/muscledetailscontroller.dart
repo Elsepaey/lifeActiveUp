@@ -29,6 +29,13 @@ class MuscleController extends GetxController {
         'Scapular protraction exercises': 'assets/images/exercises/Blank.gif',
         'Chest stretches': 'assets/images/exercises/Chest stretches.png',
       },
+      'machines Images': {
+        'chest1': 'assets/images/machines/chest_1.jpg',
+        'chest2': 'assets/images/machines/chest_2.jpg',
+        'chest3': 'assets/images/machines/Incline Chest Press Machine.jpg',
+        'chest4': 'assets/images/machines/Cable Crossover Machine.jpg',
+
+      },
 
     },
     'Biceps': {
@@ -47,6 +54,10 @@ class MuscleController extends GetxController {
         'Bicep curls': 'assets/images/exercises/bicepscurls.jpg',
         'Hammer curls': 'assets/images/exercises/hammer.jpg',
         'Chin-ups': 'assets/images/exercises/Chin-ups.jpg',
+      },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/Bicep-Curl.jpg',
+        'Hammer curls': 'assets/images/machines/lat pulldown.jpg',
       },
     },
     'Traps': {
@@ -68,6 +79,10 @@ class MuscleController extends GetxController {
         'Dumbbell rows': 'assets/images/exercises/Dumbbell rows.jpg',
         'Face pulls':
             'assets/images/routines/broadshoulders/cable-face-pull-muscles-1024x482.png',
+      },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/back_seated.jpg',
+        'Hammer curls': 'assets/images/machines/lat pulldown.jpg',
       },
     },
     'Shoulders': {
@@ -95,6 +110,10 @@ class MuscleController extends GetxController {
         'External rotation': 'assets/images/exercises/External rotation.jpg',
         'Internal rotation': 'assets/images/exercises/internal rotation.jpg',
       },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/Standing-Lateral-Raise.jpg',
+        'Hammer curls': 'assets/images/machines/Shoulder-Press.jpg',
+      },
     },
     'Hamstrings': {
       'Function':
@@ -117,6 +136,12 @@ class MuscleController extends GetxController {
         'Glute-ham raises': 'assets/images/exercises/Glute-ham raises.jpg',
         'Lunges': 'assets/images/exercises/Lunges.jpg',
       },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/Leg Extension Machine.jpg',
+        'Hammer curls': 'assets/images/machines/leg press.jpg',
+        'curls': 'assets/images/machines/leg curl.jpg',
+
+      },
     },
     'Calves': {
       'Function':
@@ -136,6 +161,10 @@ class MuscleController extends GetxController {
         'Calf presses': 'assets/images/exercises/Leg press.jpg',
         'Skipping or jumping exercises':
             'assets/images/exercises/Skipping or jumping exercises.jpg',
+      },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/Calf Raise Machine.jpg',
+        'Hammer curls': 'assets/images/machines/leg curl.jpg',
       },
     },
     'Glutes': {
@@ -160,6 +189,10 @@ class MuscleController extends GetxController {
         'Glute bridges': 'assets/images/exercises/Glute bridges.jpg',
         'Lateral band walks': 'assets/images/exercises/Lateral band walks.jpg',
       },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/leg curl.jpg',
+        'Hammer curls': 'assets/images/machines/leg press.jpg',
+      },
     },
     'Triceps': {
       'Function':
@@ -183,6 +216,10 @@ class MuscleController extends GetxController {
         'Close-grip bench press':
             'assets/images/routines/chesttriceps/Dumbbell Close Grip.jpg',
       },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/Rotary Torso Machine.jpg',
+        'Hammer curls': 'assets/images/machines/Ab Crunch Machine.jpg',
+      },
     },
     'Lats': {
       'Function':
@@ -205,6 +242,10 @@ class MuscleController extends GetxController {
             'assets/images/routines/chesttriceps/barbell-bent-over.jpg',
         'Seated cable rows': 'assets/images/exercises/Seated cable rows.jpg',
       },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/back_seated.jpg',
+        'Hammer curls': 'assets/images/machines/lat pulldown.jpg',
+      },
     },
     'Quads': {
       'Function':
@@ -224,6 +265,10 @@ class MuscleController extends GetxController {
         'Leg press': 'assets/images/exercises/Leg press.jpg',
         'Leg extensions': 'assets/images/exercises/Leg extensions.jpg',
         'Step-ups': 'assets/images/exercises/Step-ups.jpg',
+      },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/Leg Extension Machine.jpg',
+        'Hammer curls': 'assets/images/machines/leg press.jpg',
       },
     },
     'Forearms': {
@@ -248,6 +293,10 @@ class MuscleController extends GetxController {
         'Grip strength exercises':
             'assets/images/exercises/Grip strength exercises.jpg',
       },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/Rotary Torso Machine.jpg',
+        'Hammer curls': 'assets/images/machines/Ab Crunch Machine.jpg',
+      },
     },
     'Abs': {
       'Function':
@@ -270,6 +319,10 @@ class MuscleController extends GetxController {
         'Russian twists': 'assets/images/exercises/Russian twists.jpg',
         'Plank variations': 'assets/images/exercises/Blank.gif',
         'Bicycle crunches': 'assets/images/exercises/Bicycle crunches.jpg',
+      },
+      'machines Images': {
+        'Bicep curls': 'assets/images/machines/Rotary Torso Machine.jpg',
+        'Hammer curls': 'assets/images/machines/Ab Crunch Machine.jpg',
       },
     },
   };

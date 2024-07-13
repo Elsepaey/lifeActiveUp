@@ -57,8 +57,9 @@ dependencies:
   graphic: ^2.2.1
   fl_chart: ^0.68.0
   alarm: ^3.1.4
-  flutter_local_notifications: ^12.0.4
   toggle_list: ^0.3.1
+
+  flutter_local_notifications: ^12.0.4
   firebase_messaging: ^14.9.4
 
 

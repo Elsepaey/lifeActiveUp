@@ -44,11 +44,11 @@ class WorkoutPlansView extends StatelessWidget {
                 children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Day ${index+1}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+                      child: Text("Day ${index+1}",style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
                     ),
                     DataTable(
 
-                      columns: [
+                      columns: const [
                         DataColumn(label: Text("Exercise")),
                         DataColumn(label: Text("Sets")),
                         DataColumn(label: Text("Reps")),

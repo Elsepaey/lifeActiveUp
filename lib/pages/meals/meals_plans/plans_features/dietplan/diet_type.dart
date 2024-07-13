@@ -1,14 +1,14 @@
 // diet_selection_screen.dart
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:nutrifit/core/themes.dart';
 import 'package:nutrifit/pages/meals/meals_plans/plans_features/dietplan/dietType_controller.dart';
 import 'package:nutrifit/pages/meals/meals_plans/plans_features/dietplan/diet_view.dart';
-import 'diet_controller.dart';
 
 class DietSelectionScreen extends StatelessWidget {
   DietTypeController controller = Get.put(DietTypeController());
+
+  DietSelectionScreen({super.key});
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -22,8 +22,8 @@ class DietSelectionScreen extends StatelessWidget {
           SizedBox(
             height: screenHeight / 120,
           ),
-          Center(
-            child: const Text(
+          const Center(
+            child: Text(
               'Do you follow any of these diets?',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),

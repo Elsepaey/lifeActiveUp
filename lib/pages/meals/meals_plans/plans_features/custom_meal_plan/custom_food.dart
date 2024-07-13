@@ -286,7 +286,7 @@ class CustomFood extends StatelessWidget {
 onChanged: (val){
   controller.textFieldValue=val;
 },
-              decoration: InputDecoration(hintText: "add ingredients"),
+              decoration: const InputDecoration(hintText: "add ingredients"),
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),

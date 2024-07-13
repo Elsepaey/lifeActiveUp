@@ -13,7 +13,7 @@ class Fitness extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      padding:  EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+      padding:  const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
       margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(12)),

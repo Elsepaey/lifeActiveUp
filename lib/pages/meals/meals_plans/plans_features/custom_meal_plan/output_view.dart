@@ -23,7 +23,7 @@ class CustomOutput extends StatelessWidget {
         children: [
           SizedBox(
               height: screenHeight / 4.2,
-              child: Image(
+              child: const Image(
                 image: AssetImage(
                   "assets/images/chef_2.png",
                 ),
@@ -78,8 +78,8 @@ class CustomOutput extends StatelessWidget {
                                     scrollDirection: Axis.horizontal,
                                   )),
                               ExpansionTile(
-                                tilePadding: EdgeInsets.symmetric(vertical: 4),
-                                title: Text("RecipeInstructions",style: TextStyle(fontWeight: FontWeight.bold),),
+                                tilePadding: const EdgeInsets.symmetric(vertical: 4),
+                                title: const Text("RecipeInstructions",style: TextStyle(fontWeight: FontWeight.bold),),
                               children: item["RecipeInstructions"]
                                   .map<Text>((item) => Text(item))
                                   .toList(),
@@ -133,7 +133,7 @@ class CustomOutput extends StatelessWidget {
                                                     MainAxisAlignment
                                                         .spaceAround,
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "Add this meal to :",
                                                     style: TextStyle(
                                                         fontWeight:
@@ -143,11 +143,11 @@ class CustomOutput extends StatelessWidget {
                                                     menuMaxHeight: 300,
                                                     value: outputController
                                                         .mealType.value,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         color: Colors.black,
                                                         fontWeight:
                                                             FontWeight.w400),
-                                                    items: [
+                                                    items: const [
                                                       DropdownMenuItem(
                                                         value: 'Breakfast',
                                                         child:
@@ -203,7 +203,7 @@ class CustomOutput extends StatelessWidget {
                                                               "CarbohydrateContent"],
                                                           item["SugarContent"]);
                                                     },
-                                                    child: Text('Confirm'),
+                                                    child: const Text('Confirm'),
                                                   ))
                                             ],
                                           ),

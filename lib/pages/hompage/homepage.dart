@@ -237,8 +237,8 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8.0),
                       child:  ClipRRect(
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.zero,
@@ -300,7 +300,7 @@ class HomePage extends StatelessWidget {
                         Column(
                           children: [
                             Obx(() => Text(
-                                  '${stepsController.steps.value}',
+                                  stepsController.steps.value,
                                   style: TextStyle(
                                       fontSize: screenHeight/45,
                                       fontWeight: FontWeight.bold),
@@ -309,7 +309,7 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                         ImageIcon(
-                          AssetImage("assets/images/running.png"),
+                          const AssetImage("assets/images/running.png"),
                           size: screenHeight/12,
                         )
                       ],
@@ -364,13 +364,13 @@ class HomePage extends StatelessWidget {
                           children: [
                             Text(
                               "${staticsController.waterIntakes}/${(int.parse(userController.waterIntake[0])??0) * 1000}  ml",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: const TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            Text("Today Intake"),
+                            const Text("Today Intake"),
                           ],
                         ),
                         ImageIcon(
-                          AssetImage("assets/images/icons8-water-64.png"),
+                          const AssetImage("assets/images/icons8-water-64.png"),
                           size: screenHeight/12,
                         )
                       ],
@@ -430,7 +430,7 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                         ImageIcon(
-                          AssetImage("assets/icons/sleep_1422872.png"),
+                          const AssetImage("assets/icons/sleep_1422872.png"),
                           size: screenHeight/12,
                         )
                       ],

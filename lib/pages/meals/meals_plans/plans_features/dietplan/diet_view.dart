@@ -31,7 +31,7 @@ final DietController controller=Get.put(DietController());
           children: [
              SizedBox(
                 height:screenHeight/4.2 ,
-                child: Image(image: AssetImage("assets/images/chef_2.png",),)),
+                child: const Image(image: AssetImage("assets/images/chef_2.png",),)),
             FutureBuilder(
               future: getData(dietType:dietType),
               builder: (context, snapshot) {
@@ -79,8 +79,8 @@ final DietController controller=Get.put(DietController());
                                         child: Text(item),
                                       ))).toList(),scrollDirection: Axis.horizontal,)),
                               ExpansionTile(
-                                tilePadding: EdgeInsets.symmetric(vertical: 4),
-                                title: Text("RecipeInstructions",style: TextStyle(fontWeight: FontWeight.bold),),
+                                tilePadding: const EdgeInsets.symmetric(vertical: 4),
+                                title: const Text("RecipeInstructions",style: TextStyle(fontWeight: FontWeight.bold),),
                                 children: item["RecipeInstructions"]
                                     .map<Text>((item) => Text(item))
                                     .toList(),
@@ -107,13 +107,13 @@ final DietController controller=Get.put(DietController());
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                                             children: [
-                                              Text("Add this meal to :",style: TextStyle(fontWeight: FontWeight.w500),),
+                                              const Text("Add this meal to :",style: TextStyle(fontWeight: FontWeight.w500),),
 
                                               DropdownButton<String>(
                                                 menuMaxHeight: 300,
                                                 value: outputController.mealType.value,
-                                                style: TextStyle(color: Colors.black,fontWeight: FontWeight.w400),
-                                                items: [
+                                                style: const TextStyle(color: Colors.black,fontWeight: FontWeight.w400),
+                                                items: const [
                                                   DropdownMenuItem(
                                                     value:'Breakfast',
                                                     child: Text('Breakfast'),
@@ -152,7 +152,7 @@ final DietController controller=Get.put(DietController());
                                                 onPressed: () {
                                                   outputController.confirm(context, item["Name"],item["Calories"], item["ProteinContent"], item["FatContent"], item["CarbohydrateContent"], item["SugarContent"]);
                                                 },
-                                                child: Text('Confirm'),
+                                                child: const Text('Confirm'),
                                               )
                                           )
                                         ],
@@ -219,13 +219,13 @@ final DietController controller=Get.put(DietController());
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                                           children: [
-                                            Text("Add this meal to :",style: TextStyle(fontWeight: FontWeight.w500),),
+                                            const Text("Add this meal to :",style: TextStyle(fontWeight: FontWeight.w500),),
 
                                             DropdownButton<String>(
                                               menuMaxHeight: 300,
                                               value: outputController.mealType.value,
-                                              style: TextStyle(color: Colors.black,fontWeight: FontWeight.w400),
-                                              items: [
+                                              style: const TextStyle(color: Colors.black,fontWeight: FontWeight.w400),
+                                              items: const [
                                                 DropdownMenuItem(
                                                   value:'Breakfast',
                                                   child: Text('Breakfast'),
@@ -264,7 +264,7 @@ final DietController controller=Get.put(DietController());
                                               onPressed: () {
                                                 outputController.confirm(context, item["Name"],item["Calories"], item["ProteinContent"], item["FatContent"], item["CarbohydrateContent"], item["SugarContent"]);
                                               },
-                                              child: Text('Confirm'),
+                                              child: const Text('Confirm'),
                                             )
                                         )
                                       ],
@@ -331,13 +331,13 @@ final DietController controller=Get.put(DietController());
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                                           children: [
-                                            Text("Add this meal to :",style: TextStyle(fontWeight: FontWeight.w500),),
+                                            const Text("Add this meal to :",style: TextStyle(fontWeight: FontWeight.w500),),
 
                                             DropdownButton<String>(
                                               menuMaxHeight: 300,
                                               value: outputController.mealType.value,
-                                              style: TextStyle(color: Colors.black,fontWeight: FontWeight.w400),
-                                              items: [
+                                              style: const TextStyle(color: Colors.black,fontWeight: FontWeight.w400),
+                                              items: const [
                                                 DropdownMenuItem(
                                                   value:'Breakfast',
                                                   child: Text('Breakfast'),
@@ -376,7 +376,7 @@ final DietController controller=Get.put(DietController());
                                               onPressed: () {
                                                 outputController.confirm(context, item["Name"],item["Calories"], item["ProteinContent"], item["FatContent"], item["CarbohydrateContent"], item["SugarContent"]);
                                               },
-                                              child: Text('Confirm'),
+                                              child: const Text('Confirm'),
                                             )
                                         )
                                       ],

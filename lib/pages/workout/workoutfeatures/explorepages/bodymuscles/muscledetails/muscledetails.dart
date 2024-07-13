@@ -17,7 +17,8 @@ class MuscleDetails extends StatelessWidget {
         controller.muscles[muscle]?["Exercise Images"].keys.toList();
     List<String> ExerciseImageList =
         controller.muscles[muscle]?["Exercise Images"].values.toList();
-
+    List<String> machinesImageList =
+    controller.muscles[muscle]?["machines Images"].values.toList();
     return Scaffold(
       appBar: AppBar(
         //backgroundColor: MyTheme.primary_color,
@@ -106,111 +107,40 @@ class MuscleDetails extends StatelessWidget {
                     height: 8,
                   ),
                   SizedBox(
-                    height: screenHeight / 8,
-                    child: ListView(
+                    height: screenHeight / 7,
+
+                    child: ListView.builder(
+                      itemBuilder: (context,index)
+                      {
+                        return                         Container(
+                          margin: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 2,
+                                blurRadius: 4,
+                                offset: const Offset(
+                                    0, 1), // changes position of shadow
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(22),
+                          ),
+                          child:  ClipRRect(
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(12)), // Image border
+                            // Image radius
+                            child: Image(
+                              image: AssetImage(machinesImageList[index]),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        );
+
+                      },
+                      itemCount: machinesImageList.length,
                       scrollDirection: Axis.horizontal,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
-                                spreadRadius: 2,
-                                blurRadius: 4,
-                                offset: const Offset(
-                                    0, 1), // changes position of shadow
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(22),
-                          ),
-                          child: const ClipRRect(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(12)), // Image border
-                            // Image radius
-                            child: Image(
-                              image: AssetImage(
-                                  "assets/images/machines/lat pulldown.jpg"),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
-                                spreadRadius: 2,
-                                blurRadius: 4,
-                                offset: const Offset(
-                                    0, 1), // changes position of shadow
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(22),
-                          ),
-                          child: const ClipRRect(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(12)), // Image border
-                            // Image radius
-                            child: Image(
-                              image: AssetImage(
-                                  "assets/images/machines/dip station.jpg"),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
-                                spreadRadius: 2,
-                                blurRadius: 4,
-                                offset: const Offset(
-                                    0, 1), // changes position of shadow
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(22),
-                          ),
-                          child: const ClipRRect(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(12)), // Image border
-                            // Image radius
-                            child: Image(
-                              image: AssetImage(
-                                  "assets/images/machines/lat pulldown.jpg"),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
-                                spreadRadius: 2,
-                                blurRadius: 4,
-                                offset: const Offset(
-                                    0, 1), // changes position of shadow
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(22),
-                          ),
-                          child: const ClipRRect(
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(12)), // Image border
-                            // Image radius
-                            child: Image(
-                              image: AssetImage(
-                                  "assets/images/machines/dip station.jpg"),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                      ],
+
                     ),
                   )
                 ],
