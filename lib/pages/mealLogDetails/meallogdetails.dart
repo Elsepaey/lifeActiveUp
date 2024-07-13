@@ -190,24 +190,6 @@ class MealLogDetails extends StatelessWidget {
                                 child:
                                     const Center(child: Text("recently added")),
                               )),
-                          Container(
-                              height: screenHeight / 24,
-                              width: screenWidth / 3,
-                              decoration: BoxDecoration(
-                                  color: controller.checked.value == 2
-                                      ? MyTheme.primary_color
-                                      : Colors.transparent,
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(8))),
-                              padding: const EdgeInsets.all(3),
-                              child: InkWell(
-                                onTap: () {
-                                  controller.checked.value = 2;
-                                  controller.changeViewIndex();
-                                },
-                                borderRadius: BorderRadius.circular(50),
-                                child: const Center(child: Text("favourites")),
-                              )),
                         ],
                       ))),
           SizedBox(
