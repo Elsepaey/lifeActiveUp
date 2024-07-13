@@ -30,10 +30,6 @@ class QuestioningController extends GetxController {
     'Diabetes',
     'Hypertension',
     'Heart Disease',
-    'Asthma',
-    'Arthritis',
-    'Cancer',
-    'Obesity',
   ];
   List<bool> diseasesCheckedList = List.generate(7, (index) => false).obs;
   List<String> selectedDiseases =[];
@@ -58,9 +54,9 @@ class QuestioningController extends GetxController {
   RxString level="Beginner".obs;
   List<String> fitnessGoals=["weight Loss","keep Fit","muscle Gain"];
   RxString fitnessGoal="weight Loss".obs;
-  List<String> waterIntakes=["1 Litre","1.5 Litre","2 Litre"];
+  List<String> waterIntakes=["2 Litre","2.5 Litre","3 Litre","3.5 Litre","4 Litre"];
   RxString waterIntake="1 Litre".obs;
-  List<String> sleepIntakes=["8 hours","6 hours","4 hours"];
+  List<String> sleepIntakes=["8 hours","8 hours","6 hours","4 hours"];
   RxString sleepIntake="8 hours".obs;
 void onValueChange ({required String value,required int select}){
   switch (select){

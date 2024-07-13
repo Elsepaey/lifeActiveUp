@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomFoodController extends GetxController {
@@ -9,9 +10,10 @@ class CustomFoodController extends GetxController {
   double carbSliderValue = 70.0;
   double fiberSliderValue = 10.0;
   double sugarSliderValue = 10.0;
-
   double proteinSliderValue = 20.0;
 
+  String textFieldValue="";
+  List<String> ingredients=[];
   void updateCalorieSliderValue(double value) {
     calorieSliderValue = value.roundToDouble();
     update();

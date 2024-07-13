@@ -246,7 +246,10 @@ class CustomOutput extends StatelessWidget {
       controller.proteinSliderValue
     ];
 
-    var data = await MealsApi.postCustom(nutritions, []);
+    List<String> ingredients=controller.textFieldValue==""?[]:controller.textFieldValue.split(',');
+
+
+    var data = await MealsApi.postCustom(nutritions, ingredients);
     return data;
   }
 }

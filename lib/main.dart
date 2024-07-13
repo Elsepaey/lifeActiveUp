@@ -30,17 +30,6 @@ Future<void> main() async {
           projectId: 'lifeactiveup', messagingSenderId: '1042020173390'));
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-  // Request permission for notifications
-  // NotificationSettings settings = await messaging.requestPermission(
-  //   alert: true,
-  //   announcement: false,
-  //   badge: true,
-  //   carPlay: false,
-  //   criticalAlert: false,
-  //   provisional: false,
-  //   sound: true,
-  // );
-
   // Get the token
   String? token = await messaging.getToken();
   print("FCM Registration Token: $token");

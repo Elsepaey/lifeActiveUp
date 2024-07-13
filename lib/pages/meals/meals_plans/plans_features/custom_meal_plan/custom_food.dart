@@ -282,9 +282,20 @@ class CustomFood extends StatelessWidget {
                 ),
               ),
             ),
-            const TextField(
-
+             TextField(
+onChanged: (val){
+  controller.textFieldValue=val;
+},
               decoration: InputDecoration(hintText: "add ingredients"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Row(
+                children: [
+                  Icon(Icons.error_outline,color:Colors.black.withOpacity(0.4) ,),
+                  Text("split ingredients with ' , ' ",style: TextStyle(color: Colors.black.withOpacity(0.4),fontSize: 16),),
+                ],
+              ),
             ),
             ElevatedButton(
                 onPressed: () async {
