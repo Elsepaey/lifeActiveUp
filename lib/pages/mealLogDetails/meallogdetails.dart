@@ -43,7 +43,8 @@ class MealLogDetails extends StatelessWidget {
           ),
           GetX<DailyStatics>(
             builder: (controller) => Container(
-              padding:  EdgeInsets.all(screenHeight/150),
+              margin: EdgeInsets.symmetric(horizontal:screenHeight/120),
+              padding:  EdgeInsets.all(screenHeight/120),
               height: screenHeight / 7,
               decoration: BoxDecoration(
                   color: Colors.white,
